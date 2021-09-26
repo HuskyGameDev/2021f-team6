@@ -4,24 +4,22 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public float moveSpeed = 5f;
-    public float rotateSpeed = 20f;
-    //private float setMoveSpeed;
-    private Rigidbody2D characterBody;
-    private Transform playerRotation;
-    public Transform spawnBullet;
-    //private int HP;
-    private bool isDeath;
+    //object components
+    private Rigidbody2D rigidBody;
 
-    public Rigidbody2D bulletRB;
+    //object variables
+    public float moveSpeed;         //speed player moves at in units/second
+    public float rotateSpeed;       //speed player rotates towards mouse
+
+    public int hp;                  //player health points
+
+    public GameObject[] attacks;     //list of available attacks
+
+
+    // Start is called before the first frame update
     void Start()
     {
-        //setMoveSpeed = moveSpeed;
-        //HP = 100;
-        playerRotation = GetComponent<Transform>();
-        characterBody = GetComponent<Rigidbody2D>();
-        isDeath = false;
+        rigidBody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -34,31 +32,34 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (!isDeath)
+        if (!isDead())
         {
-            RotationPlayer();
-            //isDeath = true;
-            Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-            characterBody.AddForce(input * moveSpeed*Time.deltaTime);
+            RotatePlayer();
+
+            Vector3 input = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"),0);
+            //characterBody.AddForce(input * moveSpeed * Time.deltaTime);
+            transform.position = transform.position + (input * moveSpeed * Time.deltaTime);
         }
     }
-    void RotationPlayer() 
+
+    //make player aim towards mouse
+    private void RotatePlayer() 
     {
-        Vector3 mouse_pos = Input.mousePosition;
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 player_pos = Camera.main.WorldToScreenPoint(playerRotation.transform.position);
-        mouse_pos.x = mouse_pos.x - player_pos.x;
-        mouse_pos.y = mouse_pos.y - player_pos.y;
-        float angle = Mathf.Atan2(mouse_pos.y,mouse_pos.x) * Mathf.Rad2Deg ;
-        playerRotation.rotation = Quaternion.RotateTowards(transform.rotation,Quaternion.Euler(new Vector3(0,0,angle)),rotateSpeed);
+        Vector3 mousePos = Input.mousePosition;
+        Vector3 playerPos = Camera.main.WorldToScreenPoint(transform.transform.position);
+        mousePos.x -= playerPos.x;
+        mousePos.y -= playerPos.y;
+        float angle = Mathf.Atan2(mousePos.y,mousePos.x) * Mathf.Rad2Deg ;
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(new Vector3(0,0,angle)), rotateSpeed);
     }
 
-    void Shoot() 
+    //fire the current weapon
+    private void Shoot() 
     {
-        Rigidbody2D bullet = Instantiate(bulletRB, spawnBullet.transform.position,spawnBullet.transform.rotation) as Rigidbody2D;
-        //bullet.GetComponent<BulletController>().parentTransform = transform;
-        //bullet.GetComponent<BulletController>().parentTag = transform.tag;
-        Debug.Log("Shooting");
+        GameObject bullet = Instantiate(attacks[0], transform.position, transform.rotation);
+
     }
 
+    //return
+    public bool isDead() { return hp <= 0; }
 }

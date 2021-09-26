@@ -6,7 +6,7 @@ public class BulletController : MonoBehaviour
 {
     //public Transform parentTransform;
     //public string parentTag;
-    public float bulletSpeed = 300f;
+    public float bulletSpeed = 300f;    //speed of the bullet 
     //public int damage =1;
     
     // Start is called before the first frame update
