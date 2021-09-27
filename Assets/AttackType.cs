@@ -6,8 +6,8 @@ public class AttackType : MonoBehaviour
 {
     private Rigidbody2D rigidBody;
 
-    public float dmg;   //attack damage
-    public bool bullet; //whether or not the attack is a bullet type vs. an effect
+    public float dmg, speed, lifespan;   //attack damage, projectile speed, lifespan in seconds
+    public bool aoe; //whether or not the attack is a aoe effect vs. single-hit projectile
 
 
 
@@ -15,9 +15,15 @@ public class AttackType : MonoBehaviour
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+
+        //move proj away from player
         float newX = Mathf.Cos(rigidBody.rotation * Mathf.Deg2Rad);
         float newY = Mathf.Sin(rigidBody.rotation * Mathf.Deg2Rad);
-        transform.position += new Vector3(1.5f * newX, 1.5f * newY, 0 );
+        //transform.position += new Vector3(2f * newX, 2f * newY, 0 );
+
+        rigidBody.AddRelativeForce(Vector2.right * speed);
+
+        Destroy(gameObject, lifespan);
     }
 
     // Update is called once per frame
@@ -26,13 +32,12 @@ public class AttackType : MonoBehaviour
 
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        if (bullet)
+        if (!aoe && collider.tag != "Player")
         {
             Destroy(gameObject);
         }
-
     }
 }
 

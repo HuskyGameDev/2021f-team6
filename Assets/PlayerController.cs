@@ -13,7 +13,8 @@ public class PlayerController : MonoBehaviour
 
     public int hp;                  //player health points
 
-    public GameObject[] attacks;     //list of available attacks
+    public GameObject[] attacks;    //list of available attacks
+    private int curAtk = 0;         //index of the current attack in attacks[]
 
 
     // Start is called before the first frame update
@@ -29,6 +30,13 @@ public class PlayerController : MonoBehaviour
         {
             Shoot();
         }
+
+        //weapon switching with Q and E
+        if (Input.GetKeyDown(KeyCode.Q))
+            curAtk--;
+        if (Input.GetKeyDown(KeyCode.E))
+            curAtk++;
+        curAtk = (curAtk + attacks.Length) % attacks.Length;
     }
     private void FixedUpdate()
     {
@@ -56,7 +64,7 @@ public class PlayerController : MonoBehaviour
     //fire the current weapon
     private void Shoot() 
     {
-        GameObject bullet = Instantiate(attacks[0], transform.position, transform.rotation);
+        GameObject bullet = Instantiate(attacks[curAtk], transform.position, transform.rotation);
 
     }
 

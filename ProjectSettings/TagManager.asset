@@ -4,13 +4,14 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Bullet
   - Enemy
+  - Projectile
+  - Bullet
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Bullet
+  - Projectile
   - Water
   - UI
   - 
@@ -40,9 +41,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Background
     uniqueID: 577312425
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0

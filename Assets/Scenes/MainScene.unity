@@ -344,6 +344,7 @@ MonoBehaviour:
   hp: 100
   attacks:
   - {fileID: 4204721134115430159, guid: 0e9efe1a907373749b3a1bc938f960e4, type: 3}
+  - {fileID: 2495260713778094334, guid: 8a0f5ae7ac5b9394d859ac7fd299605f, type: 3}
 --- !u!58 &852094959
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -400,6 +401,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1713172129}
   - component: {fileID: 1713172128}
+  - component: {fileID: 1713172130}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Enemy
@@ -472,6 +474,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1713172130
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713172127}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &2079590276
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,8 +554,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 577312425
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0.018244913, g: 0.018254686, b: 0.01886791, a: 1}
