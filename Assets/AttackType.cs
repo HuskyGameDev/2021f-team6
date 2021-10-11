@@ -7,7 +7,7 @@ public class AttackType : MonoBehaviour
     private Rigidbody2D rigidBody;
 
     public float dmg, speed, lifespan;   //attack damage, projectile speed, lifespan in seconds
-    public bool aoe; //whether or not the attack is a aoe effect vs. single-hit projectile
+    public bool aoe; //whether or not the attack is a aoe or effect vs. single-hit projectile
 
 
 
@@ -23,7 +23,8 @@ public class AttackType : MonoBehaviour
 
         rigidBody.AddRelativeForce(Vector2.right * speed);
 
-        Destroy(gameObject, lifespan);
+        if(lifespan > 0)
+            Destroy(gameObject, lifespan);
     }
 
     // Update is called once per frame
