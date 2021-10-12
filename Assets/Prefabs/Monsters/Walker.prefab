@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -3922851982599716575}
   m_Layer: 0
   m_Name: Walker
-  m_TagString: Enemy
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,6 +116,7 @@ MonoBehaviour:
   Health: 30
   WalkSpeed: 2
   aim: {x: 0, y: 0}
+  projectile: {fileID: 0}
 --- !u!50 &-3922851982599716575
 Rigidbody2D:
   serializedVersion: 4
