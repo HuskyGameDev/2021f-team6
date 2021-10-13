@@ -87,9 +87,9 @@ public class LightningController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //foreach (GameObject c in chains)
-           // Destroy(c, 3);
-        //Destroy(gameObject, 3);
+        foreach (GameObject c in chains)
+           Destroy(c, .5f);
+        Destroy(gameObject, .5f);
     }
 
     void OnTriggerEnter2D(Collider2D collider)
