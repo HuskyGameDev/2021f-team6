@@ -37,6 +37,8 @@ public class AttackType : MonoBehaviour
     {
         if (!aoe && collider.tag != "Player")
         {
+            if (collider.CompareTag("Enemy"))
+                collider.GetComponent<MonsterBehavior>().Health -= dmg;
             Destroy(gameObject);
         }
     }

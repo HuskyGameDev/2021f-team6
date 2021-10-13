@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LightningController : MonoBehaviour
 {
-    private Collider2D collider2D;
+    private Collider2D thisCollider;
     private Rigidbody2D rigidBody;
 
     public int maxChains = 3;
@@ -18,7 +18,7 @@ public class LightningController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        collider2D = GetComponent<Collider2D>();
+        thisCollider = GetComponent<Collider2D>();
         rigidBody = GetComponent<Rigidbody2D>();
 
 
@@ -26,12 +26,12 @@ public class LightningController : MonoBehaviour
 
         //List<Collider2D> colliders = new List<Collider2D>();
         //ContactFilter2D filter = new ContactFilter2D();
-        //int cols = collider2D.OverlapCollider(filter, colliders);
+        //int cols = thisCollider.OverlapCollider(filter, colliders);
         //foreach (Collider2D collider in colliders)
         //{
-        //    if (collider.tag == "Enemy" && collider.Distance(collider2D).distance < dist)
+        //    if (collider.tag == "Enemy" && collider.Distance(thisCollider).distance < dist)
         //    {
-        //        closestD = collider.Distance(collider2D);
+        //        closestD = collider.Distance(thisCollider);
         //        dist = closestD.distance;
         //        closest = collider;
 
@@ -40,7 +40,7 @@ public class LightningController : MonoBehaviour
         GameObject searchRadius = (GameObject)Instantiate(searchPrefab, transform);
         SearchRadiusController search = searchRadius.GetComponent<SearchRadiusController>();
         List<Collider2D> list = new List<Collider2D>();
-        list.Add(collider2D);
+        list.Add(thisCollider);
         closest = search.findClosest(300f, "Enemy", list);
         closestD = search.closestD;
         dist = search.distance;
@@ -57,27 +57,29 @@ public class LightningController : MonoBehaviour
             transform.position += new Vector3(dist * newX * .5f, dist * newY * .5f, 0 );
 
             list.Add(closest);
-        }
+            closest.gameObject.GetComponent<MonsterBehavior>().Health -=  gameObject.GetComponent<AttackType>().dmg;
 
-        for(int i = 0; i < maxChains; i++)
-        {
-            GameObject chainSearchRadius = (GameObject)Instantiate(searchPrefab, closest.transform);
-            SearchRadiusController chainSearch = chainSearchRadius.GetComponent<SearchRadiusController>();
-            Collider2D chainClosest = chainSearch.findClosest(300f, "Enemy", list);
-
-            if(chainClosest != null)
+            for (int i = 0; i < maxChains; i++)
             {
-                GameObject newChain = (GameObject) Instantiate(chain, closest.transform.position, closest.transform.rotation);
-                Rigidbody2D chainRB = newChain.GetComponent<Rigidbody2D>();
-                chainRB.rotation = Mathf.Atan2(chainSearch.closestD.normal.x, chainSearch.closestD.normal.y) * Mathf.Rad2Deg * -1 - 90;
-                newChain.transform.localScale = new Vector3(chainSearch.distance, .25f, 1);
+                GameObject chainSearchRadius = (GameObject)Instantiate(searchPrefab, closest.transform);
+                SearchRadiusController chainSearch = chainSearchRadius.GetComponent<SearchRadiusController>();
+                Collider2D chainClosest = chainSearch.findClosest(300f, "Enemy", list);
 
-                float newX = Mathf.Cos(chainRB.rotation * Mathf.Deg2Rad);
-                float newY = Mathf.Sin(chainRB.rotation * Mathf.Deg2Rad);
-                newChain.transform.position += new Vector3(chainSearch.distance * newX * .5f, chainSearch.distance * newY * .5f, 0);
+                if (chainClosest != null)
+                {
+                    GameObject newChain = (GameObject)Instantiate(chain, closest.transform.position, closest.transform.rotation);
+                    Rigidbody2D chainRB = newChain.GetComponent<Rigidbody2D>();
+                    chainRB.rotation = Mathf.Atan2(chainSearch.closestD.normal.x, chainSearch.closestD.normal.y) * Mathf.Rad2Deg * -1 - 90;
+                    newChain.transform.localScale = new Vector3(chainSearch.distance, .25f, 1);
 
-                chains.Add(newChain);
-                list.Add(chainClosest);
+                    float chainNewX = Mathf.Cos(chainRB.rotation * Mathf.Deg2Rad);
+                    float chainNewY = Mathf.Sin(chainRB.rotation * Mathf.Deg2Rad);
+                    newChain.transform.position += new Vector3(chainSearch.distance * chainNewX * .5f, chainSearch.distance * chainNewY * .5f, 0);
+
+                    chains.Add(newChain);
+                    list.Add(chainClosest);
+                    chainClosest.gameObject.GetComponent<MonsterBehavior>().Health -= gameObject.GetComponent<AttackType>().dmg;
+                }
             }
         }
     }
@@ -85,7 +87,9 @@ public class LightningController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //foreach (GameObject c in chains)
+           // Destroy(c, 3);
+        //Destroy(gameObject, 3);
     }
 
     void OnTriggerEnter2D(Collider2D collider)

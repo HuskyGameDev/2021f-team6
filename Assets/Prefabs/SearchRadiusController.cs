@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SearchRadiusController : MonoBehaviour
 {
-    private Collider2D collider2D;
+    private Collider2D thisCollider;
     private CircleCollider2D circleCollider2D;
 
     public Collider2D closest = null;
@@ -26,7 +26,7 @@ public class SearchRadiusController : MonoBehaviour
 
     public Collider2D findClosest(float radius, string tag, List<Collider2D> ignore)
     {
-        collider2D = GetComponent<Collider2D>();
+        thisCollider = GetComponent<Collider2D>();
         circleCollider2D = GetComponent<CircleCollider2D>();
 
         circleCollider2D.radius = radius;
@@ -34,12 +34,12 @@ public class SearchRadiusController : MonoBehaviour
         float dist = float.MaxValue;
         List<Collider2D> colliders = new List<Collider2D>();
         ContactFilter2D filter = new ContactFilter2D();
-        numCols = collider2D.OverlapCollider(filter, colliders);
+        numCols = thisCollider.OverlapCollider(filter, colliders);
         foreach (Collider2D collider in colliders)
         {
-            if (!ignore.Contains(collider) && collider.tag == tag && collider.Distance(collider2D).distance < dist)
+            if (!ignore.Contains(collider) && collider.tag == tag && collider.Distance(thisCollider).distance < dist)
             {
-                closestD = collider.Distance(collider2D);
+                closestD = collider.Distance(thisCollider);
                 dist = closestD.distance;
                 closest = collider;
 
