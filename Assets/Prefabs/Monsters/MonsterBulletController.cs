@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletController : MonoBehaviour
+public class MonsterBulletController : MonoBehaviour
 {
     //public Transform parentTransform;
     //public string parentTag;
@@ -24,9 +24,9 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy")) 
+        if (other.gameObject.CompareTag("Player")) 
         {
-            other.gameObject.GetComponent<MonsterBehavior>().Health = other.gameObject.GetComponent<MonsterBehavior>().Health - damage;
+            other.gameObject.GetComponent<PlayerController>().hp = other.gameObject.GetComponent<PlayerController>().hp - damage;
             Destroy(gameObject, 0.2f);
         }
     }

@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 182129255089046959}
   - component: {fileID: 4177670451758288676}
   - component: {fileID: 3419311136698550880}
-  - component: {fileID: 2695581252928737760}
   - component: {fileID: -8320876439391643138}
+  - component: {fileID: 5889898967112264878}
   m_Layer: 3
   m_Name: MonsterProjectile
   m_TagString: Projectile
@@ -133,19 +133,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2695581252928737760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4204721134115430159}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1da7301aeac7b0a40943fe841e1c3be1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletSpeed: 100
 --- !u!114 &-8320876439391643138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,3 +149,17 @@ MonoBehaviour:
   speed: 100
   lifespan: 5
   aoe: 0
+--- !u!114 &5889898967112264878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4204721134115430159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cb099abd7aeb04478effaa58504d60e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpeed: 200
+  damage: 10

@@ -15,7 +15,7 @@ TagManager:
   - Projectile
   - Water
   - UI
-  - 
+  - Monster
   - 
   - 
   - 
@@ -47,4 +47,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Monster
+    uniqueID: 3977987395
     locked: 0

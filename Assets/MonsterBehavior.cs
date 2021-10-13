@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MonsterBehavior : MonoBehaviour
 {
-    public int Health;
+    public float Health;
     public int WalkSpeed;
     public Vector2 aim;
     public GameObject projectile;
@@ -27,8 +27,13 @@ public class MonsterBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.rotation = -Mathf.Atan2(GameObject.Find("Player").GetComponent<Rigidbody2D>().position.x, GameObject.Find("Player").GetComponent<Rigidbody2D>().position.y) * Mathf.Rad2Deg + 120f;
+        
         rb.velocity = ((GameObject.Find("Player").GetComponent<Rigidbody2D>().position - this.GetComponent<Rigidbody2D>().position));
+        if(rb.velocity != Vector2.zero)
+        {
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg)), 10);
+        }
+        
 
         if (rb.velocity.magnitude > WalkSpeed)
         {
@@ -74,19 +79,7 @@ public class MonsterBehavior : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Projectile")
-        {
-            //Health = Health - collision.gameObject.Dmg;
-            if (Health <= 0)
-            {
-                //Run the animation for death and shut down the object
-                Destroy(gameObject);
-            }
-        } else
-        {
-            
-        }
+    { 
         
     }
 
