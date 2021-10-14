@@ -8,6 +8,7 @@ TagManager:
   - Projectile
   - Bullet
   - Canvas
+  - Building
   layers:
   - Default
   - TransparentFX

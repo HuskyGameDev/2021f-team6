@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4177670451758288676}
   - component: {fileID: 3419311136698550880}
   - component: {fileID: -433515372767928593}
-  - component: {fileID: 2695581252928737760}
   m_Layer: 3
   m_Name: Bullet
   m_TagString: Projectile
@@ -149,17 +148,3 @@ MonoBehaviour:
   speed: 500
   lifespan: 3
   aoe: 0
---- !u!114 &2695581252928737760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4204721134115430159}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1da7301aeac7b0a40943fe841e1c3be1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletSpeed: 100
-  damage: 20

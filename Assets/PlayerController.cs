@@ -48,6 +48,10 @@ public class PlayerController : MonoBehaviour
             //characterBody.AddForce(input * moveSpeed * Time.deltaTime);
             transform.position = transform.position + (input * moveSpeed * Time.deltaTime);
         }
+        if (isDead()) 
+        {
+            Dead();
+        }
     }
 
     //make player aim towards mouse
@@ -66,6 +70,13 @@ public class PlayerController : MonoBehaviour
     {
         GameObject bullet = Instantiate(attacks[curAtk], transform.position, transform.rotation);
 
+    }
+    void Dead() 
+    {
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<PlayerController>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
+        //Time.timeScale = 0;
     }
 
     //return

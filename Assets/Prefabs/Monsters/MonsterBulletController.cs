@@ -29,5 +29,11 @@ public class MonsterBulletController : MonoBehaviour
             other.gameObject.GetComponent<PlayerController>().hp = other.gameObject.GetComponent<PlayerController>().hp - damage;
             Destroy(gameObject, 0.2f);
         }
+
+        if (other.gameObject.CompareTag("Building"))
+        {
+            other.gameObject.GetComponent<BuildingController>().health = other.gameObject.GetComponent<BuildingController>().health - 1;
+            Destroy(gameObject, 0.2f);
+        }
     }
 }
