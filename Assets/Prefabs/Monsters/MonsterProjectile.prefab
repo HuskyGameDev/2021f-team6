@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4177670451758288676}
   - component: {fileID: 3419311136698550880}
   - component: {fileID: -8320876439391643138}
-  - component: {fileID: 5889898967112264878}
   m_Layer: 3
   m_Name: MonsterProjectile
   m_TagString: Projectile
@@ -145,21 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f02979c3ea57dfd42a9871bf71e5a051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmg: 10
-  speed: 100
+  dmg: 2
+  speed: 200
   lifespan: 5
   aoe: 0
---- !u!114 &5889898967112264878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4204721134115430159}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cb099abd7aeb04478effaa58504d60e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletSpeed: 200
-  damage: 10

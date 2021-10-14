@@ -116,6 +116,7 @@ MonoBehaviour:
   Health: 60
   WalkSpeed: 1
   aim: {x: 0, y: 0}
+  dmg: 2
   projectile: {fileID: 0}
 --- !u!50 &-1112099095929402840
 Rigidbody2D:

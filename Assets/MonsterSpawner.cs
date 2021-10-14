@@ -8,7 +8,6 @@ public class MonsterSpawner : MonoBehaviour
     public GameObject[] monsters;
     public int hp = 3;
     [HideInInspector]
-    public int damage;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +18,7 @@ public class MonsterSpawner : MonoBehaviour
     void Update()
     {
         int rand = Random.Range(0, monsters.Length);
-        if(count % 300 == 0)
+        if(count % 1000 == 0)
         {
             int x = Random.Range(-31, 33);
             int y = Random.Range(-15, 17);

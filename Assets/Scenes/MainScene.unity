@@ -2192,9 +2192,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 716111251}
+  - component: {fileID: 716111252}
   m_Layer: 0
   m_Name: Building
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2218,6 +2219,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &716111252
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716111250}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &799448832
 GameObject:
   m_ObjectHideFlags: 0
@@ -2379,7 +2401,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 852094954}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.22, y: 1.46, z: 0}
+  m_LocalPosition: {x: -0.36, y: -0.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1311746713}
@@ -2439,9 +2461,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.025717497, y: -0.07143748}
   serializedVersion: 2
-  m_Radius: 1.265
+  m_Radius: 0.80779946
 --- !u!1 &910802262
 GameObject:
   m_ObjectHideFlags: 0
@@ -8400,7 +8422,6 @@ MonoBehaviour:
   - {fileID: 6585015948341932885, guid: 42ca66c656afe7f46aa39374aff705fa, type: 3}
   - {fileID: 6585015948341932885, guid: 3b9cd84851fdda84283c17a2774f5f07, type: 3}
   hp: 3
-  damage: 0
 --- !u!1 &1737254014
 GameObject:
   m_ObjectHideFlags: 0

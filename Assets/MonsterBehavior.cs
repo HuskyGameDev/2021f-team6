@@ -7,9 +7,10 @@ public class MonsterBehavior : MonoBehaviour
     public float Health;
     public int WalkSpeed;
     public Vector2 aim;
+    public int dmg;
     public GameObject projectile;
     private int charge;
-    private bool charging;
+    private int timing;
 
     private Rigidbody2D rb;
     // Start is called before the first frame update
@@ -21,14 +22,21 @@ public class MonsterBehavior : MonoBehaviour
         rb.rotation = Mathf.Atan2(aim.y, aim.x) * Mathf.Rad2Deg + 90f;
         rb.velocity += aim * WalkSpeed;
         charge = 0;
+        timing = Random.Range(300, 1000);
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(FindTargetDistance(GameObject.Find("Player")) < FindTargetDistance(GameObject.Find("Building")))
+        {
+            rb.velocity = ((GameObject.Find("Player").GetComponent<Rigidbody2D>().position - this.GetComponent<Rigidbody2D>().position));
+        } else
+        {
+            rb.velocity = ((GameObject.Find("Building").GetComponent<Rigidbody2D>().position - this.GetComponent<Rigidbody2D>().position));
+        }
         
-        rb.velocity = ((GameObject.Find("Player").GetComponent<Rigidbody2D>().position - this.GetComponent<Rigidbody2D>().position));
         if(rb.velocity != Vector2.zero)
         {
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg)), 10);
@@ -61,12 +69,12 @@ public class MonsterBehavior : MonoBehaviour
                 break;
             //Can fire a weak projectile back
             case "Shooter(Clone)":
-                if (charge % 300  == 0)
+                if (charge % timing  == 0)
                 {
                     GameObject monsterbullet = Instantiate(projectile, transform.position, transform.rotation);
                 }
-               
-                
+
+                timing = Random.Range(300, 1000);
                 break;
             
         }
@@ -79,8 +87,14 @@ public class MonsterBehavior : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D collision)
-    { 
-        
+    {
+        if (collision.collider.tag != "Enemy" && collision.collider.tag != "Projectile")
+        {
+            if (collision.collider.CompareTag("Player"))
+                collision.collider.GetComponent<PlayerController>().hp -= dmg;
+            if (collision.collider.CompareTag("Building"))
+                collision.collider.GetComponent<BuildingController>().health -= dmg;
+        }
     }
 
     float FindTargetDistance(GameObject target)
