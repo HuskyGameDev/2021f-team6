@@ -82,6 +82,7 @@ public class MonsterBehavior : MonoBehaviour
         {
             //Run the animation for death and shut down the object
             Destroy(gameObject);
+            GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().currentScore = GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().currentScore + 1;
         }
         charge++;
     }

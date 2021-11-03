@@ -20,19 +20,37 @@ public class CanvasController : MonoBehaviour
     private float buildingHealthbarSet;
     public Text buildingHealthText;
 
+    public Text timerText;
+    private float startTime;
+    private bool startTimer;
+    private string minutes, seconds;
+
+    public Text levelText;
+    [HideInInspector]
+    public int currentLevel;
+    [HideInInspector]
+    public int currentScore;
+    public Text scoreText;
+
     // Start is called before the first frame update
     void Start()
     {
+        currentLevel = 1;
+        currentScore = 0;
+        
         playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         playerHealthbarSet = playerController.hp;
         playerTextHealthSet = playerController.hp;
         buildingHealthbarSet = 100;
         buildingTextHealthSet = 100;
+        startTheTimer();
     }
 
     // Update is called once per frame
     void Update()
     {
+        levelText.text = "Level: " +currentLevel.ToString();
+        scoreText.text = "Score: " +currentScore.ToString();
         float currentHealthBar = playerController.hp;
         int currentHealthText = playerController.hp;
         playerHealthBar = currentHealthBar / playerHealthbarSet;
@@ -65,5 +83,23 @@ public class CanvasController : MonoBehaviour
         {
             buildingHealthText.text = "HP: " + buildingHealthBarText;
         }
+
+        if (startTimer)
+        {
+            float t = Time.time - startTime;
+            minutes = ((int)t / 60).ToString();
+            seconds = (t % 60).ToString("f2");
+            timerText.text = minutes + ":" + seconds;
+        }
+    }
+
+    public void startTheTimer()
+    {
+        startTime = Time.time;
+        startTimer = true;
+    }
+    public void stopTheTimer()
+    {
+        startTimer = false;
     }
 }
