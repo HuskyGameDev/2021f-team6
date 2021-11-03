@@ -15,6 +15,12 @@ public class PlayerController : MonoBehaviour
 
     public GameObject[] attacks;    //list of available attacks
     private int curAtk = 0;         //index of the current attack in attacks[]
+    [Range(0.5f,1.5f)]
+    public float deathScale;
+    public Transform spawnBlood;
+    public Transform hitBlood;
+    public Transform bloodObject;
+
 
 
     // Start is called before the first frame update
@@ -26,6 +32,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (hp < 0)
+            hp = 0;
         if (Input.GetKeyDown(KeyCode.Mouse0)) 
         {
             Shoot();
@@ -76,9 +84,22 @@ public class PlayerController : MonoBehaviour
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<PlayerController>().enabled = false;
         GetComponent<Collider2D>().enabled = false;
+        transform.localScale = new Vector3(deathScale,deathScale,deathScale);
+        float randomRotation = Random.Range(1f,360f);
+        transform.localRotation = Quaternion.Euler(new Vector3(0,0,randomRotation));
+        float bloodRandomRotation = Random.Range(1f,360f);
+        Instantiate(bloodObject,spawnBlood.position,Quaternion.Euler(new Vector3(0,0,bloodRandomRotation)));
         //Time.timeScale = 0;
     }
 
     //return
     public bool isDead() { return hp <= 0; }
+
+    public void SpawnBlood() 
+    {
+        float randomX = Random.Range(-1,1);
+        float randomY = Random.Range(-1,1);
+        Vector3 spawnBloodVec = new Vector3(spawnBlood.position.x + randomX, spawnBlood.position.y + randomY, spawnBlood.position.z);
+        Instantiate(hitBlood,spawnBloodVec,transform.rotation);
+    }
 }
