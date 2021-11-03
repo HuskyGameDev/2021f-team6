@@ -17,34 +17,41 @@ public class MonsterSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int rand = Random.Range(0, monsters.Length);
-        if(count % 1000 == 0)
+        if(PauseMenu.gameIsPaused)
         {
-            int x = Random.Range(-31, 33);
-            int y = Random.Range(-15, 17);
-            
-            
-            GameObject monster = Instantiate(monsters[rand], new Vector2(x, y), new Quaternion());
 
-            if (x < 0 && y < 0)
+        } else
+        {
+            int rand = Random.Range(0, monsters.Length);
+            if (count % 1000 == 0)
             {
-                monster.GetComponent<SpriteRenderer>().color = Color.blue;
-            }
-            else if (x < 0 && y >= 0)
-            {
-                monster.GetComponent<SpriteRenderer>().color = Color.green;
-            }
-            else if (x >= 0 && y < 0)
-            {
-                monster.GetComponent<SpriteRenderer>().color = Color.yellow;
-            }
-            else if (x >= 0 && y >= 0)
-            {
-                monster.GetComponent<SpriteRenderer>().color = Color.black;
-            }
+                int x = Random.Range(-31, 33);
+                int y = Random.Range(-15, 17);
 
-            monster.GetComponent<MonsterBehavior>().aim = GameObject.Find("Player").GetComponent<Rigidbody2D>().position - monster.GetComponent<Rigidbody2D>().position;
+
+                GameObject monster = Instantiate(monsters[rand], new Vector2(x, y), new Quaternion());
+
+                if (x < 0 && y < 0)
+                {
+                    //monster.GetComponent<SpriteRenderer>().color = Color.blue;
+                }
+                else if (x < 0 && y >= 0)
+                {
+                    //monster.GetComponent<SpriteRenderer>().color = Color.green;
+                }
+                else if (x >= 0 && y < 0)
+                {
+                    //monster.GetComponent<SpriteRenderer>().color = Color.yellow;
+                }
+                else if (x >= 0 && y >= 0)
+                {
+                    //monster.GetComponent<SpriteRenderer>().color = Color.black;
+                }
+
+                monster.GetComponent<MonsterBehavior>().aim = GameObject.Find("Player").GetComponent<Rigidbody2D>().position - monster.GetComponent<Rigidbody2D>().position;
+            }
+            count++;
         }
-        count++;
+        
     }
 }

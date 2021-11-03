@@ -38,7 +38,7 @@ public class MonsterAttackType : MonoBehaviour
         {
             if (collider.CompareTag("Player"))
                 collider.GetComponent<PlayerController>().hp -= Mathf.RoundToInt(dmg);
-            if (collider.CompareTag("Player"))
+            if (collider.CompareTag("Building"))
                 collider.GetComponent<BuildingController>().health -= Mathf.RoundToInt(dmg);
             Destroy(gameObject);
         }

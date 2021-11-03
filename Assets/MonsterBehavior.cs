@@ -9,8 +9,14 @@ public class MonsterBehavior : MonoBehaviour
     public Vector2 aim;
     public int dmg;
     public GameObject projectile;
+    public bool Walker;
+    public bool Shooter;
+    public bool Rusher;
+    public bool Teleporter;
     private int charge;
     private int timing;
+    private float totalHealth;
+    private bool tele = true;
 
     private Rigidbody2D rb;
     // Start is called before the first frame update
@@ -23,61 +29,75 @@ public class MonsterBehavior : MonoBehaviour
         rb.velocity += aim * WalkSpeed;
         charge = 0;
         timing = Random.Range(300, 1000);
+        totalHealth = Health;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(FindTargetDistance(GameObject.Find("Player")) < FindTargetDistance(GameObject.Find("Building")))
-        {
-            rb.velocity = ((GameObject.Find("Player").GetComponent<Rigidbody2D>().position - this.GetComponent<Rigidbody2D>().position));
-        } else
-        {
-            rb.velocity = ((GameObject.Find("Building").GetComponent<Rigidbody2D>().position - this.GetComponent<Rigidbody2D>().position));
-        }
         
-        if(rb.velocity != Vector2.zero)
+        if (Walker)
         {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg)), 10);
-        }
-        
+            if (FindTargetDistance(GameObject.Find("Player")) < FindTargetDistance(GameObject.Find("Building")))
+            {
+                rb.velocity = ((GameObject.Find("Player").GetComponent<Rigidbody2D>().position - this.GetComponent<Rigidbody2D>().position));
+            }
+            else
+            {
+                rb.velocity = ((GameObject.Find("Building").GetComponent<Rigidbody2D>().position - this.GetComponent<Rigidbody2D>().position));
+            }
 
-        if (rb.velocity.magnitude > WalkSpeed)
-        {
-            rb.velocity = rb.velocity.normalized * WalkSpeed;
-        }
-        //Operate each of the different behaviors.
-        switch (name)
-        {
-            //Meatshield and Walkers will be virtually identical
-            case "Meatshield(Clone)":
-            case "Walker(Clone)":
-                break;
-            //Will have a quick dash as its attack
-            case "Rusher(Clone)":
-                if(FindTargetDistance(GameObject.Find("Player")) < 10 && charge % 3000 >= 0 && charge % 3000 <= 150)
-                {
-                    WalkSpeed = 32;
-                    rb.velocity = rb.velocity.normalized * WalkSpeed;
-                    
-                } else
-                {
-                    WalkSpeed = 2;
-                    
-                }
-                break;
-            //Can fire a weak projectile back
-            case "Shooter(Clone)":
-                if (charge % timing  == 0)
-                {
-                    GameObject monsterbullet = Instantiate(projectile, transform.position, transform.rotation);
-                }
+            if (rb.velocity != Vector2.zero)
+            {
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg)), 10);
+            }
 
-                timing = Random.Range(300, 1000);
-                break;
-            
+
+            if (rb.velocity.magnitude > WalkSpeed)
+            {
+                rb.velocity = rb.velocity.normalized * WalkSpeed;
+            }
         }
+
+        if (Rusher)
+        {
+            if (FindTargetDistance(GameObject.Find("Player")) < 10 && charge % 3000 >= 0 && charge % 3000 <= 150)
+            {
+                WalkSpeed = 32;
+                rb.velocity = rb.velocity.normalized * WalkSpeed;
+
+            }
+            else
+            {
+                WalkSpeed = 2;
+
+            }
+        }
+
+        if (Shooter)
+        {
+            if (charge % timing == 0)
+            {
+                GameObject monsterbullet = Instantiate(projectile, transform.position, transform.rotation);
+            }
+
+            timing = Random.Range(300, 1000);
+        }
+
+        if (Teleporter)
+        {
+            if (Health <= totalHealth / 2 && tele)
+            {
+                rb.MovePosition(rb.position + new Vector2(rb.position.x + Random.Range(-1, 1), rb.position.y + Random.Range(-1, 1)));
+                tele = false;
+                if (charge % 3000 == 0)
+                {
+                    tele = true;
+                }
+            }
+        }
+
         if(Health <= 0)
         {
             //Run the animation for death and shut down the object
