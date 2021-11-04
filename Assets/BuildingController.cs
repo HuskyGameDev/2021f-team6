@@ -5,6 +5,9 @@ using UnityEngine;
 public class BuildingController : MonoBehaviour
 {
     public int health;
+    public GameObject thisBuilding;
+    public Sprite destructSprite;
+    public SpriteRenderer SR;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +19,9 @@ public class BuildingController : MonoBehaviour
     {
         if (health <= 0) 
         {
-            GetComponent<SpriteRenderer>().enabled = false;
+            //thisBuilding.SetActive(false);
             GetComponent<PolygonCollider2D>().enabled = false;
+            SR.sprite = destructSprite;
         }
     }
 }

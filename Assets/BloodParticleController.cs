@@ -23,5 +23,6 @@ public class BloodParticleController : MonoBehaviour
         }
         float randomRotation = Random.Range(1f,360f);
         transform.localRotation = Quaternion.Euler(new Vector3(0,0,randomRotation));
+        Destroy(gameObject, 3f);
     }
 }
