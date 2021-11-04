@@ -993,6 +993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 238065390}
+  canvas: {fileID: 0}
 --- !u!1001 &165839447
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60397,6 +60398,8 @@ MonoBehaviour:
   buildingHealthBarImage: {fileID: 917009093}
   buildingHealthText: {fileID: 584618175}
   timerText: {fileID: 1751280389}
+  minutes: 
+  seconds: 
   levelText: {fileID: 1648946828}
   currentLevel: 0
   currentScore: 0
