@@ -9,10 +9,13 @@ public class MonsterBehavior : MonoBehaviour
     public Vector2 aim;
     public int dmg;
     public GameObject projectile;
+
     public bool Walker;
     public bool Shooter;
     public bool Rusher;
     public bool Teleporter;
+    public bool Coward;
+
     private int charge;
     private int timing;
     private float totalHealth;
@@ -24,6 +27,7 @@ public class MonsterBehavior : MonoBehaviour
     public string type = "default";    //elemental type of the monster
     public float slowed;    //time in seconds that the monster is slowed by an ice effect
     private Color iced = new Color(0f, 1f, 1f, .8f);    //color shift for iced monsters
+    private Color original_color;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +35,7 @@ public class MonsterBehavior : MonoBehaviour
         //Send the creature on its way
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        original_color = sr.color;
         aim = aim.normalized;
         rb.rotation = Mathf.Atan2(aim.y, aim.x) * Mathf.Rad2Deg + 90f;
         //rb.velocity += aim * WalkSpeed;
@@ -47,15 +52,29 @@ public class MonsterBehavior : MonoBehaviour
 
         if (Walker)
         {
-            if (FindTargetDistance(GameObject.Find("Player")) < FindTargetDistance(GameObject.Find("Building")))
+            float shortest = Mathf.Infinity;
+            GameObject closest = null;
+            foreach(GameObject building in GameObject.FindGameObjectsWithTag("Building"))
+            {
+                float curr_distance = FindTargetDistance(building);
+                GameObject curr_build = building;
+                if (curr_distance < shortest)
+                {
+                    shortest = curr_distance;
+                    closest = curr_build;
+                }
+            }
+
+            if (FindTargetDistance(GameObject.Find("Player")) < shortest)
             {
                 rb.velocity = ((GameObject.Find("Player").GetComponent<Rigidbody2D>().position - this.GetComponent<Rigidbody2D>().position));
             }
             else
             {
-                rb.velocity = ((GameObject.Find("Building").GetComponent<Rigidbody2D>().position - this.GetComponent<Rigidbody2D>().position));
+                rb.velocity = ((closest.GetComponent<Rigidbody2D>().position - this.GetComponent<Rigidbody2D>().position));
             }
 
+            rb.velocity = ((GameObject.Find("Player").GetComponent<Rigidbody2D>().position - this.GetComponent<Rigidbody2D>().position));
             if (rb.velocity != Vector2.zero)
             {
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg)), 10);
@@ -97,11 +116,42 @@ public class MonsterBehavior : MonoBehaviour
         {
             if (Health <= totalHealth / 2 && tele)
             {
-                rb.MovePosition(rb.position + new Vector2(rb.position.x + Random.Range(-1, 1), rb.position.y + Random.Range(-1, 1)));
+                float potentialx;
+                float potentialy;
+                do
+                {
+                    potentialx = rb.position.x + Random.Range(-5, 5);
+                } while (potentialx < -25 || potentialx > 25);
+
+                do
+                {
+                    potentialy = rb.position.y + Random.Range(-5, 5);
+                } while (!(potentialy > -25 && potentialy < 25)) ;
+
+            
+                rb.MovePosition(rb.position + new Vector2(potentialx, potentialy));
                 tele = false;
                 if (charge % 3000 == 0)
                 {
                     tele = true;
+                }
+            }
+        }
+
+        if (Coward)
+        {
+            if (FindTargetDistance(GameObject.Find("Player")) < 5f)
+            {
+                Walker = false;
+                WalkSpeed = 10;
+                rb.velocity = -((GameObject.Find("Player").GetComponent<Rigidbody2D>().position - this.GetComponent<Rigidbody2D>().position));
+            }
+            else
+            {
+                WalkSpeed = 2;
+                if (charge % 3000 == 0)
+                {
+                    Walker = true;
                 }
             }
         }
@@ -122,7 +172,7 @@ public class MonsterBehavior : MonoBehaviour
         }
         else
         {
-            sr.color = Color.white;
+            sr.color = original_color;
         }
     }
 

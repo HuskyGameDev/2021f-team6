@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8339241885271110876}
   - component: {fileID: -3922851982599716575}
   m_Layer: 0
-  m_Name: MushroomMan
+  m_Name: Spider
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6585015948341932885}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,12 +74,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -4092533889604255622, guid: 5f43c75259972524ab5672aabbd07832, type: 3}
+  m_Sprite: {fileID: 4251635758765419141, guid: 58fc5f058ea08bc458ff69413b2cd69b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.875, y: 0.96875}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -98,8 +98,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.7798493, y: 1}
+  m_Offset: {x: 0.0016820829, y: 0}
+  m_Size: {x: 0.6332597, y: 1}
   m_Direction: 0
 --- !u!114 &8339241885271110876
 MonoBehaviour:
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3da271d965f584f90aad28687da9ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 10
+  Health: 30
   WalkSpeed: 2
   aim: {x: 0, y: 0}
   dmg: 5
@@ -122,7 +122,7 @@ MonoBehaviour:
   Shooter: 0
   Rusher: 0
   Teleporter: 0
-  Coward: 1
+  Coward: 0
   type: default
   slowed: 0
 --- !u!50 &-3922851982599716575

@@ -601,6 +601,27 @@ PolygonCollider2D:
       - {x: 0.6572708, y: -0.9016645}
       - {x: 0.68729734, y: 0.006126404}
       - {x: 0.8815713, y: -0.015248954}
+--- !u!50 &83406162
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83406158}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &91671840
 GameObject:
   m_ObjectHideFlags: 0
@@ -7568,6 +7589,27 @@ PolygonCollider2D:
       - {x: 1.9682648, y: -0.45403266}
       - {x: 1.5943878, y: -0.44638824}
       - {x: 1.5548649, y: 0.1929}
+--- !u!50 &291958474
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291958470}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1001 &303493283
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8713,6 +8755,27 @@ PolygonCollider2D:
       - {x: 0.9572457, y: -1.1702671}
       - {x: 0.9239099, y: 0.17313796}
       - {x: 0.54054475, y: 0.21049434}
+--- !u!50 &424492336
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424492333}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1001 &438875371
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53463,6 +53526,27 @@ PolygonCollider2D:
       - {x: 0.6572708, y: -0.9016645}
       - {x: 0.68729734, y: 0.006126404}
       - {x: 0.8815713, y: -0.015248954}
+--- !u!50 &1112006929
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112006925}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1001 &1112905935
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58374,7 +58458,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsters:
   - {fileID: 6585015948341932885, guid: ec28fb0a2ae30b14496aa1b3e3ee7ebc, type: 3}
-  hp: 3
+  - {fileID: 6585015948341932885, guid: 063a56e6138a60646843e9adcf408e9c, type: 3}
+  - {fileID: 6585015948341932885, guid: bf6a20e4ddbd1504684fb7cbdac595fb, type: 3}
+  - {fileID: 6585015948341932885, guid: 42ca66c656afe7f46aa39374aff705fa, type: 3}
+  - {fileID: 6585015948341932885, guid: 959bb86b913c3894abda12f7bfabec9a, type: 3}
+  - {fileID: 6585015948341932885, guid: 3b9cd84851fdda84283c17a2774f5f07, type: 3}
+  - {fileID: 6585015948341932885, guid: 47d4b6108e40df4409c0560b4bc7f166, type: 3}
+  - {fileID: 6585015948341932885, guid: 5f4f429c72ab40c488a5bbe34aa05645, type: 3}
 --- !u!1 &1714954817
 GameObject:
   m_ObjectHideFlags: 0

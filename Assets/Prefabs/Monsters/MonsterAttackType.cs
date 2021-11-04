@@ -34,13 +34,18 @@ public class MonsterAttackType : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
+
         if (!aoe && collider.tag != "Enemy")
         {
             if (collider.CompareTag("Player"))
+            {
                 collider.GetComponent<PlayerController>().hp -= Mathf.RoundToInt(dmg);
+            }
             if (collider.CompareTag("Building"))
+            {
                 collider.GetComponent<BuildingController>().health -= Mathf.RoundToInt(dmg);
-            Destroy(gameObject);
+            }
+            Destroy(gameObject, 0.0f);
         }
     }
 }
