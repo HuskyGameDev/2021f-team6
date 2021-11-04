@@ -21,6 +21,10 @@ public class PlayerController : MonoBehaviour
     public Transform hitBlood;
     public Transform bloodObject;
 
+    public Transform spawnBulletPoint;
+
+    public Sprite[] characterSprite;
+
     private bool held = false;
     private float holdCool = 0;
 
@@ -64,11 +68,32 @@ public class PlayerController : MonoBehaviour
     {
         if (!isDead())
         {
-            RotatePlayer();
+            Rotate();
+            float horizontalInput = Input.GetAxis("Horizontal");
+            float verticalinput = Input.GetAxis("Vertical");
+            //Debug.Log(horizontalInput + " " + verticalinput);
 
-            Vector3 input = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"),0);
+            if (verticalinput > 0 && horizontalInput == 0) 
+            {
+                GetComponent<SpriteRenderer>().sprite = characterSprite[1];
+            }
+            else if (verticalinput < 0 && horizontalInput == 0)
+            {
+                GetComponent<SpriteRenderer>().sprite = characterSprite[0];
+            }
+            else if (horizontalInput > 0)
+            {
+                GetComponent<SpriteRenderer>().sprite = characterSprite[2];
+            }
+            else if (horizontalInput < 0)
+            {
+                GetComponent<SpriteRenderer>().sprite = characterSprite[3];
+            }
+
+            Vector3 input = new Vector3(horizontalInput, verticalinput, 0f);
             //characterBody.AddForce(input * moveSpeed * Time.deltaTime);
-            transform.position = transform.position + (input * moveSpeed * Time.deltaTime);
+            //transform.position = transform.position + (input * moveSpeed * Time.deltaTime);
+            transform.Translate(input * moveSpeed * Time.deltaTime);
         }
         if (isDead()) 
         {
@@ -77,20 +102,20 @@ public class PlayerController : MonoBehaviour
     }
 
     //make player aim towards mouse
-    private void RotatePlayer() 
+    private void Rotate() 
     {
         Vector3 mousePos = Input.mousePosition;
         Vector3 playerPos = Camera.main.WorldToScreenPoint(transform.transform.position);
         mousePos.x -= playerPos.x;
         mousePos.y -= playerPos.y;
         float angle = Mathf.Atan2(mousePos.y,mousePos.x) * Mathf.Rad2Deg ;
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(new Vector3(0,0,angle)), rotateSpeed);
+        spawnBulletPoint.rotation = Quaternion.RotateTowards(spawnBulletPoint.rotation, Quaternion.Euler(new Vector3(0, 0, angle)), rotateSpeed);
     }
 
     //fire the current weapon
     private void Shoot() 
     {
-        GameObject bullet = Instantiate(attacks[curAtk], transform.position, transform.rotation);
+        GameObject bullet = Instantiate(attacks[curAtk], spawnBulletPoint.position, spawnBulletPoint.rotation);
         AttackType attackType = bullet.GetComponent<AttackType>();
         Rigidbody2D attackRB = bullet.GetComponent<Rigidbody2D>();
         held = attackType.hold;
