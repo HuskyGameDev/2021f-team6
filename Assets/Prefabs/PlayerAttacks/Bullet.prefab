@@ -147,4 +147,6 @@ MonoBehaviour:
   dmg: 10
   speed: 500
   lifespan: 3
+  type: default
   aoe: 0
+  aoeSpeed: 0

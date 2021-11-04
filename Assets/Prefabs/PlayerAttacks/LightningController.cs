@@ -57,7 +57,7 @@ public class LightningController : MonoBehaviour
             transform.position += new Vector3(dist * newX * .5f, dist * newY * .5f, 0 );
 
             list.Add(closest);
-            closest.gameObject.GetComponent<MonsterBehavior>().Health -=  gameObject.GetComponent<AttackType>().dmg;
+            gameObject.GetComponent<AttackType>().hit(closest);
 
             for (int i = 0; i < maxChains; i++)
             {
@@ -78,9 +78,13 @@ public class LightningController : MonoBehaviour
 
                     chains.Add(newChain);
                     list.Add(chainClosest);
-                    chainClosest.gameObject.GetComponent<MonsterBehavior>().Health -= gameObject.GetComponent<AttackType>().dmg;
+                    gameObject.GetComponent<AttackType>().hit(chainClosest);
                 }
             }
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 

@@ -3729,6 +3729,8 @@ MonoBehaviour:
   - {fileID: 4204721134115430159, guid: 0e9efe1a907373749b3a1bc938f960e4, type: 3}
   - {fileID: 2495260713778094334, guid: 8a0f5ae7ac5b9394d859ac7fd299605f, type: 3}
   - {fileID: 2730027140295253670, guid: 9fafad5737cfec74d885e4ac0c19e739, type: 3}
+  - {fileID: 7321246103058159198, guid: c88a9f9296ecef74282510e7526b5d7b, type: 3}
+  - {fileID: 4327772861192293065, guid: a9fb59634f1497c4288d33be5f14349c, type: 3}
   deathScale: 1
   spawnBlood: {fileID: 254372955}
   hitBlood: {fileID: 1313453176124432490, guid: 9fff64f77b710ca44bc7421be08e52a1, type: 3}

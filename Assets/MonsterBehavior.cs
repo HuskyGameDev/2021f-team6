@@ -19,14 +19,21 @@ public class MonsterBehavior : MonoBehaviour
     private bool tele = true;
 
     private Rigidbody2D rb;
+    private SpriteRenderer sr;
+
+    public string type = "default";    //elemental type of the monster
+    public float slowed;    //time in seconds that the monster is slowed by an ice effect
+    private Color iced = new Color(0f, 1f, 1f, .8f);    //color shift for iced monsters
+
     // Start is called before the first frame update
     void Start()
     {
         //Send the creature on its way
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
         aim = aim.normalized;
         rb.rotation = Mathf.Atan2(aim.y, aim.x) * Mathf.Rad2Deg + 90f;
-        rb.velocity += aim * WalkSpeed;
+        //rb.velocity += aim * WalkSpeed;
         charge = 0;
         timing = Random.Range(300, 1000);
         totalHealth = Health;
@@ -36,7 +43,8 @@ public class MonsterBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        rb.velocity = aim * WalkSpeed;
+
         if (Walker)
         {
             if (FindTargetDistance(GameObject.Find("Player")) < FindTargetDistance(GameObject.Find("Building")))
@@ -105,6 +113,17 @@ public class MonsterBehavior : MonoBehaviour
             GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().currentScore = GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().currentScore + 1;
         }
         charge++;
+
+        if(!type.Equals("ice") && slowed > 0)
+        {
+            slowed -= Time.deltaTime;
+            rb.velocity /= 2;
+            sr.color = iced;
+        }
+        else
+        {
+            sr.color = Color.white;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)

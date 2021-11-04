@@ -21,7 +21,8 @@ public class PlayerController : MonoBehaviour
     public Transform hitBlood;
     public Transform bloodObject;
 
-
+    private bool held = false;
+    private float holdCool = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -34,9 +35,22 @@ public class PlayerController : MonoBehaviour
     {
         if (hp < 0)
             hp = 0;
+
         if (Input.GetKeyDown(KeyCode.Mouse0)) 
-        {
             Shoot();
+        if (Input.GetKey(KeyCode.Mouse0) && held)
+        {
+            holdCool += Time.deltaTime;
+            if (holdCool >= .05)
+            {
+                Shoot();
+                holdCool = 0;
+            }
+        }
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            holdCool = 0;
+            held = false;
         }
 
         //weapon switching with Q and E
@@ -77,7 +91,10 @@ public class PlayerController : MonoBehaviour
     private void Shoot() 
     {
         GameObject bullet = Instantiate(attacks[curAtk], transform.position, transform.rotation);
-
+        AttackType attackType = bullet.GetComponent<AttackType>();
+        Rigidbody2D attackRB = bullet.GetComponent<Rigidbody2D>();
+        held = attackType.hold;
+        attackRB.rotation += Random.Range(-1f * attackType.spread, attackType.spread);
     }
     void Dead() 
     {
