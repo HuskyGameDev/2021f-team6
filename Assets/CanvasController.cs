@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class CanvasController : MonoBehaviour
 {
+    public GameObject CanvasUI;
     private GameObject player;
     private PlayerController playerController;
     public Image playerHealthBarImage;
@@ -91,6 +92,7 @@ public class CanvasController : MonoBehaviour
             seconds = (t % 60).ToString("f2");
             timerText.text = minutes + ":" + seconds;
         }
+
     }
 
     public void startTheTimer()
@@ -101,5 +103,13 @@ public class CanvasController : MonoBehaviour
     public void stopTheTimer()
     {
         startTimer = false;
+    }
+    public void HideUI()
+    {
+        CanvasUI.SetActive(false);
+    }
+    public void ShowUI()
+    {
+        CanvasUI.SetActive(true);
     }
 }

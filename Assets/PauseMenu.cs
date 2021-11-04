@@ -35,6 +35,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         gameIsPaused = false;
+        GameObject.Find("Canvas").GetComponent<CanvasController>().ShowUI(); //does not come back for some reason
     }
 
     void Pause()
@@ -42,6 +43,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         gameIsPaused = true;
+        GameObject.Find("Canvas").GetComponent<CanvasController>().HideUI();
     }
 
     public void loadMenu()
