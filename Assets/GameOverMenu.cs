@@ -14,8 +14,8 @@ public class GameOverMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
+        //GameObject.Find("Canvas").GetConponent<CanvacController>().currentLevel.ToString();
+    }   
 
     // Update is called once per frame
     void Update()
@@ -24,9 +24,9 @@ public class GameOverMenu : MonoBehaviour
         {
             GameOverMenuUI.SetActive(true);
             Time.timeScale = 0f;
-            waves.text = "Waves: ";//+ CanvasController.currentLevel.ToString();
-            score.text = "Score: ";// + CanvasController.currentScore.ToString();
-            time.text = "Time: ";//+ CanvasController.timerText.text;
+            waves.text = "Waves: "+ GameObject.Find("Canvas").GetComponent<CanvasController>().currentLevel;
+            score.text = "Score: "+ GameObject.Find("Canvas").GetComponent<CanvasController>().currentScore;
+            time.text = "Time: " +GameObject.Find("Canvas").GetComponent<CanvasController>().minutes + ":" + GameObject.Find("Canvas").GetComponent<CanvasController>().seconds;
         }
     }
 

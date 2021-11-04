@@ -144,6 +144,7 @@ public class MonsterBehavior : MonoBehaviour
             {
                 Walker = false;
                 WalkSpeed = 10;
+                charge = 0;
                 rb.velocity = -((GameObject.Find("Player").GetComponent<Rigidbody2D>().position - this.GetComponent<Rigidbody2D>().position));
             }
             else

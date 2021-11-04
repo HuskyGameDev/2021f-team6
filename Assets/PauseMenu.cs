@@ -7,11 +7,13 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool gameIsPaused = false;
     public GameObject pauseMenuUI;
+    [SerializeField] 
+    public GameObject canvas;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        canvas = GameObject.Find("Canvas");
     }
 
     // Update is called once per frame
@@ -35,7 +37,8 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         gameIsPaused = false;
-        GameObject.Find("Canvas").GetComponent<CanvasController>().ShowUI(); //does not come back for some reason
+        canvas.SetActive(true);
+        //GameObject.Find("Canvas").GetComponent<CanvasController>().ShowUI(); //does not come back for some reason
     }
 
     void Pause()
@@ -43,7 +46,8 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         gameIsPaused = true;
-        GameObject.Find("Canvas").GetComponent<CanvasController>().HideUI();
+        canvas.SetActive(false);
+        //GameObject.Find("Canvas").GetComponent<CanvasController>().HideUI();
     }
 
     public void loadMenu()

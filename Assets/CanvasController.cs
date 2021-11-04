@@ -24,7 +24,7 @@ public class CanvasController : MonoBehaviour
     public Text timerText;
     private float startTime;
     private bool startTimer;
-    private string minutes, seconds;
+    public string minutes, seconds;
 
     public Text levelText;
     [HideInInspector]
