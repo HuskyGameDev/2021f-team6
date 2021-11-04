@@ -119,9 +119,12 @@ MonoBehaviour:
   dmg: 5
   projectile: {fileID: 4204721134115430159, guid: 1d0410d32f0c73941b60cbb5497a0674, type: 3}
   Walker: 1
-  Shooter: 1
-  Rusher: 0
+  Shooter: 0
+  Rusher: 1
   Teleporter: 0
+  Coward: 0
+  type: default
+  slowed: 0
 --- !u!50 &357086508546833101
 Rigidbody2D:
   serializedVersion: 4
