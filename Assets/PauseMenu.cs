@@ -8,12 +8,12 @@ public class PauseMenu : MonoBehaviour
     public static bool gameIsPaused = false;
     public GameObject pauseMenuUI;
     [SerializeField] 
-    public GameObject canvas;
+    public GameObject Canvas;
+    public GameObject canvasUI;
 
     // Start is called before the first frame update
     void Start()
     {
-        canvas = GameObject.Find("Canvas");
     }
 
     // Update is called once per frame
@@ -21,6 +21,21 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            if (gameIsPaused)
+            {
+                Time.timeScale = 0;
+                //Canvas.GetComponent<CanvasController>().gamePause = true;
+                canvasUI.SetActive(false);
+                //Canvas.GetComponent<CanvasController>().HideUI();
+
+            }
+            else if (!gameIsPaused) 
+            {
+                Time.timeScale = 1;
+                //Canvas.GetComponent<CanvasController>().gamePause = false;
+                Canvas.SetActive(true);
+                //Canvas.GetComponent<CanvasController>().ShowUI();
+            }
             if (gameIsPaused)
             {
                 Resume();
@@ -37,8 +52,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         gameIsPaused = false;
-        canvas.SetActive(true);
-        //GameObject.Find("Canvas").GetComponent<CanvasController>().ShowUI(); //does not come back for some reason
+
     }
 
     void Pause()
@@ -46,8 +60,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         gameIsPaused = true;
-        canvas.SetActive(false);
-        //GameObject.Find("Canvas").GetComponent<CanvasController>().HideUI();
+
     }
 
     public void loadMenu()

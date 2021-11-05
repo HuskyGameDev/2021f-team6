@@ -14,7 +14,7 @@ public class GameOverMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //GameObject.Find("Canvas").GetConponent<CanvacController>().currentLevel.ToString();
+ 
     }   
 
     // Update is called once per frame

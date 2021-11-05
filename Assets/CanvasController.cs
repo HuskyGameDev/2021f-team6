@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CanvasController : MonoBehaviour
 {
+    private bool gamePause;
     public GameObject CanvasUI;
-    private GameObject player;
+    //private GameObject player;
     private PlayerController playerController;
     public Image playerHealthBarImage;
     private int playerTextHealthSet;
@@ -24,8 +26,9 @@ public class CanvasController : MonoBehaviour
     public Text timerText;
     private float startTime;
     private bool startTimer;
+    [HideInInspector]
     public string minutes, seconds;
-
+    [HideInInspector]
     public Text levelText;
     [HideInInspector]
     public int currentLevel;
@@ -33,12 +36,25 @@ public class CanvasController : MonoBehaviour
     public int currentScore;
     public Text scoreText;
 
+    //Gameover menu code
+    public GameObject UI;
+    public GameObject GameOverMenuUI;
+    public Text GO_waves, GO_score, GO_time;
+
+    //Pause manu code
+    public static bool gameIsPaused;
+    public GameObject pauseMenuUI;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        gameIsPaused = false;
+        gamePause = false;
         currentLevel = 1;
         currentScore = 0;
         
+
         playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         playerHealthbarSet = playerController.hp;
         playerTextHealthSet = playerController.hp;
@@ -89,10 +105,43 @@ public class CanvasController : MonoBehaviour
         {
             float t = Time.time - startTime;
             minutes = ((int)t / 60).ToString();
-            seconds = (t % 60).ToString("f2");
-            timerText.text = minutes + ":" + seconds;
+            seconds = (t % 60).ToString("f0");
+            timerText.text ="Time: " + minutes + ":" + seconds;
         }
 
+        if (playerController.isDead() && !gamePause)
+        {
+            stopTheTimer();
+            GO_waves.text = "Waves: " + currentLevel.ToString();
+            GO_score.text = "Score: " + currentScore.ToString();
+            GO_time.text = "Time: " + minutes + ":" + seconds;
+            GameOverMenuUI.SetActive(true);
+            UI.SetActive(false);
+            Time.timeScale = 0;
+        }
+        else if (!playerController.isDead() && !gamePause) 
+        {
+            UI.SetActive(true);
+            GameOverMenuUI.SetActive(false);
+            Time.timeScale = 1;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            gamePause = !gamePause;
+            if (gamePause)
+            {
+                Time.timeScale = 0;
+                pauseMenuUI.SetActive(true);
+                UI.SetActive(false);
+            }
+            else if (!gamePause)
+            {
+                Time.timeScale = 1;
+                pauseMenuUI.SetActive(false);
+                UI.SetActive(true);
+            }
+        }
     }
 
     public void startTheTimer()
@@ -104,12 +153,24 @@ public class CanvasController : MonoBehaviour
     {
         startTimer = false;
     }
-    public void HideUI()
+
+    public void loadMenu()
     {
-        CanvasUI.SetActive(false);
+        GameOverMenuUI.SetActive(false);
+        SceneManager.LoadScene(0);
     }
-    public void ShowUI()
+
+    public void QuitGame()
     {
-        CanvasUI.SetActive(true);
+        Debug.Log("QUITING GAME");
+        Application.Quit();
+    }
+
+    public void Resume()
+    {
+        pauseMenuUI.SetActive(false);
+        UI.SetActive(true);
+        Time.timeScale = 1f;
+        gamePause = false;
     }
 }

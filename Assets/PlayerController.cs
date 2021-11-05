@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     //object variables
     public float moveSpeed;         //speed player moves at in units/second
     public float rotateSpeed;       //speed player rotates towards mouse
-
+    //[HideInInspector]
     public int hp;                  //player health points
 
     public GameObject[] attacks;    //list of available attacks
@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        hp = 100;
     }
 
     // Update is called once per frame
