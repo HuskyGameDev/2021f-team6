@@ -48,6 +48,9 @@ public class LightningController : MonoBehaviour
 
         if (closest != null)
         {
+            // Play Lightning sound
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Player/Attacks/Lightening_Atk");
+
             //dist += 300;
             rigidBody.rotation = Mathf.Atan2(closestD.normal.x, closestD.normal.y) * Mathf.Rad2Deg * -1 - 90;
             transform.localScale = new Vector3(dist, .25f, 1);

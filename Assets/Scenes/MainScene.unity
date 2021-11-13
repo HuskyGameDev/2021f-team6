@@ -52123,6 +52123,7 @@ MonoBehaviour:
   - {fileID: -4292492786954334114, guid: efd3ba7287df9944584e38dbafc236d6, type: 3}
   - {fileID: -1299193045846991006, guid: efd3ba7287df9944584e38dbafc236d6, type: 3}
   - {fileID: -753012406792921598, guid: efd3ba7287df9944584e38dbafc236d6, type: 3}
+  tilemap: {fileID: 850586739}
 --- !u!58 &852094959
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -119,6 +119,29 @@ public class PlayerController : MonoBehaviour
         GameObject bullet = Instantiate(attacks[curAtk], spawnBulletPoint.position, spawnBulletPoint.rotation);
         AttackType attackType = bullet.GetComponent<AttackType>();
         Rigidbody2D attackRB = bullet.GetComponent<Rigidbody2D>();
+
+        // Play bullet sound
+        switch (curAtk)
+        {
+            case 0:
+                // Play Bullet sound
+                break;
+
+            case 1:
+                // Play Fireball sound
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Player/Attacks/Fireball");
+                break;
+
+            // 2 is lightning, done in lightningController script
+
+            case 3:
+                // Play Frost Circle sound
+                break;
+
+            case 4:
+                // Play ice spray sound
+                break;
+        }
         held = attackType.hold;
         attackRB.rotation += Random.Range(-1f * attackType.spread, attackType.spread);
     }
