@@ -10,6 +10,7 @@ public class CanvasController : MonoBehaviour
     public GameObject CanvasUI;
     //private GameObject player;
     private PlayerController playerController;
+    private GameObject monsterSpawner;
     public Image playerHealthBarImage;
     private int playerTextHealthSet;
     private float playerHealthBar;
@@ -30,6 +31,7 @@ public class CanvasController : MonoBehaviour
     public string minutes, seconds;
     [HideInInspector]
     public Text levelText;
+    public Text monsterText;
     [HideInInspector]
     public int currentLevel;
     [HideInInspector]
@@ -58,6 +60,7 @@ public class CanvasController : MonoBehaviour
         
 
         playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        monsterSpawner = GameObject.Find("Monster Spawner");
         playerHealthbarSet = playerController.hp;
         playerTextHealthSet = playerController.hp;
         buildingHealthbarSet = 100;
@@ -70,6 +73,7 @@ public class CanvasController : MonoBehaviour
     {
         levelText.text = "Wave: " +currentLevel.ToString();
         scoreText.text = "Score: " +currentScore.ToString();
+        monsterText.text = "Monsters Remaining: " + monsterSpawner.GetComponent<MonsterSpawner>().monsterCount;
         float currentHealthBar = playerController.hp;
         int currentHealthText = playerController.hp;
         playerHealthBar = currentHealthBar / playerHealthbarSet;

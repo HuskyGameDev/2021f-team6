@@ -172,10 +172,10 @@ TextureImporter:
       name: spider forest small_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 6
-        width: 22
-        height: 19
+        x: 0
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,10 +193,10 @@ TextureImporter:
       name: spider forest small_1
       rect:
         serializedVersion: 2
-        x: 37
-        y: 7
-        width: 22
-        height: 19
+        x: 0
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
