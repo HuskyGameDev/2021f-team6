@@ -183,11 +183,11 @@ public class MonsterBehavior : MonoBehaviour
         {
             if (collision.collider.CompareTag("Player"))
             {
-                collision.collider.GetComponent<PlayerController>().hp -= dmg;
-                collision.collider.GetComponent<PlayerController>().SpawnBlood();
+                collision.collider.GetComponent<PlayerController>().Damage(dmg);
+                //collision.collider.GetComponent<PlayerController>().SpawnBlood();
             }
             if (collision.collider.CompareTag("Building"))
-                collision.collider.GetComponent<BuildingController>().health -= dmg;
+                collision.collider.GetComponent<BuildingController>().Damage(dmg);
         }
     }
 

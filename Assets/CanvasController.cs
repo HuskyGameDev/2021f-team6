@@ -45,6 +45,8 @@ public class CanvasController : MonoBehaviour
     public static bool gameIsPaused;
     public GameObject pauseMenuUI;
 
+    bool canReward = false;
+    int nextReward = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -66,7 +68,7 @@ public class CanvasController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        levelText.text = "Level: " +currentLevel.ToString();
+        levelText.text = "Wave: " +currentLevel.ToString();
         scoreText.text = "Score: " +currentScore.ToString();
         float currentHealthBar = playerController.hp;
         int currentHealthText = playerController.hp;
@@ -92,7 +94,53 @@ public class CanvasController : MonoBehaviour
         buildingHealthBar = currentBuildingHealthBar / buildingHealthbarSet;
         buildingHealthBarImage.fillAmount = buildingHealthBar;
         int buildingHealthBarText = (currentBuildingHealthText * 100) / buildingTextHealthSet;
-        if (playerHealthBar <= 0)
+
+        if (totalBuildingHealth > 0) 
+        {
+            if (currentLevel > nextReward)
+            {
+                canReward = true;
+                nextReward = nextReward + 1;
+            }
+            if (canReward)
+            {
+                int randomNumber = Random.Range(0, 4);
+                Debug.Log(randomNumber);
+                if (randomNumber == 0)
+                {
+                    foreach (GameObject currentBuilding in building)
+                    {
+                        if (!currentBuilding.GetComponent<BuildingController>().isDestroyed)
+                            currentBuilding.GetComponent<BuildingController>().health = currentBuilding.GetComponent<BuildingController>().maxHealth;
+                    }
+                }
+                else if (randomNumber == 1)
+                {
+                    if (!playerController.isDead())
+                    {
+                        playerController.hp = 100;
+                    }
+                }
+                else if (randomNumber == 2)
+                {
+                    if (!playerController.isDead())
+                    {
+                        playerController.moveSpeed = playerController.moveSpeed + 1;
+                    }
+                }
+                else if (randomNumber == 3)
+                {
+                    if (!playerController.isDead())
+                    {
+                        playerController.shieldOn = true;
+                        playerController.countdown = Time.time + playerController.cooldown;
+                    }
+                }
+                canReward = false;
+            }
+        }
+
+        if (buildingHealthBar <= 0)
         {
             buildingHealthText.text = "HP: " + 0;
         }
@@ -105,8 +153,9 @@ public class CanvasController : MonoBehaviour
         {
             float t = Time.time - startTime;
             minutes = ((int)t / 60).ToString();
+            currentLevel = ((int)t / 30) + 1;
             seconds = (t % 60).ToString("f0");
-            timerText.text ="Time: " + minutes + ":" + seconds;
+            timerText.text = minutes + ":" + seconds;
         }
 
         if (playerController.isDead() && !gamePause)

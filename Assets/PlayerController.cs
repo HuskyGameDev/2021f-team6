@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject shield;
+    [HideInInspector]
+    public bool shieldOn;
     //object components
     private Rigidbody2D rigidBody;
 
@@ -27,10 +30,17 @@ public class PlayerController : MonoBehaviour
 
     private bool held = false;
     private float holdCool = 0;
+    [HideInInspector]
+    public float cooldown;
+    [HideInInspector]
+    public float countdown;
 
     // Start is called before the first frame update
     void Start()
     {
+        cooldown = 10;
+        countdown = 0;
+        shieldOn = false;
         rigidBody = GetComponent<Rigidbody2D>();
         hp = 100;
     }
@@ -38,6 +48,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (shieldOn) 
+        {
+            shield.SetActive(true);
+            if (Time.time > countdown) 
+            {
+                shieldOn = false;
+                shield.SetActive(false);
+            }
+        }
         if (hp < 0)
             hp = 0;
 
@@ -167,5 +186,13 @@ public class PlayerController : MonoBehaviour
         float randomY = Random.Range(-1,1);
         Vector3 spawnBloodVec = new Vector3(spawnBlood.position.x + randomX, spawnBlood.position.y + randomY, spawnBlood.position.z);
         Instantiate(hitBlood,spawnBloodVec,transform.rotation);
+    }
+    public void Damage(int amount) 
+    {
+        if (!shieldOn) 
+        {
+            SpawnBlood();
+            hp = hp - amount;
+        }
     }
 }
