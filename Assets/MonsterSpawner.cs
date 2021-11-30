@@ -63,14 +63,14 @@ public class MonsterSpawner : MonoBehaviour
                         }
                         else if (x >= 0 && y < 0)
                         {
-                            int rand = Random.Range(0, monsters_D.Length);
-                            monster = Instantiate(monsters_D[rand], new Vector2(x, y), new Quaternion());
+                            int rand = Random.Range(0, monsters_Fl.Length);
+                            monster = Instantiate(monsters_Fl[rand], new Vector2(x, y), new Quaternion());
                             monster.GetComponent<MonsterBehavior>().aim = GameObject.Find("Player").GetComponent<Rigidbody2D>().position - monster.GetComponent<Rigidbody2D>().position;
                         }
                         else if (x >= 0 && y >= 0)
                         {
-                            int rand = Random.Range(0, monsters_Fl.Length);
-                            monster = Instantiate(monsters_Fl[rand], new Vector2(x, y), new Quaternion());
+                            int rand = Random.Range(0, monsters_D.Length);
+                            monster = Instantiate(monsters_D[rand], new Vector2(x, y), new Quaternion());
                             monster.GetComponent<MonsterBehavior>().aim = GameObject.Find("Player").GetComponent<Rigidbody2D>().position - monster.GetComponent<Rigidbody2D>().position;
                         }
                         prevMonsterCount = monsterCount;
