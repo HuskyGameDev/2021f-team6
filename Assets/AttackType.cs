@@ -61,7 +61,7 @@ public class AttackType : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (!aoe && collider.tag != "Player")
+        if (!aoe && collider.tag != "Player" && collider.tag != "AmbArea")
         {
             if (collider.CompareTag("Enemy"))
                 hit(collider);

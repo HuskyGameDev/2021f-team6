@@ -12306,7 +12306,7 @@ GameObject:
   - component: {fileID: 551728777}
   m_Layer: 0
   m_Name: Lava Area
-  m_TagString: Untagged
+  m_TagString: AmbArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13383,7 +13383,7 @@ GameObject:
   - component: {fileID: 629161256}
   m_Layer: 0
   m_Name: Desert Area
-  m_TagString: Untagged
+  m_TagString: AmbArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57201,7 +57201,7 @@ GameObject:
   - component: {fileID: 1111074872}
   m_Layer: 0
   m_Name: Snow Area
-  m_TagString: Untagged
+  m_TagString: AmbArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63772,7 +63772,7 @@ GameObject:
   - component: {fileID: 1712341692}
   m_Layer: 0
   m_Name: Forest Area
-  m_TagString: Untagged
+  m_TagString: AmbArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63994,6 +63994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c2ffd407d1c0294cb81a536f9f8f5ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monsterCount: 0
   monsters_F:
   - {fileID: 6585015948341932885, guid: 47d4b6108e40df4409c0560b4bc7f166, type: 3}
   - {fileID: 6585015948341932885, guid: 5f4f429c72ab40c488a5bbe34aa05645, type: 3}
