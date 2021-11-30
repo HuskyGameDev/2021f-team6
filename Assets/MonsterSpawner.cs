@@ -34,10 +34,11 @@ public class MonsterSpawner : MonoBehaviour
         }
         else
         {
-            if (monsterCount == 0 && prevMonsterCount > monsterCount)
+            if (monsterCount == 0)
             {
                 if (!gameIsStore)  //Change this to be after the monsters are all dead and the store is closed
                 {
+                    canvas.currentLevel++;
                     int score = canvas.currentScore;
                     int level = canvas.currentLevel;
                     GameObject monster;

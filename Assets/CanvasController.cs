@@ -53,7 +53,7 @@ public class CanvasController : MonoBehaviour
     {
         gameIsPaused = false;
         gamePause = false;
-        currentLevel = 1;
+        currentLevel = 0;
         currentScore = 0;
         
 
@@ -153,7 +153,6 @@ public class CanvasController : MonoBehaviour
         {
             float t = Time.time - startTime;
             minutes = ((int)t / 60).ToString();
-            currentLevel = ((int)t / 30) + 1;
             seconds = (t % 60).ToString("f0");
             timerText.text = minutes + ":" + seconds;
         }
