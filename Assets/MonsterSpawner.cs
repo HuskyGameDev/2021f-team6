@@ -4,62 +4,97 @@ using UnityEngine;
 
 public class MonsterSpawner : MonoBehaviour
 {
-    private int count;
-    public GameObject[] monsters;
-    [HideInInspector]
+    public int monsterCount;
+    private int prevMonsterCount;
+    public GameObject[] monsters_F;
+    public GameObject[] monsters_I;
+    public GameObject[] monsters_Fl;
+    public GameObject[] monsters_D;
+
+    public static bool gameIsStore;
+    public GameObject storeMenuUI;
+    public GameObject UI;
+    private CanvasController canvas;
+
     // Start is called before the first frame update
     void Start()
     {
-        count = 0; 
+        canvas = GameObject.Find("Canvas").GetComponent<CanvasController>();
+        monsterCount = 0;
+        prevMonsterCount = 1;
+        gameIsStore = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(PauseMenu.gameIsPaused)
+        if (PauseMenu.gameIsPaused)
         {
 
-        } else
-        {
-            
-            if (count % 3600 == 0)
-            {
-                int score = GameObject.Find("Canvas").GetComponent<CanvasController>().currentScore;
-                int level = GameObject.Find("Canvas").GetComponent<CanvasController>().currentLevel;
-
-                int NumofMonsters = (int)Mathf.Max(1, Mathf.Floor(score / 5 + level));
-                for (int i = 0; i < NumofMonsters; i++)
-                {
-                    int rand = Random.Range(0, monsters.Length);
-                    int x = Random.Range(-25, 25);
-                    int y = Random.Range(-25, 25);
-
-
-                    GameObject monster = Instantiate(monsters[rand], new Vector2(x, y), new Quaternion());
-
-                    if (x < 0 && y < 0)
-                    {
-                        monster.GetComponent<SpriteRenderer>().color = Color.blue;
-                    }
-                    else if (x < 0 && y >= 0)
-                    {
-                        monster.GetComponent<SpriteRenderer>().color = Color.green;
-                    }
-                    else if (x >= 0 && y < 0)
-                    {
-                        monster.GetComponent<SpriteRenderer>().color = Color.yellow;
-                    }
-                    else if (x >= 0 && y >= 0)
-                    {
-                        monster.GetComponent<SpriteRenderer>().color = Color.black;
-                    }
-
-                    monster.GetComponent<MonsterBehavior>().aim = GameObject.Find("Player").GetComponent<Rigidbody2D>().position - monster.GetComponent<Rigidbody2D>().position;
-                }
-                
-            }
-            count++;
         }
-        
+        else
+        {
+            if (monsterCount == 0 && prevMonsterCount > monsterCount)
+            {
+                if (!gameIsStore)  //Change this to be after the monsters are all dead and the store is closed
+                {
+                    int score = canvas.currentScore;
+                    int level = canvas.currentLevel;
+                    GameObject monster;
+
+                    int NumofMonsters = (int)Mathf.Max(1, Mathf.Floor(score / 5 + level));
+                    for (int i = 0; i < NumofMonsters; i++)
+                    {
+
+                        int x = Random.Range(-28, 28);
+                        int y = Random.Range(-33, 24);
+
+                        if (x < 0 && y < 0)
+                        {
+                            int rand = Random.Range(0, monsters_I.Length);
+                            monster = Instantiate(monsters_I[rand], new Vector2(x, y), new Quaternion());
+                            monster.GetComponent<MonsterBehavior>().aim = GameObject.Find("Player").GetComponent<Rigidbody2D>().position - monster.GetComponent<Rigidbody2D>().position;
+                        }
+                        else if (x < 0 && y >= 0)
+                        {
+                            int rand = Random.Range(0, monsters_F.Length);
+                            monster = Instantiate(monsters_F[rand], new Vector2(x, y), new Quaternion());
+                            monster.GetComponent<MonsterBehavior>().aim = GameObject.Find("Player").GetComponent<Rigidbody2D>().position - monster.GetComponent<Rigidbody2D>().position;
+                        }
+                        else if (x >= 0 && y < 0)
+                        {
+                            int rand = Random.Range(0, monsters_D.Length);
+                            monster = Instantiate(monsters_D[rand], new Vector2(x, y), new Quaternion());
+                            monster.GetComponent<MonsterBehavior>().aim = GameObject.Find("Player").GetComponent<Rigidbody2D>().position - monster.GetComponent<Rigidbody2D>().position;
+                        }
+                        else if (x >= 0 && y >= 0)
+                        {
+                            int rand = Random.Range(0, monsters_Fl.Length);
+                            monster = Instantiate(monsters_Fl[rand], new Vector2(x, y), new Quaternion());
+                            monster.GetComponent<MonsterBehavior>().aim = GameObject.Find("Player").GetComponent<Rigidbody2D>().position - monster.GetComponent<Rigidbody2D>().position;
+                        }
+                        prevMonsterCount = monsterCount;
+
+                    }
+
+                }
+                else
+                {
+                    gameIsStore = !gameIsStore;
+                    Time.timeScale = 0;
+                    storeMenuUI.SetActive(true);
+                    UI.SetActive(false);
+                }
+
+                prevMonsterCount = monsterCount;
+            }
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                gameIsStore = false;
+                Time.timeScale = 1;
+                storeMenuUI.SetActive(false);
+                UI.SetActive(true);
+            }
+        }
     }
 }

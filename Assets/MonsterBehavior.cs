@@ -8,6 +8,7 @@ public class MonsterBehavior : MonoBehaviour
     public int WalkSpeed;
     public Vector2 aim;
     public int dmg;
+    public int actionRate;
     public GameObject projectile;
 
     public bool Walker;
@@ -29,6 +30,10 @@ public class MonsterBehavior : MonoBehaviour
     private Color iced = new Color(0f, 1f, 1f, .8f);    //color shift for iced monsters
     private Color original_color;
 
+    private Rigidbody2D player_rb;
+    private GameObject[] buildings;
+    private GameObject monsterSpawner;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +48,11 @@ public class MonsterBehavior : MonoBehaviour
         timing = Random.Range(300, 1000);
         totalHealth = Health;
 
+        player_rb = GameObject.Find("Player").GetComponent<Rigidbody2D>();
+        buildings = GameObject.FindGameObjectsWithTag("Building");
+        monsterSpawner = GameObject.Find("Monster Spawner");
+        monsterSpawner.GetComponent<MonsterSpawner>().monsterCount++;
+
     }
 
     // Update is called once per frame
@@ -54,7 +64,7 @@ public class MonsterBehavior : MonoBehaviour
         {
             float shortest = Mathf.Infinity;
             GameObject closest = null;
-            foreach(GameObject building in GameObject.FindGameObjectsWithTag("Building"))
+            foreach(GameObject building in buildings)
             {
                 float curr_distance = FindTargetDistance(building);
                 GameObject curr_build = building;
@@ -65,16 +75,16 @@ public class MonsterBehavior : MonoBehaviour
                 }
             }
 
-            if (FindTargetDistance(GameObject.Find("Player")) < shortest)
+            if (FindDistancetoPlayer() < shortest)
             {
-                rb.velocity = ((GameObject.Find("Player").GetComponent<Rigidbody2D>().position - this.GetComponent<Rigidbody2D>().position));
+                rb.velocity = ((player_rb.position - rb.position));
             }
             else
             {
-                rb.velocity = ((closest.GetComponent<Rigidbody2D>().position - this.GetComponent<Rigidbody2D>().position));
+                rb.velocity = ((closest.GetComponent<Rigidbody2D>().position - rb.position));
             }
 
-            rb.velocity = ((GameObject.Find("Player").GetComponent<Rigidbody2D>().position - this.GetComponent<Rigidbody2D>().position));
+            rb.velocity = ((player_rb.position - rb.position));
             if (rb.velocity != Vector2.zero)
             {
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg)), 10);
@@ -89,7 +99,7 @@ public class MonsterBehavior : MonoBehaviour
 
         if (Rusher)
         {
-            if (FindTargetDistance(GameObject.Find("Player")) < 10 && charge % 3000 >= 0 && charge % 3000 <= 150)
+            if (FindDistancetoPlayer() < 10 && charge % 3000 >= 0 && charge % 3000 <= 150)
             {
                 WalkSpeed = 32;
                 rb.velocity = rb.velocity.normalized * WalkSpeed;
@@ -140,12 +150,12 @@ public class MonsterBehavior : MonoBehaviour
 
         if (Coward)
         {
-            if (FindTargetDistance(GameObject.Find("Player")) < 5f)
+            if (FindDistancetoPlayer() < 5f)
             {
                 Walker = false;
                 WalkSpeed = 10;
                 charge = 0;
-                rb.velocity = -((GameObject.Find("Player").GetComponent<Rigidbody2D>().position - this.GetComponent<Rigidbody2D>().position));
+                rb.velocity = -((player_rb.position - rb.position));
             }
             else
             {
@@ -160,6 +170,7 @@ public class MonsterBehavior : MonoBehaviour
         if(Health <= 0)
         {
             //Run the animation for death and shut down the object
+            monsterSpawner.GetComponent<MonsterSpawner>().monsterCount--;
             Destroy(gameObject);
             GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().currentScore = GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().currentScore + 1;
         }
@@ -194,5 +205,10 @@ public class MonsterBehavior : MonoBehaviour
     float FindTargetDistance(GameObject target)
     {
         return Vector2.Distance(target.GetComponent<Rigidbody2D>().position, this.GetComponent<Rigidbody2D>().position);
+    }
+
+    float FindDistancetoPlayer()
+    {
+        return Vector2.Distance(player_rb.position, this.rb.position);
     }
 }
