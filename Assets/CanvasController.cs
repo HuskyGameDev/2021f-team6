@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class CanvasController : MonoBehaviour
 {
+    public GameObject heart;
+    public GameObject shield;
+    public GameObject speedUp;
+
     private bool gamePause;
     public GameObject CanvasUI;
     //private GameObject player;

@@ -34,6 +34,7 @@ public class MonsterBehavior : MonoBehaviour
     private GameObject[] buildings;
     private GameObject monsterSpawner;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -171,6 +172,22 @@ public class MonsterBehavior : MonoBehaviour
         {
             //Run the animation for death and shut down the object
             monsterSpawner.GetComponent<MonsterSpawner>().monsterCount--;
+            int randomNumber = Random.Range(0, 3);
+            if (randomNumber == 0)
+            {
+                Instantiate(GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().heart, 
+                    transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+            }
+            else if (randomNumber == 1)
+            {
+                Instantiate(GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().shield,
+                    transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+            }
+            else if (randomNumber == 2)
+            {
+                Instantiate(GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().speedUp,
+                    transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+            }
             Destroy(gameObject);
             GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().currentScore = GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().currentScore + 1;
         }

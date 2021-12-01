@@ -1153,9 +1153,9 @@ RectTransform:
   m_Father: {fileID: 408372534}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -353.5, y: 106.29999}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -296.6, y: 95.2}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &79837508
@@ -13837,9 +13837,9 @@ RectTransform:
   m_Father: {fileID: 408372534}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -340.2, y: 136.29999}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -283.30002, y: 125.19997}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &444664488
@@ -66265,9 +66265,9 @@ RectTransform:
   m_Father: {fileID: 408372534}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 252.67613, y: 166.3}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 199, y: 153.8}
   m_SizeDelta: {x: 291.3444, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1247004622
@@ -73245,9 +73245,9 @@ RectTransform:
   m_Father: {fileID: 408372534}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -340.2, y: 166.3}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -283.30002, y: 155.19998}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1648946828
@@ -75162,9 +75162,9 @@ RectTransform:
   m_Father: {fileID: 408372534}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -290.3, y: 106.3}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -233.4, y: 95.19998}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1751280389
@@ -78233,6 +78233,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1713049f95b263489a44f1b676485a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heart: {fileID: 4552891784024593114, guid: 969329b16b1cb844fb52cceccc275a7a, type: 3}
+  shield: {fileID: 6211589933173304596, guid: e2cbc6026d374a447993ff8975d567a9, type: 3}
+  speedUp: {fileID: 7865123413073153464, guid: 42efd72994baa644a8356543962a2a69, type: 3}
   CanvasUI: {fileID: 1943033635}
   playerHealthBarImage: {fileID: 1737254016}
   playerHealthText: {fileID: 1254085316}

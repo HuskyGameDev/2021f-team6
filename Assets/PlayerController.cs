@@ -35,12 +35,21 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public float countdown;
 
+    private float speedSlowDownTime;
+    private float speedCD;
+    private bool speedUpOn;
+    private int speedIncrease;
+
+
     // Start is called before the first frame update
     void Start()
     {
         cooldown = 10;
+        speedSlowDownTime = 5;
         countdown = 0;
+        speedCD = 0;
         shieldOn = false;
+        speedUpOn = false;
         rigidBody = GetComponent<Rigidbody2D>();
         hp = 100;
     }
@@ -55,6 +64,15 @@ public class PlayerController : MonoBehaviour
             {
                 shieldOn = false;
                 shield.SetActive(false);
+            }
+        }
+        if (speedUpOn)
+        {
+            if (Time.time > speedCD)
+            {
+                speedUpOn = false;
+                moveSpeed = moveSpeed - speedIncrease;
+                speedIncrease = 0;
             }
         }
         if (hp < 0)
@@ -194,5 +212,13 @@ public class PlayerController : MonoBehaviour
             SpawnBlood();
             hp = hp - amount;
         }
+    }
+
+    public void SpeedUp(int amount) 
+    {
+        speedIncrease = speedIncrease + amount;
+        moveSpeed = moveSpeed + amount;
+        speedUpOn = true;
+        speedCD = Time.time + speedSlowDownTime;
     }
 }
