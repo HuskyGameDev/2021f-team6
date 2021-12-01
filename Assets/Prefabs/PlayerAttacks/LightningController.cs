@@ -41,7 +41,7 @@ public class LightningController : MonoBehaviour
         SearchRadiusController search = searchRadius.GetComponent<SearchRadiusController>();
         List<Collider2D> list = new List<Collider2D>();
         list.Add(thisCollider);
-        closest = search.findClosest(300f, "Enemy", list);
+        closest = search.findClosest(12f, "Enemy", rigidBody.rotation, 50f, list);
         closestD = search.closestD;
         dist = search.distance;
         Destroy(searchRadius);
@@ -66,7 +66,7 @@ public class LightningController : MonoBehaviour
             {
                 GameObject chainSearchRadius = (GameObject)Instantiate(searchPrefab, closest.transform);
                 SearchRadiusController chainSearch = chainSearchRadius.GetComponent<SearchRadiusController>();
-                Collider2D chainClosest = chainSearch.findClosest(300f, "Enemy", list);
+                Collider2D chainClosest = chainSearch.findClosest(5f, "Enemy", list);
 
                 if (chainClosest != null)
                 {

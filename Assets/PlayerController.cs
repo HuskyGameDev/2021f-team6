@@ -153,6 +153,7 @@ public class PlayerController : MonoBehaviour
     //fire the current weapon
     private void Shoot() 
     {
+        if (PauseMenu.gameIsPaused || Time.timeScale == 0) return;
         GameObject bullet = Instantiate(attacks[curAtk], spawnBulletPoint.position, spawnBulletPoint.rotation);
         AttackType attackType = bullet.GetComponent<AttackType>();
         Rigidbody2D attackRB = bullet.GetComponent<Rigidbody2D>();
