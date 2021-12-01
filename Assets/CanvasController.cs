@@ -47,9 +47,12 @@ public class CanvasController : MonoBehaviour
     public GameObject GameOverMenuUI;
     public Text GO_waves, GO_score, GO_time;
 
-    //Pause manu code
+    //Pause menu code
     public static bool gameIsPaused;
     public GameObject pauseMenuUI;
+
+    //store menu code
+    public GameObject storeMenu;
 
     bool canReward = false;
     int nextReward = 1;
@@ -103,13 +106,21 @@ public class CanvasController : MonoBehaviour
         buildingHealthBarImage.fillAmount = buildingHealthBar;
         int buildingHealthBarText = (currentBuildingHealthText * 100) / buildingTextHealthSet;
 
+        if (currentLevel > nextReward)
+        {
+            canReward = true;
+            nextReward = nextReward + 1;
+            gamePause = true;
+            if (gamePause)
+            {
+                storeMenu.SetActive(true);
+                UI.SetActive(false);
+                Time.timeScale = 0;
+            }
+        }
+
         if (totalBuildingHealth > 0) 
         {
-            if (currentLevel > nextReward)
-            {
-                canReward = true;
-                nextReward = nextReward + 1;
-            }
             if (canReward)
             {
                 int randomNumber = Random.Range(0, 4);
@@ -195,7 +206,25 @@ public class CanvasController : MonoBehaviour
             {
                 Time.timeScale = 1;
                 pauseMenuUI.SetActive(false);
+                storeMenu.SetActive(false);
                 UI.SetActive(true);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            gamePause = !gamePause;
+            if (gamePause) 
+            {
+                storeMenu.SetActive(true);
+                UI.SetActive(false);
+                Time.timeScale = 0;
+            }
+            else if (!gamePause)
+            {
+                storeMenu.SetActive(false);
+                UI.SetActive(true);
+                Time.timeScale = 1;
             }
         }
     }

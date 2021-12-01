@@ -20,7 +20,7 @@ public class ItemController : MonoBehaviour
         {
             if (itemName == "Heart") 
             {
-                Debug.Log("Heart");
+                //Debug.Log("Heart");
                 if (!playerScript.isDead())
                 {
                     playerScript.hp = playerScript.hp + 10;
@@ -33,7 +33,7 @@ public class ItemController : MonoBehaviour
             }
             else if (itemName == "Shield")
             {
-                Debug.Log("Shield");
+                //Debug.Log("Shield");
                 
                 if (!playerScript.isDead())
                 {
@@ -44,7 +44,7 @@ public class ItemController : MonoBehaviour
             }
             else if (itemName == "SpeedUp")
             {
-                Debug.Log("SpeedUp");
+                //Debug.Log("SpeedUp");
                 if (!playerScript.isDead())
                 {
                     playerScript.SpeedUp(1);

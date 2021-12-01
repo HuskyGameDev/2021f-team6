@@ -78260,6 +78260,7 @@ MonoBehaviour:
   GO_score: {fileID: 311482042}
   GO_time: {fileID: 1290010357}
   pauseMenuUI: {fileID: 238065390}
+  storeMenu: {fileID: 1235561182}
 --- !u!114 &1943033637
 MonoBehaviour:
   m_ObjectHideFlags: 0
