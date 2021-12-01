@@ -780,7 +780,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 25150691}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1032853107}
+        m_TargetAssemblyTypeName: Store, Assembly-CSharp
+        m_MethodName: Ice
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &25150691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2424,7 +2436,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 138639727}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1032853107}
+        m_TargetAssemblyTypeName: Store, Assembly-CSharp
+        m_MethodName: Pspell_2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &138639727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3279,7 +3303,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 194239526}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1032853107}
+        m_TargetAssemblyTypeName: Store, Assembly-CSharp
+        m_MethodName: Fire
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &194239526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3400,7 +3436,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 199822550}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1032853107}
+        m_TargetAssemblyTypeName: Store, Assembly-CSharp
+        m_MethodName: Pspell_9
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &199822550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3945,7 +3993,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 225387525}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1032853107}
+        m_TargetAssemblyTypeName: Store, Assembly-CSharp
+        m_MethodName: magica
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &225387525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13020,7 +13080,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100 gp
+  m_Text: Owned
 --- !u!222 &403548445
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13563,7 +13623,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 433053497}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1032853107}
+        m_TargetAssemblyTypeName: Store, Assembly-CSharp
+        m_MethodName: Pspell_1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &433053497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15037,7 +15109,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 477471449}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1032853107}
+        m_TargetAssemblyTypeName: Store, Assembly-CSharp
+        m_MethodName: Earth
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &477471449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15525,7 +15609,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 516936902}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1032853107}
+        m_TargetAssemblyTypeName: Store, Assembly-CSharp
+        m_MethodName: Pspell_7
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &516936902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16289,7 +16385,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 540516270}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1032853107}
+        m_TargetAssemblyTypeName: Store, Assembly-CSharp
+        m_MethodName: Lighting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &540516270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16555,7 +16663,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1/10
+  m_Text: 0/10
 --- !u!222 &570362526
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17134,7 +17242,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 600587039}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1032853107}
+        m_TargetAssemblyTypeName: Store, Assembly-CSharp
+        m_MethodName: Pspell_8
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &600587039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19702,7 +19822,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 736247982}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1032853107}
+        m_TargetAssemblyTypeName: Store, Assembly-CSharp
+        m_MethodName: Pspell_10
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &736247982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21168,7 +21300,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 822981486}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1032853107}
+        m_TargetAssemblyTypeName: Store, Assembly-CSharp
+        m_MethodName: Pspell_4
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &822981486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21289,7 +21433,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 826592775}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1032853107}
+        m_TargetAssemblyTypeName: Store, Assembly-CSharp
+        m_MethodName: Pspell_5
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &826592775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63171,27 +63327,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 588cab94fcd1b3748bda60464ceb4a70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI: {fileID: 0}
-  Gold: 0
+  Gold: 1000
   ESpellCost:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1054820954}
+  - {fileID: 902963381}
+  - {fileID: 821596908}
+  - {fileID: 2096876521}
   UpgradeAmount:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 570362525}
+  - {fileID: 1395004589}
+  UpgradeCost:
+  - {fileID: 492411244}
+  - {fileID: 787007391}
   PSpellCost:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2075635182}
+  - {fileID: 1523516091}
+  - {fileID: 1630597658}
+  - {fileID: 1552514972}
+  - {fileID: 1837055122}
+  - {fileID: 911179294}
+  - {fileID: 281209233}
+  - {fileID: 317379328}
+  - {fileID: 139195419}
+  - {fileID: 1775290970}
 --- !u!114 &1032853108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67130,7 +67288,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1277935587}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1032853107}
+        m_TargetAssemblyTypeName: Store, Assembly-CSharp
+        m_MethodName: health
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1277935587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69044,7 +69214,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1/10
+  m_Text: 0/10
 --- !u!222 &1395004590
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -72890,7 +73060,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1622007144}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1032853107}
+        m_TargetAssemblyTypeName: Store, Assembly-CSharp
+        m_MethodName: Pspell_3
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1622007144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80371,7 +80553,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2031897957}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1032853107}
+        m_TargetAssemblyTypeName: Store, Assembly-CSharp
+        m_MethodName: Pspell_6
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2031897957
 MonoBehaviour:
   m_ObjectHideFlags: 0
