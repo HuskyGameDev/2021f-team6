@@ -11,17 +11,17 @@ public class Store : MonoBehaviour
 
     //Elemental Spells
     public Text[] ESpellCost = new Text[4];
-    private bool[] ESpellOwned = new bool[4];
+    public bool[] ESpellOwned = new bool[4];
 
     //Ability Upgrades
     public Text[] UpgradeAmount = new Text[2];
     public Text[] UpgradeCost = new Text[2];
     private int[] UpgradeCostInt = new int[2];
-    private int[] UpgradeOwned = new int[2];
+    public int[] UpgradeOwned = new int[2];
 
     //Power Spells
     public Text[] PSpellCost = new Text[10];
-    private bool[] PSpellOwned = new bool[10];
+    public bool[] PSpellOwned = new bool[10];
 
     // Start is called before the first frame update
     void Start()
@@ -65,7 +65,7 @@ public class Store : MonoBehaviour
     public void health()
     {
         //Health is Upgrade[0]
-        if(UpgradeOwned[0] <= 10 && Gold >= UpgradeCostInt[0]) //if not full and can buy
+        if(UpgradeOwned[0] < 10 && Gold >= UpgradeCostInt[0]) //if not full and can buy
         {
             UpgradeOwned[0] += 1;
             UpgradeAmount[0].text = UpgradeOwned[0] + "/10";
@@ -77,7 +77,7 @@ public class Store : MonoBehaviour
     public void magica()
     {
         //Magica is Upgrade[1]
-        if (UpgradeOwned[1] <= 10 && Gold >= UpgradeCostInt[1]) //if not full and can buy
+        if (UpgradeOwned[1] < 10 && Gold >= UpgradeCostInt[1]) //if not full and can buy
         {
             UpgradeOwned[1] += 1;
             UpgradeAmount[1].text = UpgradeOwned[1] + "/10";
@@ -132,71 +132,101 @@ public class Store : MonoBehaviour
     //Power Spell Methods-------------------------------------
     public void Pspell_1()
     {
-        PSpellCost[0].text = "Owned";
-        Gold -= 100;
-        PSpellOwned[0] = true;
+        if(!PSpellOwned[0] && Gold >= 100)
+        {
+            PSpellCost[0].text = "Owned";
+            Gold -= 100;
+            PSpellOwned[0] = true;
+        }
     }
 
     public void Pspell_2()
     {
-        PSpellCost[1].text = "Owned";
-        Gold -= 100;
-        PSpellOwned[1] = true;
+        if (!PSpellOwned[1] && Gold >= 100)
+        {
+            PSpellCost[1].text = "Owned";
+            Gold -= 100;
+            PSpellOwned[1] = true;
+        }
     }
 
     public void Pspell_3()
     {
-        PSpellCost[2].text = "Owned";
-        Gold -= 100;
-        PSpellOwned[2] = true;
+        if (!PSpellOwned[2] && Gold >= 100)
+        {
+            PSpellCost[2].text = "Owned";
+            Gold -= 100;
+            PSpellOwned[2] = true;
+        }
     }
 
     public void Pspell_4()
     {
-        PSpellCost[3].text = "Owned";
-        Gold -= 100;
-        PSpellOwned[3] = true;
+        if (!PSpellOwned[3] && Gold >= 100)
+        {
+            PSpellCost[3].text = "Owned";
+            Gold -= 100;
+            PSpellOwned[3] = true;
+        }
     }
 
     public void Pspell_5()
     {
-        PSpellCost[4].text = "Owned";
-        Gold -= 100;
-        PSpellOwned[4] = true;
+        if (!PSpellOwned[4] && Gold >= 100)
+        {
+            PSpellCost[4].text = "Owned";
+            Gold -= 100;
+            PSpellOwned[4] = true;
+        }
     }
 
     public void Pspell_6()
     {
-        PSpellCost[5].text = "Owned";
-        Gold -= 100;
-        PSpellOwned[5] = true;
+        if (!PSpellOwned[5] && Gold >= 100)
+        {
+            PSpellCost[5].text = "Owned";
+            Gold -= 100;
+            PSpellOwned[5] = true;
+        }
     }
 
     public void Pspell_7()
     {
-        PSpellCost[6].text = "Owned";
-        Gold -= 100;
-        PSpellOwned[6] = true;
+        if (!PSpellOwned[6] && Gold >= 100)
+        {
+            PSpellCost[6].text = "Owned";
+            Gold -= 100;
+            PSpellOwned[6] = true;
+        }
     }
 
     public void Pspell_8()
     {
-        PSpellCost[7].text = "Owned";
-        Gold -= 100;
-        PSpellOwned[7] = true;
+        if (!PSpellOwned[7] && Gold >= 100)
+        {
+            PSpellCost[7].text = "Owned";
+            Gold -= 100;
+            PSpellOwned[7] = true;
+        }
     }
 
     public void Pspell_9()
     {
-        PSpellCost[8].text = "Owned";
-        Gold -= 100;
-        PSpellOwned[8] = true;
+        if (!PSpellOwned[8] && Gold >= 100)
+        {
+            PSpellCost[8].text = "Owned";
+            Gold -= 100;
+            PSpellOwned[8] = true;
+        }
     }
 
     public void Pspell_10()
     {
-        PSpellCost[9].text = "Owned";
-        Gold -= 100;
-        PSpellOwned[9] = true;
+        if (!PSpellOwned[9] && Gold >= 100)
+        {
+            PSpellCost[9].text = "Owned";
+            Gold -= 100;
+            PSpellOwned[9] = true;
+        }
     }
 }
