@@ -219,6 +219,14 @@ public class MonsterBehavior : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("DeadZone")) 
+        {
+            Health = 0;
+        }
+    }
+
     float FindTargetDistance(GameObject target)
     {
         return Vector2.Distance(target.GetComponent<Rigidbody2D>().position, this.GetComponent<Rigidbody2D>().position);
