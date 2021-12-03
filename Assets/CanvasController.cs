@@ -176,7 +176,7 @@ public class CanvasController : MonoBehaviour
             timerText.text = minutes + ":" + seconds;
         }
 
-        if (playerController.isDead() && !gamePause)
+        if ((playerController.isDead() && !gamePause) || (!gamePause && buildingHealthBar <= 0))
         {
             stopTheTimer();
             GO_waves.text = "Waves: " + currentLevel.ToString();
