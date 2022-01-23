@@ -35,7 +35,7 @@ public class MonsterAttackType : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider)
     {
 
-        if (!aoe && collider.tag != "Enemy")
+        if (!aoe && collider.tag != "Enemy" && collider.tag != "AmbArea")
         {
             if (collider.CompareTag("Player"))
             {
