@@ -88,9 +88,9 @@ public class Store : MonoBehaviour
     }*/
 
     //Elemental Spell Methods----------------------------------
-    public void Ice()
+    public void Fire()
     {
-        //Ice spell is ESpell[0]
+        //Fire spell is ESpell[0]
         if (!ESpellOwned[0] && Gold >= 100) //if not owned and can buy
         {
             ESpellCost[0].text = "Owned";
@@ -98,9 +98,9 @@ public class Store : MonoBehaviour
             ESpellOwned[0] = true;
         }
     }
-    public void Earth()
+    public void Lighting()
     {
-        //Earth spell is ESpell[1]
+        //Lighting spell is ESpell[1]
         if (!ESpellOwned[1] && Gold >= 100) //if not owned and can buy
         {
             ESpellCost[1].text = "Owned";
@@ -108,9 +108,9 @@ public class Store : MonoBehaviour
             ESpellOwned[1] = true;
         }
     }
-    public void Lighting()
+    public void Ice()
     {
-        //Lighting spell is ESpell[2]
+        //Ice spell is ESpell[2]
         if (!ESpellOwned[2] && Gold >= 100) //if not owned and can buy
         {
             ESpellCost[2].text = "Owned";
@@ -118,9 +118,9 @@ public class Store : MonoBehaviour
             ESpellOwned[2] = true;
         }
     }
-    public void Fire()
+    public void Earth()
     {
-        //Fire spell is ESpell[3]
+        //Earth spell is ESpell[3]
         if (!ESpellOwned[3] && Gold >= 100) //if not owned and can buy
         {
             ESpellCost[3].text = "Owned";

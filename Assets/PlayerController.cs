@@ -95,12 +95,29 @@ public class PlayerController : MonoBehaviour
             held = false;
         }
 
+        //weapon switching with numbers
+        //nutrual spell
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            curAtk = 0;
+        //Fire spell
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+            curAtk = 1;
+        //Lighting spell
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+            curAtk = 2;
+        //Ice spell
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+            curAtk = 3;
+        //Earth spell
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+            curAtk = 4;
         //weapon switching with Q and E
         if (Input.GetKeyDown(KeyCode.Q))
             curAtk--;
         if (Input.GetKeyDown(KeyCode.E))
             curAtk++;
         curAtk = (curAtk + attacks.Length) % attacks.Length;
+
     }
     private void FixedUpdate()
     {
