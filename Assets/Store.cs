@@ -14,14 +14,14 @@ public class Store : MonoBehaviour
     public bool[] ESpellOwned = new bool[4];
 
     //Ability Upgrades
-    public Text[] UpgradeAmount = new Text[2];
-    public Text[] UpgradeCost = new Text[2];
-    private int[] UpgradeCostInt = new int[2];
-    public int[] UpgradeOwned = new int[2];
+    public Text[] UpgradeAmount = new Text[1];
+    public Text[] UpgradeCost = new Text[1];
+    private int[] UpgradeCostInt = new int[1];
+    public int[] UpgradeOwned = new int[1];
 
     //Power Spells
-    public Text[] PSpellCost = new Text[10];
-    public bool[] PSpellOwned = new bool[10];
+    //public Text[] PSpellCost = new Text[10];
+    //public bool[] PSpellOwned = new bool[10];
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +40,7 @@ public class Store : MonoBehaviour
     {
         Gold = 0;
         //Upgrade defaults
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 1; i++)
         {
             UpgradeOwned[i] = 0;
             UpgradeAmount[i].text = UpgradeOwned[i] + "/10";
@@ -53,12 +53,12 @@ public class Store : MonoBehaviour
             ESpellCost[i].text = "100 gp";
             ESpellOwned[i] = false;
         }
-        //Power Spell defaults
+        /*//Power Spell defaults
         for (int i = 0; i < 10; i++)
         {
             PSpellCost[i].text = "100 gp";
             PSpellOwned[i] = false;
-        }
+        }*/
     }
 
     //Ability Upgrade Methods----------------------------------
@@ -74,7 +74,7 @@ public class Store : MonoBehaviour
             UpgradeCost[0].text = UpgradeCostInt[0] + "gp";
         }
     }
-    public void magica()
+    /*public void magica() ---NO LONGER BEING USED---
     {
         //Magica is Upgrade[1]
         if (UpgradeOwned[1] < 10 && Gold >= UpgradeCostInt[1]) //if not full and can buy
@@ -85,7 +85,7 @@ public class Store : MonoBehaviour
             UpgradeCostInt[1] += 50;
             UpgradeCost[1].text = UpgradeCostInt[1] + "gp";
         }
-    }
+    }*/
 
     //Elemental Spell Methods----------------------------------
     public void Ice()
@@ -128,7 +128,7 @@ public class Store : MonoBehaviour
             ESpellOwned[3] = true;
         }
     }
-
+    /*
     //Power Spell Methods-------------------------------------
     public void Pspell_1()
     {
@@ -228,5 +228,5 @@ public class Store : MonoBehaviour
             Gold -= 100;
             PSpellOwned[9] = true;
         }
-    }
+    }*/
 }
