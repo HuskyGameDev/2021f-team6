@@ -12,6 +12,7 @@ public class CanvasController : MonoBehaviour
 
     private bool gamePause;
     public GameObject CanvasUI;
+    public GameObject Shelf;
     //private GameObject player;
     private PlayerController playerController;
     private GameObject monsterSpawner;

@@ -8,10 +8,11 @@ public class Store : MonoBehaviour
     //Gold Amount
     public int Gold = 1000;
     public Text GoldText;
+    public GameObject NeedGoldAlert;
 
     //Elemental Spells
     public Text[] ESpellCost = new Text[4];
-    public bool[] ESpellOwned = new bool[4];
+    public static bool[] ESpellOwned = new bool[4];
 
     //Ability Upgrades
     public Text[] UpgradeAmount = new Text[1];
@@ -73,6 +74,7 @@ public class Store : MonoBehaviour
             UpgradeCostInt[0] += 50;
             UpgradeCost[0].text = UpgradeCostInt[0] + "gp";
         }
+        else if (UpgradeOwned[0] < 10 && Gold < UpgradeCostInt[0]) { ShowNeedGoldAlert(); }
     }
     /*public void magica() ---NO LONGER BEING USED---
     {
@@ -97,6 +99,7 @@ public class Store : MonoBehaviour
             Gold -= 100;
             ESpellOwned[0] = true;
         }
+        else if(!ESpellOwned[0] && Gold < 100) { ShowNeedGoldAlert(); }
     }
     public void Lighting()
     {
@@ -107,6 +110,7 @@ public class Store : MonoBehaviour
             Gold -= 100;
             ESpellOwned[1] = true;
         }
+        else if (!ESpellOwned[0] && Gold < 100) { ShowNeedGoldAlert(); }
     }
     public void Ice()
     {
@@ -117,6 +121,7 @@ public class Store : MonoBehaviour
             Gold -= 100;
             ESpellOwned[2] = true;
         }
+        else if (!ESpellOwned[0] && Gold < 100) { ShowNeedGoldAlert(); }
     }
     public void Earth()
     {
@@ -127,6 +132,19 @@ public class Store : MonoBehaviour
             Gold -= 100;
             ESpellOwned[3] = true;
         }
+        else if (!ESpellOwned[0] && Gold < 100) { ShowNeedGoldAlert(); }
+    }
+    public void ShowNeedGoldAlert()
+    {
+        NeedGoldAlert.SetActive(true);
+        StartCoroutine(HideObjSec(1, NeedGoldAlert));
+        //NeedGoldAlert.SetActive(false);
+    }
+    private IEnumerator HideObjSec(int sec, GameObject obj)
+    {
+        //yield on a new YieldInstruction that waits for sec seconds.
+        yield return new WaitForSecondsRealtime(sec);
+        obj.SetActive(false);
     }
     /*
     //Power Spell Methods-------------------------------------
