@@ -192,6 +192,7 @@ public class MonsterBehavior : MonoBehaviour
                 Instantiate(GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().speedUp,
                     transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
             }
+            Store.Gold += 10;
             Destroy(gameObject);
             GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().currentScore = GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().currentScore + 1;
         }

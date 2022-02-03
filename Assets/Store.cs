@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Store : MonoBehaviour
 {
     //Gold Amount
-    public int Gold = 1000;
+    public static int Gold = 0;
     public Text GoldText;
     public GameObject NeedGoldAlert;
 
