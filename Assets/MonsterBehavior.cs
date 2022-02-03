@@ -20,6 +20,7 @@ public class MonsterBehavior : MonoBehaviour
     private int charge;
     private int timing;
     private float totalHealth;
+    private float intelligence;
     private bool tele = true;
 
     private Rigidbody2D rb;
@@ -53,6 +54,7 @@ public class MonsterBehavior : MonoBehaviour
         buildings = GameObject.FindGameObjectsWithTag("Building");
         monsterSpawner = GameObject.Find("Monster Spawner");
         monsterSpawner.GetComponent<MonsterSpawner>().monsterCount++;
+        intelligence = Random.Range(0, monsterSpawner.GetComponent<MonsterSpawner>().monster_Int);
 
     }
 
@@ -104,7 +106,6 @@ public class MonsterBehavior : MonoBehaviour
             {
                 WalkSpeed = 32;
                 rb.velocity = rb.velocity.normalized * WalkSpeed;
-                charge = 0;
 
             }
             else
@@ -116,7 +117,7 @@ public class MonsterBehavior : MonoBehaviour
 
         if (Shooter)
         {
-            if (FindDistancetoPlayer() < 10 && charge % timing == 0)
+            if (charge % timing == 0)
             {
                 GameObject monsterbullet = Instantiate(projectile, transform.position, transform.rotation);
                 charge = 0;
