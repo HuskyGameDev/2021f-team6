@@ -43,7 +43,7 @@ public class MonsterSpawner : MonoBehaviour
                     int level = canvas.currentLevel;
                     GameObject monster;
 
-                    int NumofMonsters = (int)Mathf.Max(1, Mathf.Floor(score / 5 + level));
+                    int NumofMonsters = (int)Mathf.Max(1, Mathf.Floor(score * level / 8 + 2));
                     for (int i = 0; i < NumofMonsters; i++)
                     {
 

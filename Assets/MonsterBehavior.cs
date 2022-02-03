@@ -100,10 +100,11 @@ public class MonsterBehavior : MonoBehaviour
 
         if (Rusher)
         {
-            if (FindDistancetoPlayer() < 10 && charge % 3000 >= 0 && charge % 3000 <= 150)
+            if (FindDistancetoPlayer() < 10 && charge % 3000 >= 0 && charge % 3000 <= 20)
             {
                 WalkSpeed = 32;
                 rb.velocity = rb.velocity.normalized * WalkSpeed;
+                charge = 0;
 
             }
             else
@@ -115,9 +116,10 @@ public class MonsterBehavior : MonoBehaviour
 
         if (Shooter)
         {
-            if (charge % timing == 0)
+            if (FindDistancetoPlayer() < 10 && charge % timing == 0)
             {
                 GameObject monsterbullet = Instantiate(projectile, transform.position, transform.rotation);
+                charge = 0;
             }
 
             timing = Random.Range(300, 1000);
@@ -145,13 +147,14 @@ public class MonsterBehavior : MonoBehaviour
                 if (charge % 3000 == 0)
                 {
                     tele = true;
+                    charge = 0;
                 }
             }
         }
 
         if (Coward)
         {
-            if (FindDistancetoPlayer() < 5f)
+            if (FindDistancetoPlayer() < 10f)
             {
                 Walker = false;
                 WalkSpeed = 10;
@@ -164,6 +167,7 @@ public class MonsterBehavior : MonoBehaviour
                 if (charge % 3000 == 0)
                 {
                     Walker = true;
+                    charge = 0;
                 }
             }
         }

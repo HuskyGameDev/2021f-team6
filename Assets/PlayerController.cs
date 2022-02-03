@@ -47,6 +47,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+
         cooldown = 10;
         speedSlowDownTime = 5;
         countdown = 0;

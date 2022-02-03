@@ -59142,9 +59142,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.025717497, y: -0.07143748}
+  m_Offset: {x: -0.0134192705, y: 0.008500755}
   serializedVersion: 2
-  m_Radius: 0.80779946
+  m_Radius: 0.49009675
 --- !u!114 &852094960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76354,6 +76354,7 @@ MonoBehaviour:
   shield: {fileID: 6211589933173304596, guid: e2cbc6026d374a447993ff8975d567a9, type: 3}
   speedUp: {fileID: 7865123413073153464, guid: 42efd72994baa644a8356543962a2a69, type: 3}
   CanvasUI: {fileID: 1943033635}
+  Shelf: {fileID: 0}
   playerHealthBarImage: {fileID: 1737254016}
   playerHealthText: {fileID: 1254085316}
   building:
