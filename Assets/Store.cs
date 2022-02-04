@@ -51,9 +51,12 @@ public class Store : MonoBehaviour
         //Elemental Spell defaults
         for(int i = 0; i < 4; i++)
         {
-            ESpellCost[i].text = "100 gp";
             ESpellOwned[i] = false;
         }
+        ESpellCost[0].text = "150 gp";
+        ESpellCost[1].text = "200 gp";
+        ESpellCost[2].text = "200 gp";
+        ESpellCost[3].text = "100 gp";
         /*//Power Spell defaults
         for (int i = 0; i < 10; i++)
         {
@@ -90,42 +93,42 @@ public class Store : MonoBehaviour
     }*/
 
     //Elemental Spell Methods----------------------------------
-    public void Fire()
+    public void Fireball()
     {
-        //Fire spell is ESpell[0]
-        if (!ESpellOwned[0] && Gold >= 100) //if not owned and can buy
+        //Fireball spell is ESpell[0]
+        if (!ESpellOwned[0] && Gold >= 150) //if not owned and can buy
         {
             ESpellCost[0].text = "Owned";
-            Gold -= 100;
+            Gold -= 150;
             ESpellOwned[0] = true;
         }
         else if(!ESpellOwned[0] && Gold < 100) { ShowNeedGoldAlert(); }
     }
-    public void Lighting()
+    public void Lightingbolt()
     {
-        //Lighting spell is ESpell[1]
-        if (!ESpellOwned[1] && Gold >= 100) //if not owned and can buy
+        //Lightingbolt spell is ESpell[1]
+        if (!ESpellOwned[1] && Gold >= 200) //if not owned and can buy
         {
             ESpellCost[1].text = "Owned";
-            Gold -= 100;
+            Gold -= 200;
             ESpellOwned[1] = true;
         }
         else if (!ESpellOwned[0] && Gold < 100) { ShowNeedGoldAlert(); }
     }
-    public void Ice()
+    public void Frostwave()
     {
-        //Ice spell is ESpell[2]
-        if (!ESpellOwned[2] && Gold >= 100) //if not owned and can buy
+        //Frostwave spell is ESpell[2]
+        if (!ESpellOwned[2] && Gold >= 200) //if not owned and can buy
         {
             ESpellCost[2].text = "Owned";
-            Gold -= 100;
+            Gold -= 200;
             ESpellOwned[2] = true;
         }
         else if (!ESpellOwned[0] && Gold < 100) { ShowNeedGoldAlert(); }
     }
-    public void Earth()
+    public void Spell5()
     {
-        //Earth spell is ESpell[3]
+        // spell is ESpell[3]
         if (!ESpellOwned[3] && Gold >= 100) //if not owned and can buy
         {
             ESpellCost[3].text = "Owned";

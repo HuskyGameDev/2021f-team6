@@ -630,7 +630,7 @@ GameObject:
   - component: {fileID: 25150691}
   - component: {fileID: 25150690}
   m_Layer: 5
-  m_Name: IceSpell
+  m_Name: FrostwaveSpell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -702,7 +702,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1032853107}
         m_TargetAssemblyTypeName: Store, Assembly-CSharp
-        m_MethodName: Ice
+        m_MethodName: Frostwave
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2367,7 +2367,7 @@ GameObject:
   - component: {fileID: 141222904}
   - component: {fileID: 141222903}
   m_Layer: 5
-  m_Name: EarthText
+  m_Name: Text5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2943,7 +2943,7 @@ GameObject:
   - component: {fileID: 194239526}
   - component: {fileID: 194239525}
   m_Layer: 5
-  m_Name: FireSpell
+  m_Name: FireballSpell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3015,7 +3015,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1032853107}
         m_TargetAssemblyTypeName: Store, Assembly-CSharp
-        m_MethodName: Fire
+        m_MethodName: Fireball
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10987,7 +10987,7 @@ GameObject:
   - component: {fileID: 336718275}
   - component: {fileID: 336718274}
   m_Layer: 5
-  m_Name: NuturalSpell
+  m_Name: IceSpraySpell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12401,8 +12401,8 @@ RectTransform:
   - {fileID: 79837507}
   - {fileID: 1751280387}
   - {fileID: 444664487}
-  - {fileID: 1247004621}
   - {fileID: 1648946827}
+  - {fileID: 1247004621}
   - {fileID: 1024196925}
   m_Father: {fileID: 1943033640}
   m_RootOrder: 0
@@ -14184,7 +14184,7 @@ GameObject:
   - component: {fileID: 477471449}
   - component: {fileID: 477471448}
   m_Layer: 5
-  m_Name: EarthSpell
+  m_Name: Spell5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14256,7 +14256,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1032853107}
         m_TargetAssemblyTypeName: Store, Assembly-CSharp
-        m_MethodName: Earth
+        m_MethodName: Spell5
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15327,7 +15327,7 @@ GameObject:
   - component: {fileID: 540516270}
   - component: {fileID: 540516269}
   m_Layer: 5
-  m_Name: LightingSpell
+  m_Name: LightingboltSpell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15399,7 +15399,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1032853107}
         m_TargetAssemblyTypeName: Store, Assembly-CSharp
-        m_MethodName: Lighting
+        m_MethodName: Lightingbolt
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15980,7 +15980,7 @@ GameObject:
   - component: {fileID: 588170189}
   - component: {fileID: 588170188}
   m_Layer: 5
-  m_Name: NuturalText
+  m_Name: IceSprayText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16604,7 +16604,7 @@ GameObject:
   - component: {fileID: 612650409}
   - component: {fileID: 612650408}
   m_Layer: 5
-  m_Name: FireSpell
+  m_Name: FireballSpell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16626,7 +16626,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 70, y: -175}
+  m_AnchoredPosition: {x: 705, y: 40}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &612650408
@@ -19567,7 +19567,7 @@ GameObject:
   - component: {fileID: 810377086}
   - component: {fileID: 810377085}
   m_Layer: 5
-  m_Name: IceText
+  m_Name: FrostwaveText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19950,7 +19950,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100 gp
+  m_Text: 200 gp
 --- !u!222 &821596909
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -61569,7 +61569,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: -20}
+  m_AnchoredPosition: {x: -341, y: 8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1031352209
@@ -61997,7 +61997,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100 gp
+  m_Text: 200 gp
 --- !u!222 &1054820955
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -63306,7 +63306,7 @@ GameObject:
   - component: {fileID: 1135332420}
   - component: {fileID: 1135332419}
   m_Layer: 5
-  m_Name: LightingText
+  m_Name: LightingboltText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63847,7 +63847,7 @@ GameObject:
   - component: {fileID: 1190275620}
   - component: {fileID: 1190275619}
   m_Layer: 5
-  m_Name: FireText
+  m_Name: FireballText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64402,7 +64402,7 @@ GameObject:
   - component: {fileID: 1227862932}
   - component: {fileID: 1227862931}
   m_Layer: 5
-  m_Name: IceSpell
+  m_Name: FrostwaveSpell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64424,7 +64424,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 170, y: -175}
+  m_AnchoredPosition: {x: 705, y: -60}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1227862931
@@ -64799,7 +64799,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 408372534}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -68916,7 +68916,7 @@ GameObject:
   - component: {fileID: 1455448799}
   - component: {fileID: 1455448798}
   m_Layer: 5
-  m_Name: EarthSpell
+  m_Name: Spell5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68938,7 +68938,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 220, y: -175}
+  m_AnchoredPosition: {x: 705, y: -110}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1455448798
@@ -71262,7 +71262,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 408372534}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -71571,8 +71571,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 120.000015, y: -175}
-  m_SizeDelta: {x: 364.4286, y: 70.7843}
+  m_AnchoredPosition: {x: 705, y: -45}
+  m_SizeDelta: {x: 60, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1661583071
 MonoBehaviour:
@@ -71587,14 +71587,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.25490198}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4d6a99baee23b654f9e4bb672ae0b438, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -72692,6 +72692,7 @@ MonoBehaviour:
   - {fileID: 6585015948341932885, guid: ed20af27d5ff38b419a0f75bfb259cce, type: 3}
   storeMenuUI: {fileID: 1032853106}
   UI: {fileID: 408372533}
+  monster_Int: 0
 --- !u!1 &1714954817
 GameObject:
   m_ObjectHideFlags: 0
@@ -73753,7 +73754,7 @@ GameObject:
   - component: {fileID: 1800615934}
   - component: {fileID: 1800615933}
   m_Layer: 5
-  m_Name: NuturalSpell
+  m_Name: IceSpraySpell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73775,7 +73776,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20, y: -175}
+  m_AnchoredPosition: {x: 705, y: 90}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1800615933
@@ -74188,7 +74189,7 @@ GameObject:
   - component: {fileID: 1824858740}
   - component: {fileID: 1824858739}
   m_Layer: 5
-  m_Name: LightingSpell
+  m_Name: LightingboltSpell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74210,7 +74211,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 120, y: -175}
+  m_AnchoredPosition: {x: 705, y: -10}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1824858739
@@ -79876,7 +79877,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100 gp
+  m_Text: 150 gp
 --- !u!222 &2096876522
 CanvasRenderer:
   m_ObjectHideFlags: 0

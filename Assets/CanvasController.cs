@@ -194,7 +194,7 @@ public class CanvasController : MonoBehaviour
             Time.timeScale = 1;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !GameOverMenuUI.activeSelf)
         {
             gamePause = !gamePause;
             if (gamePause)
