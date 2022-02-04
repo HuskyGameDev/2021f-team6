@@ -20,6 +20,7 @@ public class MonsterBehavior : MonoBehaviour
     private int charge;
     private int timing;
     private float totalHealth;
+    private float intelligence;
     private bool tele = true;
 
     private Rigidbody2D rb;
@@ -53,6 +54,7 @@ public class MonsterBehavior : MonoBehaviour
         buildings = GameObject.FindGameObjectsWithTag("Building");
         monsterSpawner = GameObject.Find("Monster Spawner");
         monsterSpawner.GetComponent<MonsterSpawner>().monsterCount++;
+        intelligence = Random.Range(0, monsterSpawner.GetComponent<MonsterSpawner>().monster_Int);
 
     }
 
@@ -100,7 +102,7 @@ public class MonsterBehavior : MonoBehaviour
 
         if (Rusher)
         {
-            if (FindDistancetoPlayer() < 10 && charge % 3000 >= 0 && charge % 3000 <= 150)
+            if (FindDistancetoPlayer() < 10 && charge % 3000 >= 0 && charge % 3000 <= 20)
             {
                 WalkSpeed = 32;
                 rb.velocity = rb.velocity.normalized * WalkSpeed;
@@ -118,6 +120,7 @@ public class MonsterBehavior : MonoBehaviour
             if (charge % timing == 0)
             {
                 GameObject monsterbullet = Instantiate(projectile, transform.position, transform.rotation);
+                charge = 0;
             }
 
             timing = Random.Range(300, 1000);
@@ -145,13 +148,14 @@ public class MonsterBehavior : MonoBehaviour
                 if (charge % 3000 == 0)
                 {
                     tele = true;
+                    charge = 0;
                 }
             }
         }
 
         if (Coward)
         {
-            if (FindDistancetoPlayer() < 5f)
+            if (FindDistancetoPlayer() < 10f)
             {
                 Walker = false;
                 WalkSpeed = 10;
@@ -164,6 +168,7 @@ public class MonsterBehavior : MonoBehaviour
                 if (charge % 3000 == 0)
                 {
                     Walker = true;
+                    charge = 0;
                 }
             }
         }
@@ -188,6 +193,7 @@ public class MonsterBehavior : MonoBehaviour
                 Instantiate(GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().speedUp,
                     transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
             }
+            Store.Gold += 15;
             Destroy(gameObject);
             GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().currentScore = GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().currentScore + 1;
         }

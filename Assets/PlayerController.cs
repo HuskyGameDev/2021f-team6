@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,8 +17,10 @@ public class PlayerController : MonoBehaviour
     //[HideInInspector]
     public int hp;                  //player health points
 
+    public GameObject SpellNotOwnedAlert;
+    public Image[] ESpellIcon = new Image[5];
     public GameObject[] attacks;    //list of available attacks
-    private int curAtk = 0;         //index of the current attack in attacks[]
+    public static int curAtk = 0;         //index of the current attack in attacks[]
     [Range(0.5f,1.5f)]
     public float deathScale;
     public Transform spawnBlood;
@@ -44,6 +47,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+
         cooldown = 10;
         speedSlowDownTime = 5;
         countdown = 0;
@@ -52,6 +57,11 @@ public class PlayerController : MonoBehaviour
         speedUpOn = false;
         rigidBody = GetComponent<Rigidbody2D>();
         hp = 100;
+        ESpellIcon[0].color = Color.white;
+        ESpellIcon[1].color = Color.grey;
+        ESpellIcon[2].color = Color.grey;
+        ESpellIcon[3].color = Color.grey;
+        ESpellIcon[4].color = Color.grey;
     }
 
     // Update is called once per frame
@@ -95,12 +105,96 @@ public class PlayerController : MonoBehaviour
             held = false;
         }
 
-        //weapon switching with Q and E
+        //weapon switching with numbers
+        //nutrual spell
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            curAtk = 0;
+            ESpellIcon[0].color = Color.white;
+            ESpellIcon[1].color = Color.grey;
+            ESpellIcon[2].color = Color.grey;
+            ESpellIcon[3].color = Color.grey;
+            ESpellIcon[4].color = Color.grey;
+        }
+        //Fire spell
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            if(Store.ESpellOwned[0])
+            {
+                curAtk = 1;
+                ESpellIcon[0].color = Color.grey;
+                ESpellIcon[1].color = Color.white;
+                ESpellIcon[2].color = Color.grey;
+                ESpellIcon[3].color = Color.grey;
+                ESpellIcon[4].color = Color.grey;
+            }
+            else
+            {
+                //Show alert
+                ShowSpellNotOwnedAlert();
+            }
+        }
+        //Lighting spell
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            if (Store.ESpellOwned[1])
+            {
+                curAtk = 2;
+                ESpellIcon[0].color = Color.grey;
+                ESpellIcon[1].color = Color.grey;
+                ESpellIcon[2].color = Color.white;
+                ESpellIcon[3].color = Color.grey;
+                ESpellIcon[4].color = Color.grey;
+            }
+            else
+            {
+                //Show alert
+                ShowSpellNotOwnedAlert();
+            }
+        }
+        //Ice spell
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            if (Store.ESpellOwned[2])
+            {
+                curAtk = 3;
+                ESpellIcon[0].color = Color.grey;
+                ESpellIcon[1].color = Color.grey;
+                ESpellIcon[2].color = Color.grey;
+                ESpellIcon[3].color = Color.white;
+                ESpellIcon[4].color = Color.grey;
+            }
+            else
+            {
+                //Show alert
+                ShowSpellNotOwnedAlert();
+            }
+        }
+        //Earth spell
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            if (Store.ESpellOwned[3])
+            {
+                curAtk = 4;
+                ESpellIcon[0].color = Color.grey;
+                ESpellIcon[1].color = Color.grey;
+                ESpellIcon[2].color = Color.grey;
+                ESpellIcon[3].color = Color.grey;
+                ESpellIcon[4].color = Color.white;
+            }
+            else
+            {
+                //Show alert
+                ShowSpellNotOwnedAlert();
+            }
+        }
+        /*//weapon switching with Q and E
         if (Input.GetKeyDown(KeyCode.Q))
             curAtk--;
         if (Input.GetKeyDown(KeyCode.E))
-            curAtk++;
+            curAtk++;*/
         curAtk = (curAtk + attacks.Length) % attacks.Length;
+
     }
     private void FixedUpdate()
     {
@@ -221,5 +315,19 @@ public class PlayerController : MonoBehaviour
         moveSpeed = moveSpeed + amount;
         speedUpOn = true;
         speedCD = Time.time + speedSlowDownTime;
+    }
+
+
+    public void ShowSpellNotOwnedAlert()
+    {
+        SpellNotOwnedAlert.SetActive(true);
+        StartCoroutine(HideObjSec(1, SpellNotOwnedAlert));
+        //SpellNotOwnedAlert.SetActive(false);
+    }
+    private IEnumerator HideObjSec(int sec, GameObject obj)
+    {
+        //yield on a new YieldInstruction that waits for sec seconds.
+        yield return new WaitForSeconds(sec);
+        obj.SetActive(false);
     }
 }

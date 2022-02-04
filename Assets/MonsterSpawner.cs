@@ -14,6 +14,7 @@ public class MonsterSpawner : MonoBehaviour
     public static bool gameIsStore;
     public GameObject storeMenuUI;
     public GameObject UI;
+    public float monster_Int;
     private CanvasController canvas;
 
     // Start is called before the first frame update
@@ -43,7 +44,8 @@ public class MonsterSpawner : MonoBehaviour
                     int level = canvas.currentLevel;
                     GameObject monster;
 
-                    int NumofMonsters = (int)Mathf.Max(1, Mathf.Floor(score / 5 + level));
+                    int NumofMonsters = (int)Mathf.Max(1, Mathf.Floor(score * level / 8 + 2));
+                    monster_Int = Mathf.Min(100, monster_Int * (float)1.2);
                     for (int i = 0; i < NumofMonsters; i++)
                     {
 

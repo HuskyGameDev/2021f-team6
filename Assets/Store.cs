@@ -6,22 +6,23 @@ using UnityEngine.UI;
 public class Store : MonoBehaviour
 {
     //Gold Amount
-    public int Gold = 1000;
+    public static int Gold = 0;
     public Text GoldText;
+    public GameObject NeedGoldAlert;
 
     //Elemental Spells
     public Text[] ESpellCost = new Text[4];
-    public bool[] ESpellOwned = new bool[4];
+    public static bool[] ESpellOwned = new bool[4];
 
     //Ability Upgrades
-    public Text[] UpgradeAmount = new Text[2];
-    public Text[] UpgradeCost = new Text[2];
-    private int[] UpgradeCostInt = new int[2];
-    public int[] UpgradeOwned = new int[2];
+    public Text[] UpgradeAmount = new Text[1];
+    public Text[] UpgradeCost = new Text[1];
+    private int[] UpgradeCostInt = new int[1];
+    public int[] UpgradeOwned = new int[1];
 
     //Power Spells
-    public Text[] PSpellCost = new Text[10];
-    public bool[] PSpellOwned = new bool[10];
+    //public Text[] PSpellCost = new Text[10];
+    //public bool[] PSpellOwned = new bool[10];
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +41,7 @@ public class Store : MonoBehaviour
     {
         Gold = 0;
         //Upgrade defaults
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 1; i++)
         {
             UpgradeOwned[i] = 0;
             UpgradeAmount[i].text = UpgradeOwned[i] + "/10";
@@ -50,15 +51,18 @@ public class Store : MonoBehaviour
         //Elemental Spell defaults
         for(int i = 0; i < 4; i++)
         {
-            ESpellCost[i].text = "100 gp";
             ESpellOwned[i] = false;
         }
-        //Power Spell defaults
+        ESpellCost[0].text = "150 gp";
+        ESpellCost[1].text = "200 gp";
+        ESpellCost[2].text = "200 gp";
+        ESpellCost[3].text = "100 gp";
+        /*//Power Spell defaults
         for (int i = 0; i < 10; i++)
         {
             PSpellCost[i].text = "100 gp";
             PSpellOwned[i] = false;
-        }
+        }*/
     }
 
     //Ability Upgrade Methods----------------------------------
@@ -73,8 +77,9 @@ public class Store : MonoBehaviour
             UpgradeCostInt[0] += 50;
             UpgradeCost[0].text = UpgradeCostInt[0] + "gp";
         }
+        else if (UpgradeOwned[0] < 10 && Gold < UpgradeCostInt[0]) { ShowNeedGoldAlert(); }
     }
-    public void magica()
+    /*public void magica() ---NO LONGER BEING USED---
     {
         //Magica is Upgrade[1]
         if (UpgradeOwned[1] < 10 && Gold >= UpgradeCostInt[1]) //if not full and can buy
@@ -85,50 +90,66 @@ public class Store : MonoBehaviour
             UpgradeCostInt[1] += 50;
             UpgradeCost[1].text = UpgradeCostInt[1] + "gp";
         }
-    }
+    }*/
 
     //Elemental Spell Methods----------------------------------
-    public void Ice()
+    public void Fireball()
     {
-        //Ice spell is ESpell[0]
-        if (!ESpellOwned[0] && Gold >= 100) //if not owned and can buy
+        //Fireball spell is ESpell[0]
+        if (!ESpellOwned[0] && Gold >= 150) //if not owned and can buy
         {
             ESpellCost[0].text = "Owned";
-            Gold -= 100;
+            Gold -= 150;
             ESpellOwned[0] = true;
         }
+        else if(!ESpellOwned[0] && Gold < 100) { ShowNeedGoldAlert(); }
     }
-    public void Earth()
+    public void Lightingbolt()
     {
-        //Earth spell is ESpell[1]
-        if (!ESpellOwned[1] && Gold >= 100) //if not owned and can buy
+        //Lightingbolt spell is ESpell[1]
+        if (!ESpellOwned[1] && Gold >= 200) //if not owned and can buy
         {
             ESpellCost[1].text = "Owned";
-            Gold -= 100;
+            Gold -= 200;
             ESpellOwned[1] = true;
         }
+        else if (!ESpellOwned[0] && Gold < 100) { ShowNeedGoldAlert(); }
     }
-    public void Lighting()
+    public void Frostwave()
     {
-        //Lighting spell is ESpell[2]
-        if (!ESpellOwned[2] && Gold >= 100) //if not owned and can buy
+        //Frostwave spell is ESpell[2]
+        if (!ESpellOwned[2] && Gold >= 200) //if not owned and can buy
         {
             ESpellCost[2].text = "Owned";
-            Gold -= 100;
+            Gold -= 200;
             ESpellOwned[2] = true;
         }
+        else if (!ESpellOwned[0] && Gold < 100) { ShowNeedGoldAlert(); }
     }
-    public void Fire()
+    public void Spell5()
     {
-        //Fire spell is ESpell[3]
+        // spell is ESpell[3]
         if (!ESpellOwned[3] && Gold >= 100) //if not owned and can buy
         {
             ESpellCost[3].text = "Owned";
             Gold -= 100;
             ESpellOwned[3] = true;
         }
+        else if (!ESpellOwned[0] && Gold < 100) { ShowNeedGoldAlert(); }
     }
-
+    public void ShowNeedGoldAlert()
+    {
+        NeedGoldAlert.SetActive(true);
+        StartCoroutine(HideObjSec(1, NeedGoldAlert));
+        //NeedGoldAlert.SetActive(false);
+    }
+    private IEnumerator HideObjSec(int sec, GameObject obj)
+    {
+        //yield on a new YieldInstruction that waits for sec seconds.
+        yield return new WaitForSecondsRealtime(sec);
+        obj.SetActive(false);
+    }
+    /*
     //Power Spell Methods-------------------------------------
     public void Pspell_1()
     {
@@ -228,5 +249,5 @@ public class Store : MonoBehaviour
             Gold -= 100;
             PSpellOwned[9] = true;
         }
-    }
+    }*/
 }

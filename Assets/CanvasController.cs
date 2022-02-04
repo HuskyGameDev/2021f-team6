@@ -12,6 +12,7 @@ public class CanvasController : MonoBehaviour
 
     private bool gamePause;
     public GameObject CanvasUI;
+    public GameObject Shelf;
     //private GameObject player;
     private PlayerController playerController;
     private GameObject monsterSpawner;
@@ -193,7 +194,7 @@ public class CanvasController : MonoBehaviour
             Time.timeScale = 1;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !GameOverMenuUI.activeSelf)
         {
             gamePause = !gamePause;
             if (gamePause)
