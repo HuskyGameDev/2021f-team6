@@ -22,7 +22,7 @@ public class MonsterBehavior : MonoBehaviour
     private float totalHealth;
     private float intelligence;
     private bool tele = true;
-
+    private bool flip = false;
     private Rigidbody2D rb;
     private SpriteRenderer sr;
 
@@ -34,17 +34,19 @@ public class MonsterBehavior : MonoBehaviour
     private Rigidbody2D player_rb;
     private GameObject[] buildings;
     private GameObject monsterSpawner;
+    private Transform t;
 
 
     // Start is called before the first frame update
     void Start()
     {
         //Send the creature on its way
+        t = GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         original_color = sr.color;
         aim = aim.normalized;
-        rb.rotation = Mathf.Atan2(aim.y, aim.x) * Mathf.Rad2Deg + 90f;
+        //rb.rotation = Mathf.Atan2(aim.y, aim.x) * Mathf.Rad2Deg + 90f;
         //rb.velocity += aim * WalkSpeed;
         charge = 0;
         timing = Random.Range(300, 1000);
@@ -90,7 +92,7 @@ public class MonsterBehavior : MonoBehaviour
             rb.velocity = ((player_rb.position - rb.position));
             if (rb.velocity != Vector2.zero)
             {
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg)), 10);
+                //transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg)), 10);
             }
 
 
@@ -98,11 +100,19 @@ public class MonsterBehavior : MonoBehaviour
             {
                 rb.velocity = rb.velocity.normalized * WalkSpeed;
             }
+
+            if (rb.velocity.x > 0)
+            {
+                sr.flipX = false;
+            } else if (rb.velocity.x < 0)
+            {
+                sr.flipX = true;
+            }
         }
 
         if (Rusher)
         {
-            if (FindDistancetoPlayer() < 10 && charge % 3000 >= 0 && charge % 3000 <= 20)
+            if (FindDistancetoPlayer() < 10 && charge % 3000 >= 0 && charge % 3000 <= 60)
             {
                 WalkSpeed = 32;
                 rb.velocity = rb.velocity.normalized * WalkSpeed;
@@ -119,8 +129,16 @@ public class MonsterBehavior : MonoBehaviour
         {
             if (charge % timing == 0)
             {
-                GameObject monsterbullet = Instantiate(projectile, transform.position, transform.rotation);
-                charge = 0;
+                if (projectile.tag == "Enemy")
+                {
+                    GameObject monsterbullet = Instantiate(projectile, transform.position, transform.rotation);
+                    charge = 0;
+                } else
+                {
+                    GameObject monsterbullet = Instantiate(projectile, transform.position, Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg)));
+                    charge = 0;
+                }
+                
             }
 
             timing = Random.Range(300, 1000);

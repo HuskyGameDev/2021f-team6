@@ -117,6 +117,7 @@ MonoBehaviour:
   WalkSpeed: 3
   aim: {x: 0, y: 0}
   dmg: 5
+  actionRate: 0
   projectile: {fileID: 4204721134115430159, guid: 1d0410d32f0c73941b60cbb5497a0674, type: 3}
   Walker: 1
   Shooter: 0
@@ -145,4 +146,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
