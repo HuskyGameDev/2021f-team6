@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour
         ESpellIcon[2].color = Color.grey;
         ESpellIcon[3].color = Color.grey;
         ESpellIcon[4].color = Color.grey;
+        ESpellIcon[5].color = Color.grey;
         for (int i = 0; i <= 5; i++)
         {
             lastshot[i] = 0;
