@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3653342402053941307}
   - component: {fileID: 5106507069530216065}
   - component: {fileID: 5116647280047851044}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FrostCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

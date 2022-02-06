@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -3477271980455513503}
   - component: {fileID: -4714699007419203600}
   - component: {fileID: 594421388289297685}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: IceSpray
   m_TagString: Untagged
   m_Icon: {fileID: 0}

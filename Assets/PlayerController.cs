@@ -42,8 +42,8 @@ public class PlayerController : MonoBehaviour
     private float speedCD;
     private bool speedUpOn;
     private int speedIncrease;
-    private float lastshot;
-    private float castInterval = 0; //defualt untill first spell is cast;
+    private float[] lastshot = new float[6];
+    private float[] castInterval = new float[6]; //defualt untill first spell is cast;
 
 
     // Start is called before the first frame update
@@ -64,6 +64,11 @@ public class PlayerController : MonoBehaviour
         ESpellIcon[2].color = Color.grey;
         ESpellIcon[3].color = Color.grey;
         ESpellIcon[4].color = Color.grey;
+        for (int i = 0; i <= 5; i++)
+        {
+            lastshot[i] = 0;
+            castInterval[i] = 0;
+        }
     }
 
     // Update is called once per frame
@@ -276,12 +281,12 @@ public class PlayerController : MonoBehaviour
     private void Shoot() 
     {
         if (PauseMenu.gameIsPaused || Time.timeScale == 0) { return; }
-        if (Time.time - lastshot < castInterval) { return; }
-        lastshot = Time.time;
+        if (Time.time - lastshot[curAtk] < castInterval[curAtk]) { return; }
+        lastshot[curAtk] = Time.time;
         GameObject bullet = Instantiate(attacks[curAtk], spawnBulletPoint.position, spawnBulletPoint.rotation);
         AttackType attackType = bullet.GetComponent<AttackType>();
         Rigidbody2D attackRB = bullet.GetComponent<Rigidbody2D>();
-        castInterval = attackType.castInterval;
+        castInterval[curAtk] = attackType.castInterval;
 
         // Play bullet sound
         switch (curAtk)

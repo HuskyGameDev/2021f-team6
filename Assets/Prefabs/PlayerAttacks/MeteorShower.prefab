@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -3170792169077829336}
   - component: {fileID: 1643827107618775341}
   - component: {fileID: 293054878925136738}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MeteorShower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_Sprite: {fileID: -2413806693520163455, guid: 4adeaf2d2b1c7417e89f026626d8264f, type: 3}
   m_Color: {r: 0.6509434, g: 0.052812412, b: 0.052812412, a: 1}
   m_FlipX: 0
