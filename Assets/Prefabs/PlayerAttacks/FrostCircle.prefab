@@ -175,6 +175,9 @@ MonoBehaviour:
   speed: 0
   lifespan: 4
   type: ice
+  hold: 0
+  spread: 0
+  castInterval: 2
   aoe: 1
   aoeSpeed: 0.4
 --- !u!114 &5116647280047851044

@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public int hp;                  //player health points
 
     public GameObject SpellNotOwnedAlert;
-    public Image[] ESpellIcon = new Image[5];
+    public Image[] ESpellIcon = new Image[6];
     public GameObject[] attacks;    //list of available attacks
     public static int curAtk = 0;         //index of the current attack in attacks[]
     [Range(0.5f,1.5f)]
@@ -42,6 +42,8 @@ public class PlayerController : MonoBehaviour
     private float speedCD;
     private bool speedUpOn;
     private int speedIncrease;
+    private float lastshot;
+    private float castInterval = 0; //defualt untill first spell is cast;
 
 
     // Start is called before the first frame update
@@ -88,8 +90,6 @@ public class PlayerController : MonoBehaviour
         if (hp < 0)
             hp = 0;
 
-        if (Input.GetKeyDown(KeyCode.Mouse0)) 
-            Shoot();
         if (Input.GetKey(KeyCode.Mouse0) && held)
         {
             holdCool += Time.deltaTime;
@@ -104,6 +104,10 @@ public class PlayerController : MonoBehaviour
             holdCool = 0;
             held = false;
         }
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            Shoot();
+        }
 
         //weapon switching with numbers
         //nutrual spell
@@ -115,6 +119,7 @@ public class PlayerController : MonoBehaviour
             ESpellIcon[2].color = Color.grey;
             ESpellIcon[3].color = Color.grey;
             ESpellIcon[4].color = Color.grey;
+            ESpellIcon[5].color = Color.grey;
         }
         //Fire spell
         if (Input.GetKeyDown(KeyCode.Alpha2))
@@ -127,6 +132,7 @@ public class PlayerController : MonoBehaviour
                 ESpellIcon[2].color = Color.grey;
                 ESpellIcon[3].color = Color.grey;
                 ESpellIcon[4].color = Color.grey;
+                ESpellIcon[5].color = Color.grey;
             }
             else
             {
@@ -145,6 +151,7 @@ public class PlayerController : MonoBehaviour
                 ESpellIcon[2].color = Color.white;
                 ESpellIcon[3].color = Color.grey;
                 ESpellIcon[4].color = Color.grey;
+                ESpellIcon[5].color = Color.grey;
             }
             else
             {
@@ -163,6 +170,7 @@ public class PlayerController : MonoBehaviour
                 ESpellIcon[2].color = Color.grey;
                 ESpellIcon[3].color = Color.white;
                 ESpellIcon[4].color = Color.grey;
+                ESpellIcon[5].color = Color.grey;
             }
             else
             {
@@ -170,7 +178,7 @@ public class PlayerController : MonoBehaviour
                 ShowSpellNotOwnedAlert();
             }
         }
-        //Earth spell
+        //ice spray spell
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
             if (Store.ESpellOwned[3])
@@ -181,6 +189,26 @@ public class PlayerController : MonoBehaviour
                 ESpellIcon[2].color = Color.grey;
                 ESpellIcon[3].color = Color.grey;
                 ESpellIcon[4].color = Color.white;
+                ESpellIcon[5].color = Color.grey;
+            }
+            else
+            {
+                //Show alert
+                ShowSpellNotOwnedAlert();
+            }
+        }
+        //meteor shower spell
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            if (Store.ESpellOwned[4])
+            {
+                curAtk = 5;
+                ESpellIcon[0].color = Color.grey;
+                ESpellIcon[1].color = Color.grey;
+                ESpellIcon[2].color = Color.grey;
+                ESpellIcon[3].color = Color.grey;
+                ESpellIcon[4].color = Color.grey;
+                ESpellIcon[5].color = Color.white;
             }
             else
             {
@@ -247,10 +275,13 @@ public class PlayerController : MonoBehaviour
     //fire the current weapon
     private void Shoot() 
     {
-        if (PauseMenu.gameIsPaused || Time.timeScale == 0) return;
+        if (PauseMenu.gameIsPaused || Time.timeScale == 0) { return; }
+        if (Time.time - lastshot < castInterval) { return; }
+        lastshot = Time.time;
         GameObject bullet = Instantiate(attacks[curAtk], spawnBulletPoint.position, spawnBulletPoint.rotation);
         AttackType attackType = bullet.GetComponent<AttackType>();
         Rigidbody2D attackRB = bullet.GetComponent<Rigidbody2D>();
+        castInterval = attackType.castInterval;
 
         // Play bullet sound
         switch (curAtk)

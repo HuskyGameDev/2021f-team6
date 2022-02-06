@@ -12,6 +12,7 @@ public class AttackType : MonoBehaviour
 
     public bool hold;
     public float spread;
+    public float castInterval;
 
     public bool aoe; //whether or not the attack is a aoe or effect vs. single-hit projectile
     public float aoeSpeed;  //how fast the aoe affect applies damage

@@ -139,5 +139,6 @@ MonoBehaviour:
   type: lightning
   hold: 0
   spread: 0
+  castInterval: 0.5
   aoe: 0
   aoeSpeed: 0

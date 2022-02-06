@@ -11,8 +11,8 @@ public class Store : MonoBehaviour
     public GameObject NeedGoldAlert;
 
     //Elemental Spells
-    public Text[] ESpellCost = new Text[4];
-    public static bool[] ESpellOwned = new bool[4];
+    public Text[] ESpellCost = new Text[5];
+    public static bool[] ESpellOwned = new bool[5];
 
     //Ability Upgrades
     public Text[] UpgradeAmount = new Text[1];
@@ -39,7 +39,7 @@ public class Store : MonoBehaviour
     //Restores Store Default values
     public void StoreDefault()
     {
-        Gold = 0;
+        Gold = 1000;
         //Upgrade defaults
         for (int i = 0; i < 1; i++)
         {
@@ -49,7 +49,7 @@ public class Store : MonoBehaviour
             UpgradeCost[i].text = 100 + "gp";
         }
         //Elemental Spell defaults
-        for(int i = 0; i < 4; i++)
+        for(int i = 0; i <= 4; i++)
         {
             ESpellOwned[i] = false;
         }
@@ -57,6 +57,7 @@ public class Store : MonoBehaviour
         ESpellCost[1].text = "200 gp";
         ESpellCost[2].text = "200 gp";
         ESpellCost[3].text = "100 gp";
+        ESpellCost[4].text = "100 gp";
         /*//Power Spell defaults
         for (int i = 0; i < 10; i++)
         {
@@ -113,7 +114,7 @@ public class Store : MonoBehaviour
             Gold -= 200;
             ESpellOwned[1] = true;
         }
-        else if (!ESpellOwned[0] && Gold < 100) { ShowNeedGoldAlert(); }
+        else if (!ESpellOwned[1] && Gold < 100) { ShowNeedGoldAlert(); }
     }
     public void Frostwave()
     {
@@ -124,19 +125,32 @@ public class Store : MonoBehaviour
             Gold -= 200;
             ESpellOwned[2] = true;
         }
-        else if (!ESpellOwned[0] && Gold < 100) { ShowNeedGoldAlert(); }
+        else if (!ESpellOwned[2] && Gold < 100) { ShowNeedGoldAlert(); }
     }
-    public void Spell5()
+    public void IceSpray()
     {
-        // spell is ESpell[3]
+        // Ice Spray spell is ESpell[3]
         if (!ESpellOwned[3] && Gold >= 100) //if not owned and can buy
         {
             ESpellCost[3].text = "Owned";
             Gold -= 100;
             ESpellOwned[3] = true;
         }
-        else if (!ESpellOwned[0] && Gold < 100) { ShowNeedGoldAlert(); }
+        else if (!ESpellOwned[3] && Gold < 100) { ShowNeedGoldAlert(); }
     }
+    public void MeteorShower()
+    {
+        // MeteorShower spell is ESpell[4]
+        if (!ESpellOwned[4] && Gold >= 100) //if not owned and can buy
+        {
+            ESpellCost[4].text = "Owned";
+            Gold -= 100;
+            ESpellOwned[4] = true;
+        }
+        else if (!ESpellOwned[4] && Gold < 100) { ShowNeedGoldAlert(); }
+    }
+
+
     public void ShowNeedGoldAlert()
     {
         NeedGoldAlert.SetActive(true);

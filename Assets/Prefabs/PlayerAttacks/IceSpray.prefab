@@ -176,5 +176,6 @@ MonoBehaviour:
   type: ice
   hold: 1
   spread: 20
+  castInterval: 0
   aoe: 0
   aoeSpeed: 0
