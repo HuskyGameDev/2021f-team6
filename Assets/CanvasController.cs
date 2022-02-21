@@ -28,6 +28,7 @@ public class CanvasController : MonoBehaviour
     private float buildingHealthBar;
     private float buildingHealthbarSet;
     public Text buildingHealthText;
+    public int totalBuildingHealth;
 
     public Text timerText;
     private float startTime;
@@ -71,6 +72,7 @@ public class CanvasController : MonoBehaviour
         monsterSpawner = GameObject.Find("Monster Spawner");
         playerHealthbarSet = playerController.hp;
         playerTextHealthSet = playerController.hp;
+        totalBuildingHealth = 100;
         buildingHealthbarSet = 100;
         buildingTextHealthSet = 100;
         startTheTimer();
@@ -96,7 +98,7 @@ public class CanvasController : MonoBehaviour
             playerHealthText.text = "HP: " + healthBarText;
         }
 
-        int totalBuildingHealth = 0;
+        totalBuildingHealth = 0;
         foreach (GameObject currentBuilding in building)
         {
             totalBuildingHealth += currentBuilding.GetComponent<BuildingController>().health;
