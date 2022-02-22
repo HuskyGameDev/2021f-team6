@@ -25,7 +25,7 @@ public class FrostCircleController : MonoBehaviour
         if (transform.localScale.x < maxSize)
         {
             transform.localScale += expand * Time.deltaTime;
-            rigidBody.rotation += 360 * Time.deltaTime;
+            //rigidBody.rotation += 360 * Time.deltaTime;
         }
     }
 }
