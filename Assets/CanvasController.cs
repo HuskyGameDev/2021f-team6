@@ -81,9 +81,10 @@ public class CanvasController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        levelText.text = "Wave: " +currentLevel.ToString();
-        scoreText.text = "Score: " +currentScore.ToString();
-        monsterText.text = "Monsters Remaining: " + monsterSpawner.GetComponent<MonsterSpawner>().monsterCount;
+        levelText.text = "" +currentLevel.ToString();
+        scoreText.text = "" +currentScore.ToString();
+        //monsterText.text = "Monsters Remaining: " + monsterSpawner.GetComponent<MonsterSpawner>().monsterCount;
+        monsterText.text = "" + monsterSpawner.GetComponent<MonsterSpawner>().monsterCount;
         float currentHealthBar = playerController.hp;
         int currentHealthText = playerController.hp;
         playerHealthBar = currentHealthBar / playerHealthbarSet;
@@ -182,9 +183,9 @@ public class CanvasController : MonoBehaviour
         if ((playerController.isDead() && !gamePause) || (!gamePause && buildingHealthBar <= 0))
         {
             stopTheTimer();
-            GO_waves.text = "Waves: " + currentLevel.ToString();
-            GO_score.text = "Score: " + currentScore.ToString();
-            GO_time.text = "Time: " + minutes + ":" + seconds;
+            GO_waves.text = "" + currentLevel.ToString();
+            GO_score.text = "" + currentScore.ToString();
+            GO_time.text = "" + minutes + ":" + seconds;
             GameOverMenuUI.SetActive(true);
             UI.SetActive(false);
             Time.timeScale = 0;
