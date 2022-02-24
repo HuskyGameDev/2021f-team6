@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -6705076714541447209}
   - component: {fileID: 8339241885271110876}
   - component: {fileID: -3922851982599716575}
+  - component: {fileID: 5878071478951409426}
   m_Layer: 0
   m_Name: Spider_I
   m_TagString: Enemy
@@ -124,6 +125,7 @@ MonoBehaviour:
   Rusher: 0
   Teleporter: 0
   Coward: 0
+  animator: {fileID: 0}
   type: default
   slowed: 0
 --- !u!50 &-3922851982599716575
@@ -147,3 +149,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &5878071478951409426
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6585015948341932885}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6f80f162d558c334a98eeaa00a255823, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8339241885271110876}
   - component: {fileID: -3922851982599716575}
   - component: {fileID: 2812727834823262904}
+  - component: {fileID: 516584158261216101}
   m_Layer: 0
   m_Name: Desert Worm
   m_TagString: Enemy
@@ -175,3 +176,22 @@ PolygonCollider2D:
       - {x: -0.048556596, y: -0.08879055}
       - {x: 0.089999996, y: 0.015}
       - {x: 0.031543, y: -0.004176244}
+--- !u!95 &516584158261216101
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6585015948341932885}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 072b0d10ee1e6904dba69c5e1195f762, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
