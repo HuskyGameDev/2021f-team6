@@ -9,6 +9,7 @@ public class CanvasController : MonoBehaviour
     public GameObject heart;
     public GameObject shield;
     public GameObject speedUp;
+    public GameObject quicktime;
 
     private bool gamePause;
     public GameObject CanvasUI;
@@ -127,7 +128,7 @@ public class CanvasController : MonoBehaviour
         {
             if (canReward)
             {
-                int randomNumber = Random.Range(0, 4);
+                int randomNumber = Random.Range(0, 5);
                 Debug.Log(randomNumber);
                 if (randomNumber == 0)
                 {
@@ -157,6 +158,14 @@ public class CanvasController : MonoBehaviour
                     {
                         playerController.shieldOn = true;
                         playerController.countdown = Time.time + playerController.cooldown;
+                    }
+                }
+                else if (randomNumber == 4)
+                {
+                    if (!playerController.isDead())
+                    {
+                        playerController.quicktimeOn = true;
+                        playerController.quicktimeCD = Time.time + playerController.quicktimeCD;
                     }
                 }
                 canReward = false;

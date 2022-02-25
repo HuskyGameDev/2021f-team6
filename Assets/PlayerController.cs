@@ -6,8 +6,11 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     public GameObject shield;
+    public GameObject quicktime;
     [HideInInspector]
     public bool shieldOn;
+    public bool quicktimeOn;
+    public float quicktimeCD;
     //object components
     private Rigidbody2D rigidBody;
 
@@ -42,6 +45,7 @@ public class PlayerController : MonoBehaviour
     private float speedCD;
     private bool speedUpOn;
     private int speedIncrease;
+    private double quicktimeMultiplier; //how much faster you can fire spells
     private float[] lastshot = new float[6];
     private float[] castInterval = new float[6]; //defualt untill first spell is cast;
 
@@ -55,8 +59,11 @@ public class PlayerController : MonoBehaviour
         speedSlowDownTime = 5;
         countdown = 0;
         speedCD = 0;
+        quicktimeCD = 3;
+        quicktimeMultiplier = 1;
         shieldOn = false;
         speedUpOn = false;
+        quicktimeOn = false;
         rigidBody = GetComponent<Rigidbody2D>();
         hp = 100;
         ESpellIcon[0].color = Color.white;
@@ -91,6 +98,15 @@ public class PlayerController : MonoBehaviour
                 speedUpOn = false;
                 moveSpeed = moveSpeed - speedIncrease;
                 speedIncrease = 0;
+            }
+        }
+        if (quicktimeOn)
+        {
+            quicktimeMultiplier = 1.5;
+            if (Time.time > quicktimeCD)
+            {
+                quicktimeOn = false;
+                quicktimeMultiplier = 1;
             }
         }
         if (hp < 0)
@@ -282,7 +298,7 @@ public class PlayerController : MonoBehaviour
     private void Shoot() 
     {
         if (PauseMenu.gameIsPaused || Time.timeScale == 0) { return; }
-        if (Time.time - lastshot[curAtk] < castInterval[curAtk]) { return; }
+        if (Time.time - lastshot[curAtk] < castInterval[curAtk] / quicktimeMultiplier) { return; }
         lastshot[curAtk] = Time.time;
         GameObject bullet = Instantiate(attacks[curAtk], spawnBulletPoint.position, spawnBulletPoint.rotation);
         AttackType attackType = bullet.GetComponent<AttackType>();

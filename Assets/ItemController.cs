@@ -51,6 +51,15 @@ public class ItemController : MonoBehaviour
                 }
                 Destroy(this.gameObject);
             }
+            else if (itemName == "Quicktime")
+            {
+                //Debug.Log("Quicktime");
+                if (!playerScript.isDead())
+                {
+                    playerScript.quicktimeOn = true;
+                }
+                Destroy(this.gameObject);
+            }
         }
     }
 }

@@ -3,7 +3,14 @@ guid: 7aa0ea9af610e51468573af13dc98eb3
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - shield: {instanceID: 0}
+  - quicktime: {fileID: 514892533813278861, guid: 31c547d85e224c943b574799b8e123eb, type: 3}
+  - SpellNotOwnedAlert: {instanceID: 0}
+  - spawnBlood: {instanceID: 0}
+  - hitBlood: {instanceID: 0}
+  - bloodObject: {instanceID: 0}
+  - spawnBulletPoint: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

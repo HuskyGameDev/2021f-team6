@@ -3,7 +3,28 @@ guid: c1713049f95b263489a44f1b676485a4
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - heart: {instanceID: 0}
+  - shield: {instanceID: 0}
+  - speedUp: {instanceID: 0}
+  - quicktime: {fileID: 514892533813278861, guid: 31c547d85e224c943b574799b8e123eb, type: 3}
+  - CanvasUI: {instanceID: 0}
+  - Shelf: {instanceID: 0}
+  - playerHealthBarImage: {instanceID: 0}
+  - playerHealthText: {instanceID: 0}
+  - buildingHealthBarImage: {instanceID: 0}
+  - buildingHealthText: {instanceID: 0}
+  - timerText: {instanceID: 0}
+  - levelText: {instanceID: 0}
+  - monsterText: {instanceID: 0}
+  - scoreText: {instanceID: 0}
+  - UI: {instanceID: 0}
+  - GameOverMenuUI: {instanceID: 0}
+  - GO_waves: {instanceID: 0}
+  - GO_score: {instanceID: 0}
+  - GO_time: {instanceID: 0}
+  - pauseMenuUI: {instanceID: 0}
+  - storeMenu: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
