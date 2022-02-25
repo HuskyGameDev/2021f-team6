@@ -26,6 +26,7 @@ public class MonsterBehavior : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer sr;
 
+    private Animator animator;
     public string type = "default";    //elemental type of the monster
     public float slowed;    //time in seconds that the monster is slowed by an ice effect
     private Color iced = new Color(0f, 1f, 1f, .8f);    //color shift for iced monsters
@@ -41,6 +42,7 @@ public class MonsterBehavior : MonoBehaviour
     void Start()
     {
         //Send the creature on its way
+        animator = GetComponent<Animator>();
         t = GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
@@ -112,14 +114,17 @@ public class MonsterBehavior : MonoBehaviour
 
         if (Rusher)
         {
+            
             if (FindDistancetoPlayer() < 10 && charge % 3000 >= 0 && charge % 3000 <= 60)
             {
+                animator.SetBool("Dash", true);
                 WalkSpeed = 32;
                 rb.velocity = rb.velocity.normalized * WalkSpeed;
 
             }
             else
             {
+                animator.SetBool("Dash", false);
                 WalkSpeed = 2;
 
             }
@@ -129,6 +134,7 @@ public class MonsterBehavior : MonoBehaviour
         {
             if (charge % timing == 0)
             {
+                animator.SetTrigger("Shoot");
                 if (projectile.tag == "Enemy")
                 {
                     GameObject monsterbullet = Instantiate(projectile, transform.position, transform.rotation);
@@ -142,6 +148,7 @@ public class MonsterBehavior : MonoBehaviour
             }
 
             timing = Random.Range(300, 1000);
+            
         }
 
         if (Teleporter)

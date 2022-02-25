@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8339241885271110876}
   - component: {fileID: -3922851982599716575}
   - component: {fileID: 8570527578392386284}
+  - component: {fileID: -4316009541068138666}
   m_Layer: 0
   m_Name: Eggsac_I
   m_TagString: Enemy
@@ -101,12 +102,14 @@ MonoBehaviour:
   WalkSpeed: 0
   aim: {x: 0, y: 0}
   dmg: 5
+  actionRate: 0
   projectile: {fileID: 6585015948341932885, guid: ddce9a42734d2514cbac23bef7db5815, type: 3}
   Walker: 0
   Shooter: 1
   Rusher: 0
   Teleporter: 0
   Coward: 0
+  animator: {fileID: 0}
   type: default
   slowed: 0
 --- !u!50 &-3922851982599716575
@@ -146,3 +149,22 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.05}
   m_Size: {x: 0.8, y: 0.7882197}
   m_Direction: 0
+--- !u!95 &-4316009541068138666
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6585015948341932885}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 96c755483498ad247a821a5c65247692, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
