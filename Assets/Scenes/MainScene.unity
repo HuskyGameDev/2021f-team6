@@ -59394,7 +59394,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shield: {fileID: 1853527812}
+  quicktime: {fileID: 0}
   shieldOn: 0
+  quicktimeOn: 0
+  quicktimeCD: 0
   moveSpeed: 10
   rotateSpeed: 20
   hp: 100
@@ -76948,8 +76951,9 @@ MonoBehaviour:
   heart: {fileID: 4552891784024593114, guid: 969329b16b1cb844fb52cceccc275a7a, type: 3}
   shield: {fileID: 6211589933173304596, guid: e2cbc6026d374a447993ff8975d567a9, type: 3}
   speedUp: {fileID: 7865123413073153464, guid: 42efd72994baa644a8356543962a2a69, type: 3}
+  quicktime: {fileID: 514892533813278861, guid: 31c547d85e224c943b574799b8e123eb, type: 3}
   CanvasUI: {fileID: 1943033635}
-  Shelf: {fileID: 0}
+  Shelf: {fileID: 1024196924}
   playerHealthBarImage: {fileID: 1737254016}
   playerHealthText: {fileID: 1254085316}
   building:
