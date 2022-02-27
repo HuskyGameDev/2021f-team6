@@ -202,26 +202,31 @@ public class MonsterBehavior : MonoBehaviour
         {
             //Run the animation for death and shut down the object
             monsterSpawner.GetComponent<MonsterSpawner>().monsterCount--;
-            int randomNumber = Random.Range(0, 4);
-            if (randomNumber == 0)
+            int drops = Random.Range(0, 100);
+            if (drops < 25)
             {
-                Instantiate(GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().heart, 
-                    transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-            }
-            else if (randomNumber == 1)
-            {
-                Instantiate(GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().shield,
-                    transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-            }
-            else if (randomNumber == 2)
-            {
-                Instantiate(GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().speedUp,
-                    transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-            }
-            else if (randomNumber == 3)
-            {
-                Instantiate(GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().quicktime,
-                    transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+                int randomNumber = Random.Range(0, 4);
+                if (randomNumber == 0)
+                {
+                    Instantiate(GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().heart,
+                        transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+                }
+                else if (randomNumber == 1)
+                {
+                    Instantiate(GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().shield,
+                        transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+                }
+                else if (randomNumber == 2)
+                {
+                    Instantiate(GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().speedUp,
+                        transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+                }
+                else if (randomNumber == 3)
+                {
+                    Instantiate(GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().quicktime,
+                        transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+                }
+                
             }
             Store.Gold += 15;
             Destroy(gameObject);
