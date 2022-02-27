@@ -24,9 +24,11 @@ public class GameOverMenu : MonoBehaviour
         {
             GameOverMenuUI.SetActive(true);
             Time.timeScale = 0f;
+            //get stats
             waves.text = "Waves: "+ GameObject.Find("Canvas").GetComponent<CanvasController>().currentLevel;
             score.text = "Score: "+ GameObject.Find("Canvas").GetComponent<CanvasController>().currentScore;
             time.text = "Time: " +GameObject.Find("Canvas").GetComponent<CanvasController>().minutes + ":" + GameObject.Find("Canvas").GetComponent<CanvasController>().seconds;
+            GameObject.Find("Store").GetComponent<Store>().StoreDefault(); // reset spells
         }
     }
 
