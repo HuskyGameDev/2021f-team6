@@ -69,6 +69,7 @@ public class MonsterBehavior : MonoBehaviour
 
         if (Walker)
         {
+            int dodgechance = Random.Range(0, 100);
             float shortest = Mathf.Infinity;
             GameObject closest = null;
             foreach(GameObject building in buildings)
@@ -97,11 +98,23 @@ public class MonsterBehavior : MonoBehaviour
                 //transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg)), 10);
             }
 
-
-            if (rb.velocity.magnitude > WalkSpeed)
+            if (dodgechance < intelligence)
             {
-                rb.velocity = rb.velocity.normalized * WalkSpeed;
+                //Steps:
+                //1. Find closest projectile
+                //2. Measure the difference in angle
+                float angle = 90;
+                angle *= Mathf.Deg2Rad;
+
+                rb.velocity = rb.velocity.normalized * WalkSpeed * new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+            } else
+            {
+                if (rb.velocity.magnitude > WalkSpeed)
+                {
+                    rb.velocity = rb.velocity.normalized * WalkSpeed;
+                }
             }
+            
 
             if (rb.velocity.x > 0)
             {
