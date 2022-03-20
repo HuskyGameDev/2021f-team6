@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     public int hp;                  //player health points
 
     public GameObject SpellNotOwnedAlert;
-    public Image[] ESpellIcon = new Image[6];
+    public Image[] ESpellIcon = new Image[7];
     public GameObject[] attacks;    //list of available attacks
     public static int curAtk = 0;         //index of the current attack in attacks[]
     [Range(0.5f,1.5f)]
@@ -46,8 +46,8 @@ public class PlayerController : MonoBehaviour
     private bool speedUpOn;
     private int speedIncrease;
     private double quicktimeMultiplier; //how much faster you can fire spells
-    private float[] lastshot = new float[6];
-    private float[] castInterval = new float[6]; //defualt untill first spell is cast;
+    private float[] lastshot = new float[7];
+    private float[] castInterval = new float[7]; //defualt untill first spell is cast;
 
 
     // Start is called before the first frame update
@@ -72,7 +72,8 @@ public class PlayerController : MonoBehaviour
         ESpellIcon[3].color = Color.grey;
         ESpellIcon[4].color = Color.grey;
         ESpellIcon[5].color = Color.grey;
-        for (int i = 0; i <= 5; i++)
+        ESpellIcon[6].color = Color.grey;
+        for (int i = 0; i <= 6; i++)
         {
             lastshot[i] = 0;
             castInterval[i] = 0;
@@ -142,6 +143,7 @@ public class PlayerController : MonoBehaviour
             ESpellIcon[3].color = Color.grey;
             ESpellIcon[4].color = Color.grey;
             ESpellIcon[5].color = Color.grey;
+            ESpellIcon[6].color = Color.grey;
         }
         //Fire spell
         if (Input.GetKeyDown(KeyCode.Alpha2))
@@ -155,6 +157,7 @@ public class PlayerController : MonoBehaviour
                 ESpellIcon[3].color = Color.grey;
                 ESpellIcon[4].color = Color.grey;
                 ESpellIcon[5].color = Color.grey;
+                ESpellIcon[6].color = Color.grey;
             }
             else
             {
@@ -174,6 +177,7 @@ public class PlayerController : MonoBehaviour
                 ESpellIcon[3].color = Color.grey;
                 ESpellIcon[4].color = Color.grey;
                 ESpellIcon[5].color = Color.grey;
+                ESpellIcon[6].color = Color.grey;
             }
             else
             {
@@ -193,6 +197,7 @@ public class PlayerController : MonoBehaviour
                 ESpellIcon[3].color = Color.white;
                 ESpellIcon[4].color = Color.grey;
                 ESpellIcon[5].color = Color.grey;
+                ESpellIcon[6].color = Color.grey;
             }
             else
             {
@@ -212,6 +217,7 @@ public class PlayerController : MonoBehaviour
                 ESpellIcon[3].color = Color.grey;
                 ESpellIcon[4].color = Color.white;
                 ESpellIcon[5].color = Color.grey;
+                ESpellIcon[6].color = Color.grey;
             }
             else
             {
@@ -231,6 +237,27 @@ public class PlayerController : MonoBehaviour
                 ESpellIcon[3].color = Color.grey;
                 ESpellIcon[4].color = Color.grey;
                 ESpellIcon[5].color = Color.white;
+                ESpellIcon[6].color = Color.grey;
+            }
+            else
+            {
+                //Show alert
+                ShowSpellNotOwnedAlert();
+            }
+        }
+        //Flame Dash
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            if (Store.ESpellOwned[5])
+            {
+                curAtk = 6;
+                ESpellIcon[0].color = Color.grey;
+                ESpellIcon[1].color = Color.grey;
+                ESpellIcon[2].color = Color.grey;
+                ESpellIcon[3].color = Color.grey;
+                ESpellIcon[4].color = Color.grey;
+                ESpellIcon[5].color = Color.grey;
+                ESpellIcon[6].color = Color.white;
             }
             else
             {
