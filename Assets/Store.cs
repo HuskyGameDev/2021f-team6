@@ -11,8 +11,8 @@ public class Store : MonoBehaviour
     public GameObject NeedGoldAlert;
 
     //Elemental Spells
-    public Text[] ESpellCost = new Text[5];
-    public static bool[] ESpellOwned = new bool[5];
+    public Text[] ESpellCost = new Text[6];
+    public static bool[] ESpellOwned = new bool[6];
 
     //Ability Upgrades
     public Text[] UpgradeAmount = new Text[1];
@@ -49,15 +49,17 @@ public class Store : MonoBehaviour
             UpgradeCost[i].text = 100 + "gp";
         }
         //Elemental Spell defaults
-        for(int i = 0; i <= 4; i++)
+        for(int i = 0; i <= 5; i++)
         {
             ESpellOwned[i] = false;
         }
+
         ESpellCost[0].text = "150 gp";
         ESpellCost[1].text = "200 gp";
         ESpellCost[2].text = "200 gp";
         ESpellCost[3].text = "100 gp";
         ESpellCost[4].text = "100 gp";
+        ESpellCost[5].text = "100 gp";
         /*//Power Spell defaults
         for (int i = 0; i < 10; i++)
         {
@@ -148,6 +150,17 @@ public class Store : MonoBehaviour
             ESpellOwned[4] = true;
         }
         else if (!ESpellOwned[4] && Gold < 100) { ShowNeedGoldAlert(); }
+    }
+    public void FlameDash()
+    {
+        // MeteorShower spell is ESpell[4]
+        if (!ESpellOwned[5] && Gold >= 100) //if not owned and can buy
+        {
+            ESpellCost[5].text = "Owned";
+            Gold -= 100;
+            ESpellOwned[5] = true;
+        }
+        else if (!ESpellOwned[5] && Gold < 100) { ShowNeedGoldAlert(); }
     }
 
 

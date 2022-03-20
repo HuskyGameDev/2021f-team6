@@ -6,6 +6,7 @@ public class AttackType : MonoBehaviour
 {
     private Rigidbody2D rigidBody;
     private Collider2D thisCollider;
+    //private Rigidbody2D player;
 
     public float dmg, speed, lifespan;   //attack damage, projectile speed, lifespan in seconds
     public string type;
@@ -13,6 +14,7 @@ public class AttackType : MonoBehaviour
     public bool hold;
     public float spread;
     public float castInterval;
+    //public bool playerMover;
 
     public bool aoe; //whether or not the attack is a aoe or effect vs. single-hit projectile
     public float aoeSpeed;  //how fast the aoe affect applies damage
@@ -26,16 +28,21 @@ public class AttackType : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         thisCollider = GetComponent<Collider2D>();
+        //player = GameObject.Find("Player").GetComponent<Rigidbody2D>();
 
         //move proj away from player
-        float newX = Mathf.Cos(rigidBody.rotation * Mathf.Deg2Rad);
-        float newY = Mathf.Sin(rigidBody.rotation * Mathf.Deg2Rad);
+        //float newX = Mathf.Cos(rigidBody.rotation * Mathf.Deg2Rad);
+        //float newY = Mathf.Sin(rigidBody.rotation * Mathf.Deg2Rad);
         //transform.position += new Vector3(2f * newX, 2f * newY, 0 );
 
         rigidBody.AddRelativeForce(Vector2.right * speed);
+       // player.AddRelativeForce(Input.mousePosition * speed / 2);
 
-        if(lifespan > 0)
+        if (lifespan > 0)
+        {
             Destroy(gameObject, lifespan);
+            //player.AddRelativeForce(Vector3.forward);
+        }
     }
 
     // Update is called once per frame
