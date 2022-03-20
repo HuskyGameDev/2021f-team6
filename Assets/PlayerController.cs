@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public float countdown;
 
+    private Animator animator;
     private float speedSlowDownTime;
     private float speedCD;
     private bool speedUpOn;
@@ -66,6 +67,7 @@ public class PlayerController : MonoBehaviour
         quicktimeOn = false;
         rigidBody = GetComponent<Rigidbody2D>();
         hp = 100;
+        animator = GetComponent<Animator>();
         ESpellIcon[0].color = Color.white;
         ESpellIcon[1].color = Color.grey;
         ESpellIcon[2].color = Color.grey;
@@ -284,19 +286,31 @@ public class PlayerController : MonoBehaviour
 
             if (verticalinput > 0 && horizontalInput == 0) 
             {
-                GetComponent<SpriteRenderer>().sprite = characterSprite[1];
+                animator.SetBool("Down", false);
+                animator.SetBool("Left", false);
+                animator.SetBool("Right", false);
+                animator.SetBool("Up", true);
             }
             else if (verticalinput < 0 && horizontalInput == 0)
             {
-                GetComponent<SpriteRenderer>().sprite = characterSprite[0];
+                animator.SetBool("Up", false);
+                animator.SetBool("Left", false);
+                animator.SetBool("Right", false);
+                animator.SetBool("Down", true);
             }
             else if (horizontalInput > 0)
             {
-                GetComponent<SpriteRenderer>().sprite = characterSprite[2];
+                animator.SetBool("Down", false);
+                animator.SetBool("Up", false);
+                animator.SetBool("Left", false);
+                animator.SetBool("Right", true);
             }
             else if (horizontalInput < 0)
             {
-                GetComponent<SpriteRenderer>().sprite = characterSprite[3];
+                animator.SetBool("Down", false);
+                animator.SetBool("Up", false);
+                animator.SetBool("Right", false);
+                animator.SetBool("Left", true);
             }
 
             Vector3 input = new Vector3(horizontalInput, verticalinput, 0f);
@@ -359,6 +373,7 @@ public class PlayerController : MonoBehaviour
     }
     void Dead() 
     {
+        animator.SetTrigger("Dead");
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<PlayerController>().enabled = false;
         GetComponent<Collider2D>().enabled = false;
