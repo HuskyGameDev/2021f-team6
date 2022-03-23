@@ -284,14 +284,14 @@ public class PlayerController : MonoBehaviour
             float verticalinput = Input.GetAxis("Vertical");
             //Debug.Log(horizontalInput + " " + verticalinput);
 
-            if (verticalinput > 0 && horizontalInput == 0) 
+            if (verticalinput > 0 && Mathf.Abs(horizontalInput) < .2) 
             {
                 animator.SetBool("Down", false);
                 animator.SetBool("Left", false);
                 animator.SetBool("Right", false);
                 animator.SetBool("Up", true);
             }
-            else if (verticalinput < 0 && horizontalInput == 0)
+            else if (verticalinput < 0 && Mathf.Abs(horizontalInput) < .2)
             {
                 animator.SetBool("Up", false);
                 animator.SetBool("Left", false);
