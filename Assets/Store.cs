@@ -166,7 +166,7 @@ public class Store : MonoBehaviour
     public void TitdalWave()
     {
         // Titdalwave spell is ESpell[6]
-        if (!ESpellOwned[5] && Gold >= 300) //if not owned and can buy
+        if (!ESpellOwned[6] && Gold >= 300) //if not owned and can buy
         {
             ESpellCost[6].text = "Owned";
             Gold -= 300;
