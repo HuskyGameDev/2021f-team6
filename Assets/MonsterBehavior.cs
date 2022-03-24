@@ -37,6 +37,12 @@ public class MonsterBehavior : MonoBehaviour
     private GameObject monsterSpawner;
     private Transform t;
 
+    private CanvasController canvas;
+    public int notSus;
+    private bool lockout;
+    private float angle;
+    private int dodge_crg;
+
 
     // Start is called before the first frame update
     void Start()
@@ -51,7 +57,11 @@ public class MonsterBehavior : MonoBehaviour
         //rb.rotation = Mathf.Atan2(aim.y, aim.x) * Mathf.Rad2Deg + 90f;
         //rb.velocity += aim * WalkSpeed;
         charge = 0;
-        timing = Random.Range(300, 1000);
+        dodge_crg = 0;
+        lockout = false;
+        canvas = GameObject.Find("Canvas").GetComponent<CanvasController>();
+        notSus = (int)Mathf.Max(1, 300 - 2 * Mathf.Pow(canvas.currentLevel,1.5f));
+        timing = Random.Range(notSus, 1000);
         totalHealth = Health;
 
         player_rb = GameObject.Find("Player").GetComponent<Rigidbody2D>();
@@ -65,11 +75,11 @@ public class MonsterBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = aim * WalkSpeed;
+        
 
         if (Walker)
         {
-            int dodgechance = Random.Range(0, 100);
+            int dodgechance = Random.Range(0, 1000);
             float shortest = Mathf.Infinity;
             GameObject closest = null;
             foreach(GameObject building in buildings)
@@ -83,7 +93,51 @@ public class MonsterBehavior : MonoBehaviour
                 }
             }
 
-            if (FindDistancetoPlayer() < shortest)
+            GameObject[] projectiles = GameObject.FindGameObjectsWithTag("Projectile");
+            
+
+
+            
+            if (dodgechance < intelligence && FindDistancetoPlayer() < 10 && !lockout && projectiles.Length != 0)
+            {
+                //Find the angle from closest Projectile
+
+                float shortest_proj = Mathf.Infinity;
+                GameObject closest_proj = null;
+                foreach (GameObject projectile in projectiles)
+                {
+                    float curr_distance = Mathf.Abs(FindTargetDistance(projectile));
+                    GameObject curr_proj = projectile;
+                    if (curr_distance < shortest_proj)
+                    {
+                        shortest_proj = curr_distance;
+                        closest_proj = curr_proj;
+                    }
+                }
+                Vector2 closestVel = closest_proj.GetComponent<Rigidbody2D>().velocity;
+
+                if (FindTargetDistance(closest_proj) <= 10)
+                {
+                    if (Vector2.SignedAngle(rb.velocity, closestVel) > 0)
+                    {
+                        rb.velocity = Vector2.Perpendicular(closest_proj.GetComponent<Rigidbody2D>().velocity);
+                    }
+                    else
+                    {
+                        rb.velocity = -Vector2.Perpendicular(closest_proj.GetComponent<Rigidbody2D>().velocity);
+                    }
+
+                    lockout = true;
+                    dodge_crg = charge;
+                }
+                
+
+            }
+            else if (lockout)
+            {
+                lockout = (charge <= (dodge_crg + 100));
+            }
+            else if (FindDistancetoPlayer() < shortest + 15)
             {
                 rb.velocity = ((player_rb.position - rb.position));
             }
@@ -92,29 +146,10 @@ public class MonsterBehavior : MonoBehaviour
                 rb.velocity = ((closest.GetComponent<Rigidbody2D>().position - rb.position));
             }
 
-            rb.velocity = ((player_rb.position - rb.position));
-            if (rb.velocity != Vector2.zero)
+            if (rb.velocity.magnitude > WalkSpeed && !lockout)
             {
-                //transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg)), 10);
+                rb.velocity = rb.velocity.normalized * WalkSpeed;
             }
-
-            if (dodgechance < intelligence)
-            {
-                //Steps:
-                //1. Find closest projectile
-                //2. Measure the difference in angle
-                float angle = 90;
-                angle *= Mathf.Deg2Rad;
-
-                rb.velocity = rb.velocity.normalized * WalkSpeed * new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-            } else
-            {
-                if (rb.velocity.magnitude > WalkSpeed)
-                {
-                    rb.velocity = rb.velocity.normalized * WalkSpeed;
-                }
-            }
-            
 
             if (rb.velocity.x > 0)
             {
@@ -160,7 +195,7 @@ public class MonsterBehavior : MonoBehaviour
                 
             }
 
-            timing = Random.Range(300, 1000);
+            timing = Random.Range((int)notSus, 1000);
             
         }
 
