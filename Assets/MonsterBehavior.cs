@@ -56,7 +56,7 @@ public class MonsterBehavior : MonoBehaviour
         aim = aim.normalized;
         //rb.rotation = Mathf.Atan2(aim.y, aim.x) * Mathf.Rad2Deg + 90f;
         //rb.velocity += aim * WalkSpeed;
-        charge = 0;
+        charge = Random.Range(0, 1000);
         dodge_crg = 0;
         lockout = false;
         canvas = GameObject.Find("Canvas").GetComponent<CanvasController>();

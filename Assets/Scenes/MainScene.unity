@@ -74715,7 +74715,7 @@ MonoBehaviour:
   - {fileID: 6585015948341932885, guid: ed20af27d5ff38b419a0f75bfb259cce, type: 3}
   storeMenuUI: {fileID: 1032853106}
   UI: {fileID: 408372533}
-  monster_Int: 0
+  monster_Int: 1
 --- !u!1 &1714954817
 GameObject:
   m_ObjectHideFlags: 0
