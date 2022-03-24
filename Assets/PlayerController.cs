@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     public int hp;                  //player health points
 
     public GameObject SpellNotOwnedAlert;
-    public Image[] ESpellIcon = new Image[7];
+    public Image[] ESpellIcon = new Image[8]; //defined in player object
     public GameObject[] attacks;    //list of available attacks
     public static int curAtk = 0;         //index of the current attack in attacks[]
     [Range(0.5f,1.5f)]
@@ -47,15 +47,15 @@ public class PlayerController : MonoBehaviour
     private bool speedUpOn;
     private int speedIncrease;
     private double quicktimeMultiplier; //how much faster you can fire spells
-    private float[] lastshot = new float[7];
-    private float[] castInterval = new float[7]; //defualt untill first spell is cast;
+    private float[] lastshot = new float[8];
+    private float[] castInterval = new float[8]; //defualt untill first spell is cast;
 
 
     // Start is called before the first frame update
     void Start()
     {
         
-
+        //defaults
         cooldown = 10;
         speedSlowDownTime = 5;
         countdown = 0;
@@ -68,13 +68,7 @@ public class PlayerController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         hp = 100;
         animator = GetComponent<Animator>();
-        ESpellIcon[0].color = Color.white;
-        ESpellIcon[1].color = Color.grey;
-        ESpellIcon[2].color = Color.grey;
-        ESpellIcon[3].color = Color.grey;
-        ESpellIcon[4].color = Color.grey;
-        ESpellIcon[5].color = Color.grey;
-        ESpellIcon[6].color = Color.grey;
+        setSpellSelfActiveSpell(0);
         for (int i = 0; i <= 6; i++)
         {
             lastshot[i] = 0;
@@ -139,13 +133,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             curAtk = 0;
-            ESpellIcon[0].color = Color.white;
-            ESpellIcon[1].color = Color.grey;
-            ESpellIcon[2].color = Color.grey;
-            ESpellIcon[3].color = Color.grey;
-            ESpellIcon[4].color = Color.grey;
-            ESpellIcon[5].color = Color.grey;
-            ESpellIcon[6].color = Color.grey;
+            setSpellSelfActiveSpell(0);
         }
         //Fire spell
         if (Input.GetKeyDown(KeyCode.Alpha2))
@@ -153,13 +141,7 @@ public class PlayerController : MonoBehaviour
             if(Store.ESpellOwned[0])
             {
                 curAtk = 1;
-                ESpellIcon[0].color = Color.grey;
-                ESpellIcon[1].color = Color.white;
-                ESpellIcon[2].color = Color.grey;
-                ESpellIcon[3].color = Color.grey;
-                ESpellIcon[4].color = Color.grey;
-                ESpellIcon[5].color = Color.grey;
-                ESpellIcon[6].color = Color.grey;
+                setSpellSelfActiveSpell(1);
             }
             else
             {
@@ -173,13 +155,7 @@ public class PlayerController : MonoBehaviour
             if (Store.ESpellOwned[1])
             {
                 curAtk = 2;
-                ESpellIcon[0].color = Color.grey;
-                ESpellIcon[1].color = Color.grey;
-                ESpellIcon[2].color = Color.white;
-                ESpellIcon[3].color = Color.grey;
-                ESpellIcon[4].color = Color.grey;
-                ESpellIcon[5].color = Color.grey;
-                ESpellIcon[6].color = Color.grey;
+                setSpellSelfActiveSpell(2);
             }
             else
             {
@@ -193,13 +169,7 @@ public class PlayerController : MonoBehaviour
             if (Store.ESpellOwned[2])
             {
                 curAtk = 3;
-                ESpellIcon[0].color = Color.grey;
-                ESpellIcon[1].color = Color.grey;
-                ESpellIcon[2].color = Color.grey;
-                ESpellIcon[3].color = Color.white;
-                ESpellIcon[4].color = Color.grey;
-                ESpellIcon[5].color = Color.grey;
-                ESpellIcon[6].color = Color.grey;
+                setSpellSelfActiveSpell(3);
             }
             else
             {
@@ -213,13 +183,7 @@ public class PlayerController : MonoBehaviour
             if (Store.ESpellOwned[3])
             {
                 curAtk = 4;
-                ESpellIcon[0].color = Color.grey;
-                ESpellIcon[1].color = Color.grey;
-                ESpellIcon[2].color = Color.grey;
-                ESpellIcon[3].color = Color.grey;
-                ESpellIcon[4].color = Color.white;
-                ESpellIcon[5].color = Color.grey;
-                ESpellIcon[6].color = Color.grey;
+                setSpellSelfActiveSpell(4);
             }
             else
             {
@@ -233,13 +197,7 @@ public class PlayerController : MonoBehaviour
             if (Store.ESpellOwned[4])
             {
                 curAtk = 5;
-                ESpellIcon[0].color = Color.grey;
-                ESpellIcon[1].color = Color.grey;
-                ESpellIcon[2].color = Color.grey;
-                ESpellIcon[3].color = Color.grey;
-                ESpellIcon[4].color = Color.grey;
-                ESpellIcon[5].color = Color.white;
-                ESpellIcon[6].color = Color.grey;
+                setSpellSelfActiveSpell(5);
             }
             else
             {
@@ -253,13 +211,21 @@ public class PlayerController : MonoBehaviour
             if (Store.ESpellOwned[5])
             {
                 curAtk = 6;
-                ESpellIcon[0].color = Color.grey;
-                ESpellIcon[1].color = Color.grey;
-                ESpellIcon[2].color = Color.grey;
-                ESpellIcon[3].color = Color.grey;
-                ESpellIcon[4].color = Color.grey;
-                ESpellIcon[5].color = Color.grey;
-                ESpellIcon[6].color = Color.white;
+                setSpellSelfActiveSpell(6);
+            }
+            else
+            {
+                //Show alert
+                ShowSpellNotOwnedAlert();
+            }
+        }
+        //Tidal Wave
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            if (Store.ESpellOwned[6])
+            {
+                curAtk = 7;
+                setSpellSelfActiveSpell(7);
             }
             else
             {
@@ -424,5 +390,15 @@ public class PlayerController : MonoBehaviour
         //yield on a new YieldInstruction that waits for sec seconds.
         yield return new WaitForSeconds(sec);
         obj.SetActive(false);
+    }
+
+    //chages the shown active spell on the shelf
+    private void setSpellSelfActiveSpell(int spell)
+    {
+        for (int i = 0; i <= 7; i++)
+        {
+            ESpellIcon[i].color = Color.grey;
+        }
+        ESpellIcon[spell].color = Color.white;
     }
 }

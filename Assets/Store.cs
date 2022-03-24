@@ -11,8 +11,8 @@ public class Store : MonoBehaviour
     public GameObject NeedGoldAlert;
 
     //Elemental Spells
-    public Text[] ESpellCost = new Text[6];
-    public static bool[] ESpellOwned = new bool[6];
+    public Text[] ESpellCost = new Text[7];
+    public static bool[] ESpellOwned = new bool[7];
 
     //Ability Upgrades
     public Text[] UpgradeAmount = new Text[1];
@@ -49,7 +49,7 @@ public class Store : MonoBehaviour
             UpgradeCost[i].text = 100 + "gp";
         }
         //Elemental Spell defaults
-        for(int i = 0; i <= 5; i++)
+        for(int i = 0; i <= 6; i++)
         {
             ESpellOwned[i] = false;
         }
@@ -58,8 +58,9 @@ public class Store : MonoBehaviour
         ESpellCost[1].text = "200 gp";
         ESpellCost[2].text = "200 gp";
         ESpellCost[3].text = "100 gp";
-        ESpellCost[4].text = "100 gp";
-        ESpellCost[5].text = "100 gp";
+        ESpellCost[4].text = "300 gp";
+        ESpellCost[5].text = "200 gp";
+        ESpellCost[6].text = "300 gp";
         /*//Power Spell defaults
         for (int i = 0; i < 10; i++)
         {
@@ -143,24 +144,35 @@ public class Store : MonoBehaviour
     public void MeteorShower()
     {
         // MeteorShower spell is ESpell[4]
-        if (!ESpellOwned[4] && Gold >= 100) //if not owned and can buy
+        if (!ESpellOwned[4] && Gold >= 300) //if not owned and can buy
         {
             ESpellCost[4].text = "Owned";
-            Gold -= 100;
+            Gold -= 300;
             ESpellOwned[4] = true;
         }
-        else if (!ESpellOwned[4] && Gold < 100) { ShowNeedGoldAlert(); }
+        else if (!ESpellOwned[4] && Gold < 300) { ShowNeedGoldAlert(); }
     }
     public void FlameDash()
     {
-        // MeteorShower spell is ESpell[4]
-        if (!ESpellOwned[5] && Gold >= 100) //if not owned and can buy
+        // FlameDash spell is ESpell[5]
+        if (!ESpellOwned[5] && Gold >= 200) //if not owned and can buy
         {
             ESpellCost[5].text = "Owned";
-            Gold -= 100;
+            Gold -= 200;
             ESpellOwned[5] = true;
         }
-        else if (!ESpellOwned[5] && Gold < 100) { ShowNeedGoldAlert(); }
+        else if (!ESpellOwned[5] && Gold < 200) { ShowNeedGoldAlert(); }
+    }
+    public void TitdalWave()
+    {
+        // Titdalwave spell is ESpell[6]
+        if (!ESpellOwned[5] && Gold >= 300) //if not owned and can buy
+        {
+            ESpellCost[6].text = "Owned";
+            Gold -= 300;
+            ESpellOwned[6] = true;
+        }
+        else if (!ESpellOwned[6] && Gold < 300) { ShowNeedGoldAlert(); }
     }
 
 

@@ -271,4 +271,19 @@ public class CanvasController : MonoBehaviour
         Time.timeScale = 1f;
         gamePause = false;
     }
+
+    //for store x button
+    //why does don hate methods?
+    //it was so nice before he messed with it.
+    //everything use to be handled by their respective scripts.
+    public void ExitStore()
+    {
+        if (!GameOverMenuUI.activeSelf)
+        {
+            gamePause = !gamePause;
+            Time.timeScale = 1;
+            storeMenu.SetActive(false);
+            UI.SetActive(true);
+        }
+    }
 }
