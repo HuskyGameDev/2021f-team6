@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
         speedSlowDownTime = 5;
         countdown = 0;
         speedCD = 0;
-        quicktimeCD = 3;
+        quicktimeCD = 5;
         quicktimeMultiplier = 1;
         shieldOn = false;
         speedUpOn = false;
