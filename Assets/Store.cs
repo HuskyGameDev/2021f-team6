@@ -39,7 +39,7 @@ public class Store : MonoBehaviour
     //Restores Store Default values
     public void StoreDefault()
     {
-        Gold = 150;
+        Gold = 200;
         //Upgrade defaults
         for (int i = 0; i < 1; i++)
         {

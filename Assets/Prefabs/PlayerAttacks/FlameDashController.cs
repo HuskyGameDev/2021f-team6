@@ -6,7 +6,7 @@ public class FlameDashController : MonoBehaviour
 {
     private Collider2D thisCollider;
     private Rigidbody2D rigidBody;
-    public Rigidbody2D player;
+    private Rigidbody2D player;
 
     public float expandRate, maxSize;
 
@@ -16,7 +16,6 @@ public class FlameDashController : MonoBehaviour
         thisCollider = GetComponent<Collider2D>();
         rigidBody = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player").GetComponent<Rigidbody2D>();
-
 
     }
 
