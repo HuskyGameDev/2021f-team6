@@ -20,6 +20,9 @@ public class Store : MonoBehaviour
     private int[] UpgradeCostInt = new int[1];
     public int[] UpgradeOwned = new int[1];
 
+    private PlayerController playerScript;
+    public GameObject[] building;
+
     //Power Spells
     //public Text[] PSpellCost = new Text[10];
     //public bool[] PSpellOwned = new bool[10];
@@ -28,6 +31,8 @@ public class Store : MonoBehaviour
     void Start()
     {
         StoreDefault();
+        playerScript = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        
     }
 
     // Update is called once per frame
@@ -67,6 +72,11 @@ public class Store : MonoBehaviour
             PSpellCost[i].text = "100 gp";
             PSpellOwned[i] = false;
         }*/
+        foreach (GameObject currentBuilding in building)
+        {
+            currentBuilding.GetComponent<BuildingController>().maxHealth = 20; 
+        }
+        building[0].GetComponent<BuildingController>().maxHealth = 40;
     }
 
     //Ability Upgrade Methods----------------------------------
@@ -75,11 +85,21 @@ public class Store : MonoBehaviour
         //Health is Upgrade[0]
         if(UpgradeOwned[0] < 10 && Gold >= UpgradeCostInt[0]) //if not full and can buy
         {
+            //update trackers
             UpgradeOwned[0] += 1;
             UpgradeAmount[0].text = UpgradeOwned[0] + "/10";
             Gold -= UpgradeCostInt[0];
             UpgradeCostInt[0] += 50;
             UpgradeCost[0].text = UpgradeCostInt[0] + "gp";
+            //update player health
+            playerScript.maxHp += 10;
+            playerScript.hp = playerScript.maxHp;
+            //update building health
+            foreach (GameObject currentBuilding in building)
+            {
+                currentBuilding.GetComponent<BuildingController>().maxHealth += 5;
+                currentBuilding.GetComponent<BuildingController>().health = currentBuilding.GetComponent<BuildingController>().maxHealth;
+            }
         }
         else if (UpgradeOwned[0] < 10 && Gold < UpgradeCostInt[0]) { ShowNeedGoldAlert(); }
     }

@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;         //speed player moves at in units/second
     public float rotateSpeed;       //speed player rotates towards mouse
     //[HideInInspector]
+    public int maxHp;
     public int hp;                  //player health points
 
     public GameObject SpellNotOwnedAlert;
@@ -54,7 +55,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
         //defaults
         cooldown = 10;
         speedSlowDownTime = 5;
@@ -66,7 +67,8 @@ public class PlayerController : MonoBehaviour
         speedUpOn = false;
         quicktimeOn = false;
         rigidBody = GetComponent<Rigidbody2D>();
-        hp = 100;
+        maxHp = 100;
+        hp = maxHp;
         animator = GetComponent<Animator>();
         setSpellSelfActiveSpell(0);
         for (int i = 0; i <= 6; i++)

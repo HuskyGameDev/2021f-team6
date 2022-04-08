@@ -23,10 +23,10 @@ public class ItemController : MonoBehaviour
                 //Debug.Log("Heart");
                 if (!playerScript.isDead())
                 {
-                    playerScript.hp = playerScript.hp + 10;
-                    if (playerScript.hp > 100) 
+                    playerScript.hp = playerScript.hp + 15;
+                    if (playerScript.hp > playerScript.maxHp) 
                     {
-                        playerScript.hp = 100;
+                        playerScript.hp = playerScript.maxHp;
                     }
                 }
                 Destroy(this.gameObject);
