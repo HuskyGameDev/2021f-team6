@@ -192,9 +192,9 @@ public class CanvasController : MonoBehaviour
         if ((playerController.isDead() && !gamePause) || (!gamePause && buildingHealthBar <= 0))
         {
             stopTheTimer();
-            GO_waves.text = "" + currentLevel.ToString();
-            GO_score.text = "" + currentScore.ToString();
-            GO_time.text = "" + minutes + ":" + seconds;
+            GO_waves.text = "Waves: " + currentLevel.ToString();
+            GO_score.text = "Score: " + currentScore.ToString();
+            GO_time.text = "Time: " + minutes + ":" + seconds;
             GameOverMenuUI.SetActive(true);
             UI.SetActive(false);
             Time.timeScale = 0;
