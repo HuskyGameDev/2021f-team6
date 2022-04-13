@@ -22,10 +22,12 @@ public class MeteorShowerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (transform.localScale.x < maxSize)
         {
             transform.localScale += expand * Time.deltaTime;
             //rigidBody.rotation += 360 * Time.deltaTime;
         }
+        */
     }
 }
