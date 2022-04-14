@@ -125,6 +125,11 @@ public class PlayerController : MonoBehaviour
             holdCool = 0;
             held = false;
         }
+        if (Time.time - lastshot[curAtk] < castInterval[curAtk] / quicktimeMultiplier)
+        {
+            ESpellIcon[curAtk].color = Color.black;
+        }
+        else { ESpellIcon[curAtk].color = Color.white; }
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Shoot();
@@ -307,7 +312,7 @@ public class PlayerController : MonoBehaviour
     private void Shoot() 
     {
         if (PauseMenu.gameIsPaused || Time.timeScale == 0) { return; }
-        if (Time.time - lastshot[curAtk] < castInterval[curAtk] / quicktimeMultiplier) { return; }
+        if (Time.time - lastshot[curAtk] < castInterval[curAtk] / quicktimeMultiplier) {return; }
         lastshot[curAtk] = Time.time;
         GameObject bullet = Instantiate(attacks[curAtk], spawnBulletPoint.position, spawnBulletPoint.rotation);
         AttackType attackType = bullet.GetComponent<AttackType>();
