@@ -249,36 +249,53 @@ public class MonsterBehavior : MonoBehaviour
         if(Health <= 0)
         {
             //Run the animation for death and shut down the object
-            monsterSpawner.GetComponent<MonsterSpawner>().monsterCount--;
-            int drops = Random.Range(0, 100);
-            if (drops < 25)
+            
+            animator.SetTrigger("Dead");
+
+            AnimatorStateInfo animinfo = animator.GetCurrentAnimatorStateInfo(0);
+            if (animinfo.normalizedTime % 1 < .99)
             {
-                int randomNumber = Random.Range(0, 4);
-                if (randomNumber == 0)
+                rb.velocity *= 0;
+                Coward = false;
+                Teleporter = false;
+                Shooter = false;
+                Rusher = false;
+                Walker = false;
+            } else
+            {
+                monsterSpawner.GetComponent<MonsterSpawner>().monsterCount--;
+                int drops = Random.Range(0, 100);
+                if (drops < 25)
                 {
-                    Instantiate(GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().heart,
-                        transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+                    int randomNumber = Random.Range(0, 4);
+                    if (randomNumber == 0)
+                    {
+                        Instantiate(GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().heart,
+                            transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+                    }
+                    else if (randomNumber == 1)
+                    {
+                        Instantiate(GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().shield,
+                            transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+                    }
+                    else if (randomNumber == 2)
+                    {
+                        Instantiate(GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().speedUp,
+                            transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+                    }
+                    else if (randomNumber == 3)
+                    {
+                        Instantiate(GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().quicktime,
+                            transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+                    }
+
                 }
-                else if (randomNumber == 1)
-                {
-                    Instantiate(GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().shield,
-                        transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-                }
-                else if (randomNumber == 2)
-                {
-                    Instantiate(GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().speedUp,
-                        transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-                }
-                else if (randomNumber == 3)
-                {
-                    Instantiate(GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().quicktime,
-                        transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-                }
-                
+                Store.Gold += 15;
+                int stop = 0;
+                Destroy(gameObject);
+                GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().currentScore = GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().currentScore + 1;
             }
-            Store.Gold += 15;
-            Destroy(gameObject);
-            GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().currentScore = GameObject.FindGameObjectWithTag("Canvas").GetComponent<CanvasController>().currentScore + 1;
+            
         }
         charge++;
 
