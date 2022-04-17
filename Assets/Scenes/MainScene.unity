@@ -3423,6 +3423,14 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 424492334, guid: e5e629c7f30aec144b83dde7ab7ffb96, type: 3}
+      propertyPath: halfSprite
+      value: 
+      objectReference: {fileID: 4418354107788194735, guid: e975ba00201aa3c4b8873f6b819c089f, type: 3}
+    - target: {fileID: 424492334, guid: e5e629c7f30aec144b83dde7ab7ffb96, type: 3}
+      propertyPath: contructSprite
+      value: 
+      objectReference: {fileID: 6535064064993831255, guid: e975ba00201aa3c4b8873f6b819c089f, type: 3}
+    - target: {fileID: 424492334, guid: e5e629c7f30aec144b83dde7ab7ffb96, type: 3}
       propertyPath: destructSprite
       value: 
       objectReference: {fileID: -5426587065128442488, guid: e975ba00201aa3c4b8873f6b819c089f, type: 3}
@@ -18562,6 +18570,14 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 424492334, guid: e5e629c7f30aec144b83dde7ab7ffb96, type: 3}
+      propertyPath: halfSprite
+      value: 
+      objectReference: {fileID: 7475044473890305328, guid: e975ba00201aa3c4b8873f6b819c089f, type: 3}
+    - target: {fileID: 424492334, guid: e5e629c7f30aec144b83dde7ab7ffb96, type: 3}
+      propertyPath: contructSprite
+      value: 
+      objectReference: {fileID: -1428831969237667758, guid: e975ba00201aa3c4b8873f6b819c089f, type: 3}
+    - target: {fileID: 424492334, guid: e5e629c7f30aec144b83dde7ab7ffb96, type: 3}
       propertyPath: destructSprite
       value: 
       objectReference: {fileID: -4528004788670716411, guid: e975ba00201aa3c4b8873f6b819c089f, type: 3}
@@ -19043,6 +19059,14 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 424492334, guid: e5e629c7f30aec144b83dde7ab7ffb96, type: 3}
+      propertyPath: halfSprite
+      value: 
+      objectReference: {fileID: 4432368482920678026, guid: e975ba00201aa3c4b8873f6b819c089f, type: 3}
+    - target: {fileID: 424492334, guid: e5e629c7f30aec144b83dde7ab7ffb96, type: 3}
+      propertyPath: contructSprite
+      value: 
+      objectReference: {fileID: 5676845859789211852, guid: e975ba00201aa3c4b8873f6b819c089f, type: 3}
     - target: {fileID: 424492334, guid: e5e629c7f30aec144b83dde7ab7ffb96, type: 3}
       propertyPath: destructSprite
       value: 
@@ -68300,6 +68324,14 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 424492334, guid: e5e629c7f30aec144b83dde7ab7ffb96, type: 3}
+      propertyPath: halfSprite
+      value: 
+      objectReference: {fileID: 1070643051737145291, guid: e975ba00201aa3c4b8873f6b819c089f, type: 3}
+    - target: {fileID: 424492334, guid: e5e629c7f30aec144b83dde7ab7ffb96, type: 3}
+      propertyPath: contructSprite
+      value: 
+      objectReference: {fileID: 1282894687024546636, guid: e975ba00201aa3c4b8873f6b819c089f, type: 3}
     - target: {fileID: 424492334, guid: e5e629c7f30aec144b83dde7ab7ffb96, type: 3}
       propertyPath: destructSprite
       value: 
