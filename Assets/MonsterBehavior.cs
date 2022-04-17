@@ -42,6 +42,7 @@ public class MonsterBehavior : MonoBehaviour
     private bool lockout;
     private float angle;
     private int dodge_crg;
+    AnimatorStateInfo animinfo;
 
 
     // Start is called before the first frame update
@@ -203,26 +204,48 @@ public class MonsterBehavior : MonoBehaviour
         {
             if (Health <= totalHealth / 2 && tele)
             {
-                float potentialx;
-                float potentialy;
-                do
-                {
-                    potentialx = rb.position.x + Random.Range(-5, 5);
-                } while (potentialx < -25 || potentialx > 25);
+                animator.SetTrigger("Start");
 
-                do
+                animinfo = animator.GetCurrentAnimatorStateInfo(0);
+                if (animinfo.normalizedTime % 1 < .99)
                 {
-                    potentialy = rb.position.y + Random.Range(-5, 5);
-                } while (!(potentialy > -25 && potentialy < 25)) ;
 
-            
-                rb.MovePosition(rb.position + new Vector2(potentialx, potentialy));
-                tele = false;
-                if (charge % 3000 == 0)
+                } else
                 {
-                    tele = true;
-                    charge = 0;
+                    float potentialx;
+                    float potentialy;
+                    do
+                    {
+                        potentialx = rb.position.x + Random.Range(-5, 5);
+                    } while (potentialx < -25 || potentialx > 25);
+
+                    do
+                    {
+                        potentialy = rb.position.y + Random.Range(-5, 5);
+                    } while (!(potentialy > -25 && potentialy < 25));
+
+
+                    rb.MovePosition(rb.position + new Vector2(potentialx, potentialy));
+                    tele = false;
+
+                    animator.SetTrigger("Finish");
+
+                    animinfo = animator.GetCurrentAnimatorStateInfo(0);
+                    if (animinfo.normalizedTime % 1 < .99)
+                    {
+
+                    }
+                    else
+                    {
+
+                        if (charge % 3000 == 0)
+                        {
+                            tele = true;
+                            charge = 0;
+                        }
+                    }
                 }
+                
             }
         }
 
@@ -252,7 +275,7 @@ public class MonsterBehavior : MonoBehaviour
             
             animator.SetTrigger("Dead");
 
-            AnimatorStateInfo animinfo = animator.GetCurrentAnimatorStateInfo(0);
+            animinfo = animator.GetCurrentAnimatorStateInfo(0);
             if (animinfo.normalizedTime % 1 < .99)
             {
                 rb.velocity *= 0;

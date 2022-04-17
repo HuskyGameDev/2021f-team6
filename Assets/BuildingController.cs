@@ -9,6 +9,8 @@ public class BuildingController : MonoBehaviour
     public int maxHealth;
     public GameObject thisBuilding;
     public Sprite destructSprite;
+    public Sprite contructSprite;
+    public Sprite halfSprite;
     public SpriteRenderer SR;
     [HideInInspector]
     public bool isDestroyed;
@@ -29,6 +31,18 @@ public class BuildingController : MonoBehaviour
             SR.sprite = destructSprite;
             isDestroyed = true;
             health = 0;
+        }
+        else if(health <= maxHealth / 2)
+        {
+            GetComponent<PolygonCollider2D>().enabled = true;
+            SR.sprite = halfSprite;
+            isDestroyed = false;
+        }
+        else if (health >= maxHealth / 2)
+        {
+            GetComponent<PolygonCollider2D>().enabled = true;
+            SR.sprite = contructSprite; ;
+            isDestroyed = false;
         }
     }
     public void Damage(int amount)
